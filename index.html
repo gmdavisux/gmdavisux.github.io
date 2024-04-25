@@ -149,7 +149,7 @@
           defaultContent.style.display = 'block';
           specialContent.style.display = 'none';
           heroContent.style.display = 'block';
-          contentContainer.appendChild(defaultContent);
+          contentContainer.appendChild(defaultContent.cloneNode(true));
           document.body.style.paddingTop = `${headerHeight}px`;
         } else {
           // Load the special content
@@ -160,14 +160,14 @@
             defaultContent.style.display = 'none';
             specialContent.style.display = 'block';
             heroContent.style.display = 'none';
-            contentContainer.appendChild(specialContent);
+            contentContainer.appendChild(specialContent.cloneNode(true));
             document.body.style.paddingTop = `62px`;
           } catch (error) {
             // Handle errors
             console.error('Error fetching content:', error);
             defaultContent.style.display = 'block';
             specialContent.style.display = 'none';
-            contentContainer.appendChild(defaultContent);
+            contentContainer.appendChild(defaultContent.cloneNode(true));
           }
         }
       }
