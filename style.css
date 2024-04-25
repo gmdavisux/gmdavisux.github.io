@@ -41,5 +41,5 @@
   img.card-img-top{box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);}
   #logos .img-fluid {
     filter: grayscale(100%) brightness(180%);
-    max-height: 30px; width: auto;
+    max-height: 50px; width: auto;
   }
