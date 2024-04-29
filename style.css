@@ -8,7 +8,7 @@
 .navbar .navbar-nav .nav-link:hover {color: yellow;}
 /* Change navbar brand color */
 .navbar .navbar-brand {color: white; font-size: 1.5em; line-height: 1.5em; color: yellow;}
-.hero{display: none;}
+#defaultContent, .hero{display: none;}
 .header{
     background-image: url('images/k1go_sketch2.png');    
     /* background image fills width */
