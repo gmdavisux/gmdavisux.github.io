@@ -188,7 +188,7 @@
             specialContent.innerHTML = data;
 
             // After the content has been loaded, replace the images and add a link to themselves
-            const images = specialContent.querySelectorAll('img.img-fluid');
+            const images = specialContent.querySelectorAll('img.border');
             const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
             for (let i = 0; i < images.length; i++) {
               const image = images[i];
