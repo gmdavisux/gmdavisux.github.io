@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Replenishing Suppliers",
+        "url": "?page=suppliers"
+    },
+    {
+        "name": "Increasing Success",
+        "url": "?page=success"
+    },
+    {
+        "name": "Best Laid Plans",
+        "url": "?page=plans"
+    },
+    {
+        "name": "Story Telling",
+        "url": "?page=story"
+    },
+    {
+        "name": "Peak Productivity",
+        "url": "?page=peak"
+    },
+    {
+        "name": "Design Rescue",
+        "url": "?page=rescue"
+    },
+    {
+        "name": "Pocket-sizing a Flagship",
+        "url": "?page=flagship"
+    },
+    {
+        "name": "Managing Complexity",
+        "url": "?page=complexity"
+    },
+    {
+        "name": "Enhanced Focus",
+        "url": "?page=focus"
+    },
+    {
+        "name": "My Resume",
+        "url": "?page=resume"
+    }
+]
+
+
+
