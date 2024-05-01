@@ -9,11 +9,14 @@ fetch('js/projects.json')
         // Check if the page query parameter is in the JSON list
         const currentIndex = projects.findIndex(project => project.url === currentPage);
         if (currentIndex !== -1) {
+
             // Create the "prev" button
             const prevButton = document.createElement('a');
-            prevButton.className = 'btn btn-secondary position-fixed start-0 translate-middle-y bi bi-arrow-left opacity-50';
+            prevButton.className = 'btn btn-lg btn-secondary position-fixed start-0 translate-middle-y bi bi-arrow-left opacity-50';
             prevButton.style.top = '50%';
-            prevButton.style.margin = '1em';
+            prevButton.style.marginLeft = '-45px'; // Adjust the margin to make the button half off-canvas
+            prevButton.style.borderRadius = '50px'; // Make the button look like a half-circle on one side
+            prevButton.style.paddingLeft = '50px'; // Reduce the padding to make the icon appear near the visible side
             prevButton.href = currentIndex > 0 ? projects[currentIndex - 1].url : projects[projects.length - 1].url;
             prevButton.title = currentIndex > 0 ? projects[currentIndex - 1].name : projects[projects.length - 1].name;
             prevButton.setAttribute('data-bs-toggle', 'tooltip');
@@ -22,9 +25,11 @@ fetch('js/projects.json')
 
             // Create the "next" button
             const nextButton = document.createElement('a');
-            nextButton.className = 'btn btn-secondary position-fixed end-0 translate-middle-y bi bi-arrow-right opacity-50';
+            nextButton.className = 'btn btn-lg btn-secondary position-fixed end-0 translate-middle-y bi bi-arrow-right opacity-50';
             nextButton.style.top = '50%';
-            nextButton.style.margin = '1em';
+            nextButton.style.marginRight = '-45px'; // Adjust the margin to make the button half off-canvas
+            nextButton.style.borderRadius = '50px'; // Make the button look like a half-circle on one side
+            nextButton.style.paddingRight = '50px'; // Reduce the padding to make the icon appear near the visible side
             nextButton.href = currentIndex < projects.length - 1 ? projects[currentIndex + 1].url : projects[0].url;
             nextButton.title = currentIndex < projects.length - 1 ? projects[currentIndex + 1].name : projects[0].name;
             nextButton.setAttribute('data-bs-toggle', 'tooltip');
