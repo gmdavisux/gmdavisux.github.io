@@ -17,6 +17,7 @@ fetch('js/projects.json')
             prevButton.style.marginLeft = '-45px'; // Adjust the margin to make the button half off-canvas
             prevButton.style.borderRadius = '50px'; // Make the button look like a half-circle on one side
             prevButton.style.paddingLeft = '50px'; // Reduce the padding to make the icon appear near the visible side
+            prevButton.style.paddingRight = '3px'; // Reduce the padding to make the icon appear near the visible side
             prevButton.href = currentIndex > 0 ? projects[currentIndex - 1].url : projects[projects.length - 1].url;
             prevButton.title = currentIndex > 0 ? projects[currentIndex - 1].name : projects[projects.length - 1].name;
             prevButton.setAttribute('data-bs-toggle', 'tooltip');
@@ -30,6 +31,7 @@ fetch('js/projects.json')
             nextButton.style.marginRight = '-45px'; // Adjust the margin to make the button half off-canvas
             nextButton.style.borderRadius = '50px'; // Make the button look like a half-circle on one side
             nextButton.style.paddingRight = '50px'; // Reduce the padding to make the icon appear near the visible side
+            nextButton.style.paddingLeft = '3px'; // Reduce the padding to make the icon appear near the visible side
             nextButton.href = currentIndex < projects.length - 1 ? projects[currentIndex + 1].url : projects[0].url;
             nextButton.title = currentIndex < projects.length - 1 ? projects[currentIndex + 1].name : projects[0].name;
             nextButton.setAttribute('data-bs-toggle', 'tooltip');
