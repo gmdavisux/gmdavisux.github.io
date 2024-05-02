@@ -7,37 +7,51 @@ fetch('js/projects.json')
         const currentPage = '?page=' + params.get('page');
 
         // Check if the page query parameter is in the JSON list
-        const currentIndex = projects.findIndex(project => project.url === currentPage);
-        if (currentIndex !== -1) {
+        let currentIndex = projects.findIndex(project => project.url === currentPage);
 
-            // Create the "prev" button
-            const prevButton = document.createElement('a');
-            prevButton.className = 'btn btn-lg btn-secondary position-fixed start-0 translate-middle-y bi bi-arrow-left opacity-50';
-            prevButton.style.top = '50%';
-            prevButton.style.marginLeft = '-45px'; // Adjust the margin to make the button half off-canvas
-            prevButton.style.borderRadius = '50px'; // Make the button look like a half-circle on one side
-            prevButton.style.paddingLeft = '50px'; // Reduce the padding to make the icon appear near the visible side
-            prevButton.style.paddingRight = '3px'; // Reduce the padding to make the icon appear near the visible side
-            prevButton.href = currentIndex > 0 ? projects[currentIndex - 1].url : projects[projects.length - 1].url;
-            prevButton.title = currentIndex > 0 ? projects[currentIndex - 1].name : projects[projects.length - 1].name;
-            prevButton.setAttribute('data-bs-toggle', 'tooltip');
-            prevButton.setAttribute('data-bs-placement', 'right');
-            document.body.appendChild(prevButton);
-
-            // Create the "next" button
-            const nextButton = document.createElement('a');
-            nextButton.className = 'btn btn-lg btn-secondary position-fixed end-0 translate-middle-y bi bi-arrow-right opacity-50';
-            nextButton.style.top = '50%';
-            nextButton.style.marginRight = '-45px'; // Adjust the margin to make the button half off-canvas
-            nextButton.style.borderRadius = '50px'; // Make the button look like a half-circle on one side
-            nextButton.style.paddingRight = '50px'; // Reduce the padding to make the icon appear near the visible side
-            nextButton.style.paddingLeft = '3px'; // Reduce the padding to make the icon appear near the visible side
-            nextButton.href = currentIndex < projects.length - 1 ? projects[currentIndex + 1].url : projects[0].url;
-            nextButton.title = currentIndex < projects.length - 1 ? projects[currentIndex + 1].name : projects[0].name;
-            nextButton.setAttribute('data-bs-toggle', 'tooltip');
-            nextButton.setAttribute('data-bs-placement', 'left');
-            document.body.appendChild(nextButton);
+        // If the current page is not in the JSON list, set the index to 0
+        if (currentIndex === -1) {
+            currentIndex = 0;
         }
+
+        // Create the footer
+        const footer = document.createElement('footer');
+        footer.className = 'footer fixed-bottom bg-light d-flex justify-content-between p-2';
+
+        // Create the "back" button
+        const backButton = document.createElement('a');
+        backButton.className = 'btn btn-sm btn-outline-primary';
+        backButton.innerHTML = '<i class="bi bi-chevron-left"></i>';
+        backButton.href = projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].url;
+        backButton.title = currentIndex > 0 ? projects[currentIndex - 1].name : projects[projects.length - 1].name;
+        backButton.setAttribute('data-bs-toggle', 'tooltip');
+        backButton.setAttribute('data-bs-placement', 'right');
+
+        // Create the "Projects" button
+        const projectsButton = document.createElement('a');
+        projectsButton.className = 'btn btn-sm btn-outline-primary';
+        projectsButton.innerHTML = '<i class="bi bi-grid"></i> List';
+        projectsButton.href = '#work';
+        projectsButton.setAttribute('data-bs-toggle', 'tooltip');
+        projectsButton.setAttribute('data-bs-placement', 'bottom');
+        projectsButton.title = 'All Projects';
+
+        // Create the "next" button
+        const nextButton = document.createElement('a');
+        nextButton.className = 'btn btn-sm btn-outline-primary';
+        nextButton.innerHTML = '<i class="bi bi-chevron-right"></i>';
+        nextButton.href = projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].url;
+        nextButton.title = currentIndex < projects.length - 1 ? projects[currentIndex + 1].name : projects[0].name;
+        nextButton.setAttribute('data-bs-toggle', 'tooltip');
+        nextButton.setAttribute('data-bs-placement', 'left');
+
+        // Append the buttons to the footer
+        footer.appendChild(backButton);
+        footer.appendChild(projectsButton);
+        footer.appendChild(nextButton);
+
+        // Append the footer to the body
+        document.body.appendChild(footer);
 
         // Initialize Bootstrap tooltips
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))

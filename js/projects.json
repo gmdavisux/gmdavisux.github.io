@@ -1,5 +1,9 @@
 [
     {
+        "name": "Home",
+        "url": "./"
+    },
+    {
         "name": "Replenishing Suppliers",
         "url": "?page=suppliers"
     },
@@ -34,6 +38,10 @@
     {
         "name": "Enhanced Focus",
         "url": "?page=focus"
+    },
+    {
+        "name": "Beyond Expectations",
+        "url": "?page=beyond"
     },
     {
         "name": "My Resume",
