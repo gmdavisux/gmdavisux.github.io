@@ -59,3 +59,114 @@ fetch('js/projects.json')
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     });
+
+        // Wrap everything in an IIFE to avoid polluting the global scope
+        (function () {
+            // Function to load dynamic content
+            async function loadContent() {
+              // Get URL parameters
+              const urlParams = new URLSearchParams(window.location.search);
+              const contentFile = urlParams.get('page') || 'default';
+      
+              // Get elements
+              const contentContainer = document.getElementById('contentContainer');
+              const defaultContent = document.getElementById('defaultContent');
+              const specialContent = document.getElementById('specialContent');
+              const heroContent = document.getElementById('hero');
+              const header = document.querySelector('.header');
+              const headerHeight = header.offsetHeight;
+      
+              // Clear the content container
+              contentContainer.innerHTML = '';
+      
+              if (contentFile === 'default') {
+                // Show the default content
+                defaultContent.style.display = 'block';
+                specialContent.style.display = 'none';
+                heroContent.style.display = 'block';
+                contentContainer.appendChild(defaultContent);
+                document.body.style.paddingTop = `${headerHeight}px`;
+              } else {
+                // Load the special content
+                try {
+                  const response = await fetch(`pages/${contentFile}.html`);
+                  const data = await response.text();
+                  specialContent.innerHTML = data;
+      
+                  // After the content has been loaded, replace the images and add a link to themselves
+                  const images = specialContent.querySelectorAll('img.border');
+                  const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
+                  for (let i = 0; i < images.length; i++) {
+                    const image = images[i];
+                    const currentSrc = image.src;
+                    if (regex.test(currentSrc)) {
+                      const newSrc = currentSrc.replace(regex, 'images');
+                      image.src = newSrc;
+      
+                      // Create a new link element
+                      const link = document.createElement('a');
+                      link.href = newSrc;
+                      link.target = '_blank'; // This makes the link open in a new tab
+      
+                      // Replace the image with the link, and add the image inside the link
+                      image.parentNode.replaceChild(link, image);
+                      link.appendChild(image);
+                    }
+                  }
+                  defaultContent.style.display = 'none';
+                  specialContent.style.display = 'block';
+                  heroContent.style.display = 'none';
+                  contentContainer.appendChild(specialContent);
+                  document.body.style.paddingTop = `62px`;
+                } catch (error) {
+                  // Handle errors
+                  console.error('Error fetching content:', error);
+                  defaultContent.style.display = 'block';
+                  specialContent.style.display = 'none';
+                  contentContainer.appendChild(defaultContent);
+                }
+              }
+            }
+      
+            // Listen for hashchange and load events to load content
+            window.addEventListener('hashchange', loadContent);
+            window.addEventListener('load', loadContent);
+      
+            // Function to load the HTML snippet
+            async function loadCarousel() {
+              const carouselContainer = document.getElementById('work');
+      
+              try {
+                const response = await fetch('pages/work.htm?' + new Date().getTime());
+                const data = await response.text();
+                carouselContainer.innerHTML = data;
+              } catch (error) {
+                // Handle errors
+                console.error('Error fetching carousel:', error);
+              }
+            }
+      
+      
+            // Call the loadCarousel function when the page loads
+            window.addEventListener('load', loadCarousel);
+          })();
+
+            // add the phone number and email to the contact dropdown
+          window.onload = function () {
+            var liElements = document.querySelectorAll('.dropdown-menu .dropdown-item');
+            var email = ['&#103;&#97;&#114;&#121;&#46;&#100;&#97;&#118;&#105;&#115;', '&#64;', '&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'];
+            var phone = ['&#53;&#56;&#53;', '&#45;', '&#51;&#48;&#49;', '&#45;', '&#48;&#52;&#54;&#55;'];
+      
+            function decodeHtml(html) {
+              var txt = document.createElement("textarea");
+              txt.innerHTML = html;
+              return txt.value;
+            }
+      
+            liElements[0].href = 'tel:' + decodeHtml(phone.join(''));
+            liElements[0].innerHTML = phone.join('');
+      
+            liElements[1].href = 'mailto:' + decodeHtml(email.join(''));
+            liElements[1].innerHTML = email.join('');
+          };
+      
