@@ -245,7 +245,7 @@
         const carouselContainer = document.getElementById('work');
 
         try {
-          const response = await fetch('pages/work.htm');
+          const response = await fetch('pages/work.htm?' + new Date().getTime());
           const data = await response.text();
           carouselContainer.innerHTML = data;
         } catch (error) {
