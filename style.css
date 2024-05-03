@@ -49,4 +49,5 @@
     transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
     max-height: 1000px; /* adjust this to the maximum possible height of your #hero div */
     opacity: 1;
+    overflow: hidden;
   }
