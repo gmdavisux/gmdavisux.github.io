@@ -51,3 +51,9 @@
     opacity: 1;
     overflow: hidden;
   }
+  /* to avoid OS controls overlaying footer */
+  @media (hover: none) {
+    footer {
+      padding-bottom: 50px; /* adjust this value as needed */
+    }
+  }
