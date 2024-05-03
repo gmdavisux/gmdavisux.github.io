@@ -170,3 +170,12 @@ fetch('js/projects.json')
             liElements[1].innerHTML = email.join('');
           };
       
+        //   hide the hero portion of the navbar when scrolling
+        window.addEventListener('scroll', function() {
+            var hero = document.getElementById('hero');
+            if (window.scrollY > 50) {
+              hero.style.display = 'none'; // hide the hero div
+            } else {
+              hero.style.display = 'block'; // show the hero div
+            }
+          });
