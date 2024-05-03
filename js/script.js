@@ -37,7 +37,6 @@ fetch('js/projects.json')
                 }
             }, false);
         });
-        
         // Create the "back" button
         const backButton = document.createElement('a');
         backButton.className = 'btn btn-sm btn-outline-primary';
