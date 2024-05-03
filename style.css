@@ -44,3 +44,9 @@
     max-height: 50px; width: auto;
   }
   .img-fluid.border{box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);}
+
+  #hero {
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    max-height: 1000px; /* adjust this to the maximum possible height of your #hero div */
+    opacity: 1;
+  }

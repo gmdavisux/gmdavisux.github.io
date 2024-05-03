@@ -174,8 +174,10 @@ fetch('js/projects.json')
         window.addEventListener('scroll', function() {
             var hero = document.getElementById('hero');
             if (window.scrollY > 50) {
-              hero.style.display = 'none'; // hide the hero div
+              hero.style.maxHeight = '0';
+              hero.style.opacity = '0';
             } else {
-              hero.style.display = 'block'; // show the hero div
+              hero.style.maxHeight = '1000px'; /* adjust this to the maximum possible height of your #hero div */
+              hero.style.opacity = '1';
             }
           });
