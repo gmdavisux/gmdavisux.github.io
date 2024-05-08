@@ -120,24 +120,26 @@ fetch('js/projects.json')
                 specialContent.innerHTML = data;
 
                 // After the content has been loaded, replace the images and add a link to themselves
-                const images = specialContent.querySelectorAll('img.border');
+                const images = specialContent.querySelectorAll('img');
                 const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
                 for (let i = 0; i < images.length; i++) {
                     const image = images[i];
                     const currentSrc = image.src;
-                    if (regex.test(currentSrc)) {
-                        const newSrc = currentSrc.replace(regex, 'images');
-                        image.src = newSrc;
-
-                        // Create a new link element
-                        const link = document.createElement('a');
-                        link.href = newSrc;
-                        link.target = '_blank'; // This makes the link open in a new tab
-
-                        // Replace the image with the link, and add the image inside the link
-                        image.parentNode.replaceChild(link, image);
-                        link.appendChild(image);
-                    }
+                
+                    // If the image src matches the regex, replace the src
+                    // if (regex.test(currentSrc)) {
+                    //     const newSrc = currentSrc.replace(regex, 'images');
+                    //     image.src = newSrc;
+                    // }
+                
+                    // Create a new link element
+                    const link = document.createElement('a');
+                    link.href = image.src; // Use the potentially updated image src
+                    link.target = '_blank'; // This makes the link open in a new tab
+                
+                    // Replace the image with the link, and add the image inside the link
+                    image.parentNode.replaceChild(link, image);
+                    link.appendChild(image);
                 }
                 defaultContent.style.display = 'none';
                 specialContent.style.display = 'block';
@@ -207,3 +209,17 @@ window.addEventListener('scroll', function () {
         hero.style.opacity = '1';
     }
 });
+
+// add active to the current nav-item for color change
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentUrl = window.location.href;
+
+    navLinks.forEach(link => {
+        if (link.href === currentUrl) {
+            link.classList.add('active');
+            link.parentNode.classList.add('active'); // If you want to add 'active' to the parent 'nav-item' as well
+        }
+    });
+});
+
