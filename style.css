@@ -126,3 +126,4 @@ img.card-img-top {
 .pos-right {
   object-position: 100% center;
 }
+.nav-link.active{color: yellow; border-bottom: 3px solid yellow;}

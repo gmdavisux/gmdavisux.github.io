@@ -1,4 +1,4 @@
-// Load the projects from the JSON file
+// Instead, I think what I need is the projects from the JSON file
 fetch('js/projects.json')
     .then(response => response.json())
     .then(projects => {
@@ -6,6 +6,81 @@ fetch('js/projects.json')
         const params = new URLSearchParams(window.location.search);
         const currentPage = '?page=' + params.get('page');
 
+        // -- -- --  create the gallery of images -- -- -- //
+        // Get the 'features' div
+        const featuresDiv = document.getElementById('features');
+
+        // Create the 'container' div
+        const containerDiv = document.createElement('div');
+        containerDiv.className = 'container py-4';
+
+        // Create the 'row' div for the heading
+        const headingRowDiv = document.createElement('div');
+        headingRowDiv.className = 'row';
+
+        // Create the 'col' div for the heading
+        const headingColDiv = document.createElement('div');
+        headingColDiv.className = 'col-12';
+
+        // Create the 'h3' element
+        const h3 = document.createElement('h3');
+        h3.textContent = 'My Work';
+        h3.id = 'projects';
+
+        // Append the 'h3' element to the 'col' div
+        headingColDiv.appendChild(h3);
+
+        // Append the 'col' div to the 'row' div
+        headingRowDiv.appendChild(headingColDiv);
+
+        // Prepend the 'row' div to the 'container' div
+        containerDiv.prepend(headingRowDiv);
+
+        // Create the 'row' div
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'row';
+
+        // Loop through the projects data
+        projects.forEach(item => {
+            // Check if the item has a 'src' property
+            if (item.src) {
+                // Create the 'col' div
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-md-6 col-lg-4 py-2';
+
+                // Create the 'a' element
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.setAttribute('data-bs-toggle', 'tooltip');
+                a.setAttribute('data-bs-placement', 'top');
+                a.setAttribute('data-bs-original-title', item.name);
+
+                // Create the 'img' element
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.className = 'img-fluid rounded border';
+
+                // Append the 'img' element to the 'a' element
+                a.appendChild(img);
+
+                // Append the 'a' element to the 'col' div
+                colDiv.appendChild(a);
+
+                // Append the 'col' div to the 'row' div
+                rowDiv.appendChild(colDiv);
+            }
+        });
+
+        // Append the 'row' div to the 'container' div
+        containerDiv.appendChild(rowDiv);
+
+        // Append the 'container' div to the 'features' div
+        featuresDiv.appendChild(containerDiv);
+
+        // Initialize tooltips
+        new bootstrap.Tooltip(document.querySelector('[data-bs-toggle="tooltip"]'));
+
+        // -- -- -- create the footer back-next nav bar -- -- -- //
         // Check if the page query parameter is in the JSON list
         let currentIndex = projects.findIndex(project => project.url === currentPage);
 
@@ -49,15 +124,26 @@ fetch('js/projects.json')
         }
 
         // Create the "Projects" button
-        const projectsButton = document.createElement('a');
+        // Create the button
+        const projectsButton = document.createElement('button');
+        // Set the class
         projectsButton.className = 'btn btn-sm btn-outline-primary';
-        projectsButton.innerHTML = '<i class="bi bi-grid"></i> List';
-        projectsButton.href = '#work';
-        projectsButton.title = 'All Projects';
-        if (!isTouchDevice) {
-            projectsButton.setAttribute('data-bs-toggle', 'tooltip');
-            projectsButton.setAttribute('data-bs-placement', 'right');
-        }
+        // Set the type
+        projectsButton.type = 'button';
+        // Set the data-bs-toggle attribute
+        projectsButton.setAttribute('data-bs-toggle', 'offcanvas');
+        // Set the data-bs-target attribute
+        projectsButton.setAttribute('data-bs-target', '#mywork');
+        // Set the aria-controls attribute
+        projectsButton.setAttribute('aria-controls', 'mywork');
+        // Set the text
+        projectsButton.textContent = 'My work';
+
+
+        // if (!isTouchDevice) {
+        //     projectsButton.setAttribute('data-bs-toggle', 'tooltip');
+        //     projectsButton.setAttribute('data-bs-placement', 'right');
+        // }
 
 
         // Create the "next" button
@@ -85,6 +171,7 @@ fetch('js/projects.json')
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     });
+// END Instead, I think what I need is the projects from the JSON file
 
 // Wrap everything in an IIFE to avoid polluting the global scope
 (function () {
@@ -125,18 +212,18 @@ fetch('js/projects.json')
                 for (let i = 0; i < images.length; i++) {
                     const image = images[i];
                     const currentSrc = image.src;
-                
+
                     // If the image src matches the regex, replace the src
                     // if (regex.test(currentSrc)) {
                     //     const newSrc = currentSrc.replace(regex, 'images');
                     //     image.src = newSrc;
                     // }
-                
+
                     // Create a new link element
                     const link = document.createElement('a');
                     link.href = image.src; // Use the potentially updated image src
                     link.target = '_blank'; // This makes the link open in a new tab
-                
+
                     // Replace the image with the link, and add the image inside the link
                     image.parentNode.replaceChild(link, image);
                     link.appendChild(image);
@@ -211,15 +298,22 @@ window.addEventListener('scroll', function () {
 });
 
 // add active to the current nav-item for color change
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
     const currentUrl = window.location.href;
+    const defaultLink = document.getElementById('projects'); // select the default link
+
+    let isActiveClassAdded = false;
 
     navLinks.forEach(link => {
         if (link.href === currentUrl) {
             link.classList.add('active');
-            link.parentNode.classList.add('active'); // If you want to add 'active' to the parent 'nav-item' as well
+            isActiveClassAdded = true;
         }
     });
-});
 
+    // If the 'active' class was not added to any link, add it to the default link
+    if (!isActiveClassAdded) {
+        defaultLink.classList.add('active');
+    }
+});
