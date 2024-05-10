@@ -1,4 +1,4 @@
-// Instead, I think what I need is the projects from the JSON file
+// Instead, projects from the JSON file
 fetch('js/projects.json')
     .then(response => response.json())
     .then(projects => {
@@ -247,23 +247,23 @@ fetch('js/projects.json')
     window.addEventListener('hashchange', loadContent);
     window.addEventListener('load', loadContent);
 
-    // Function to load the HTML snippet
-    // async function loadCarousel() {
-    //     const carouselContainer = document.getElementById('work');
+    // Function to load the HTML snippet (legacy code)
+    async function loadCarousel() {
+        const carouselContainer = document.getElementById('work');
 
-    //     try {
-    //         const response = await fetch('pages/work.htm?' + new Date().getTime());
-    //         const data = await response.text();
-    //         carouselContainer.innerHTML = data;
-    //     } catch (error) {
-    //         // Handle errors
-    //         console.error('Error fetching carousel:', error);
-    //     }
-    // }
+        try {
+            const response = await fetch('pages/offcanvas.html?' + new Date().getTime());
+            const data = await response.text();
+            carouselContainer.innerHTML = data;
+        } catch (error) {
+            // Handle errors
+            console.error('Error fetching carousel:', error);
+        }
+    }
 
 
     // Call the loadCarousel function when the page loads
-    // window.addEventListener('load', loadCarousel); // don't do this anymore
+    window.addEventListener('load', loadCarousel); // don't do this anymore
 })();
 
 // add the phone number and email to the contact dropdown
@@ -301,7 +301,7 @@ window.addEventListener('scroll', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
     const currentUrl = window.location.href;
-    const defaultLink = document.getElementById('projects'); // select the default link
+    const defaultLink = document.getElementById('project'); // select the default link
 
     let isActiveClassAdded = false;
 
