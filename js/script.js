@@ -24,7 +24,7 @@ fetch('js/projects.json')
 
         // Create the 'h3' element
         const h3 = document.createElement('h3');
-        h3.textContent = 'My Work';
+        h3.textContent = 'All Projects';
         h3.id = 'projects';
 
         // Append the 'h3' element to the 'col' div
@@ -137,7 +137,7 @@ fetch('js/projects.json')
         // Set the aria-controls attribute
         projectsButton.setAttribute('aria-controls', 'mywork');
         // Set the text
-        projectsButton.textContent = 'My work';
+        projectsButton.textContent = 'All Projects';
 
 
         // if (!isTouchDevice) {
@@ -248,22 +248,22 @@ fetch('js/projects.json')
     window.addEventListener('load', loadContent);
 
     // Function to load the HTML snippet
-    async function loadCarousel() {
-        const carouselContainer = document.getElementById('work');
+    // async function loadCarousel() {
+    //     const carouselContainer = document.getElementById('work');
 
-        try {
-            const response = await fetch('pages/work.htm?' + new Date().getTime());
-            const data = await response.text();
-            carouselContainer.innerHTML = data;
-        } catch (error) {
-            // Handle errors
-            console.error('Error fetching carousel:', error);
-        }
-    }
+    //     try {
+    //         const response = await fetch('pages/work.htm?' + new Date().getTime());
+    //         const data = await response.text();
+    //         carouselContainer.innerHTML = data;
+    //     } catch (error) {
+    //         // Handle errors
+    //         console.error('Error fetching carousel:', error);
+    //     }
+    // }
 
 
     // Call the loadCarousel function when the page loads
-    window.addEventListener('load', loadCarousel);
+    // window.addEventListener('load', loadCarousel); // don't do this anymore
 })();
 
 // add the phone number and email to the contact dropdown
