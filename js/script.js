@@ -206,28 +206,6 @@ fetch('js/projects.json')
                 const data = await response.text();
                 specialContent.innerHTML = data;
 
-                // After the content has been loaded, replace the images and add a link to themselves
-                const images = specialContent.querySelectorAll('img');
-                const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
-                for (let i = 0; i < images.length; i++) {
-                    const image = images[i];
-                    const currentSrc = image.src;
-
-                    // If the image src matches the regex, replace the src
-                    // if (regex.test(currentSrc)) {
-                    //     const newSrc = currentSrc.replace(regex, 'images');
-                    //     image.src = newSrc;
-                    // }
-
-                    // Create a new link element
-                    const link = document.createElement('a');
-                    link.href = image.src; // Use the potentially updated image src
-                    link.target = '_blank'; // This makes the link open in a new tab
-
-                    // Replace the image with the link, and add the image inside the link
-                    image.parentNode.replaceChild(link, image);
-                    link.appendChild(image);
-                }
                 defaultContent.style.display = 'none';
                 specialContent.style.display = 'block';
                 heroContent.style.display = 'none';
@@ -317,7 +295,8 @@ document.addEventListener('DOMContentLoaded', function () {
         defaultLink.classList.add('active');
     }
 });
-// images loading time script
+// images loading time script (helped me to decide to not use wordpress cdn)
+/*
 var img1 = new Image();
 var img2 = new Image();
 
@@ -334,3 +313,26 @@ img2.onload = function() {
   console.log('Time taken to load image from CDN: ', end2 - start2, 'ms');
 };
 img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png' + '?v=' + Date.now();
+*/
+                // After the content has been loaded, replace the images and add a link to themselves
+                const images = specialContent.querySelectorAll('img');
+                const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
+                for (let i = 0; i < images.length; i++) {
+                    const image = images[i];
+                    const currentSrc = image.src;
+
+                    // If the image src matches the regex, replace the src
+                    // if (regex.test(currentSrc)) {
+                    //     const newSrc = currentSrc.replace(regex, 'images');
+                    //     image.src = newSrc;
+                    // }
+
+                    // Create a new link element
+                    const link = document.createElement('a');
+                    link.href = image.src; // Use the potentially updated image src
+                    link.target = '_blank'; // This makes the link open in a new tab
+
+                    // Replace the image with the link, and add the image inside the link
+                    image.parentNode.replaceChild(link, image);
+                    link.appendChild(image);
+                }
