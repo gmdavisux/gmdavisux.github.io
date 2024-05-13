@@ -321,11 +321,11 @@ img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png' + '?v=' + D
                     const image = images[i];
                     const currentSrc = image.src;
 
-                    // If the image src matches the regex, replace the src
-                    // if (regex.test(currentSrc)) {
-                    //     const newSrc = currentSrc.replace(regex, 'images');
-                    //     image.src = newSrc;
-                    // }
+                    If the image src matches the regex, replace the src
+                    if (regex.test(currentSrc)) {
+                        const newSrc = currentSrc.replace(regex, 'images');
+                        image.src = newSrc;
+                    }
 
                     // Create a new link element
                     const link = document.createElement('a');
