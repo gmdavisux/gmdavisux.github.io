@@ -317,3 +317,20 @@ document.addEventListener('DOMContentLoaded', function () {
         defaultLink.classList.add('active');
     }
 });
+// images loading time script
+var img1 = new Image();
+var img2 = new Image();
+
+var start1 = performance.now();
+img1.onload = function() {
+  var end1 = performance.now();
+  console.log('Time taken to load image from host server: ', end1 - start1, 'ms');
+};
+img1.src = 'images/pg15.png' + '?v=' + Date.now();
+
+var start2 = performance.now();
+img2.onload = function() {
+  var end2 = performance.now();
+  console.log('Time taken to load image from CDN: ', end2 - start2, 'ms');
+};
+img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png?w=1024' + '&v=' + Date.now();
