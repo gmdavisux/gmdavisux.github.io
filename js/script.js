@@ -91,7 +91,7 @@ fetch('js/projects.json')
 
         // Create the footer
         const footer = document.createElement('footer');
-        footer.className = 'footer fixed-bottom bg-light d-flex justify-content-between p-2';
+        footer.className = 'footer fixed-bottom bg-primary d-flex justify-content-between p-2';
 
         // removes the hover effect on touch devices
         const isTouchDevice = window.matchMedia('(hover: none)').matches;
@@ -114,7 +114,7 @@ fetch('js/projects.json')
         });
         // Create the "back" button
         const backButton = document.createElement('a');
-        backButton.className = 'btn btn-sm btn-outline-primary';
+        backButton.className = 'btn btn-sm btn-outline-light';
         backButton.innerHTML = '<i class="bi bi-chevron-left"></i><span class="d-none d-md-inline">Back</span>';
         backButton.href = projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].url;
         backButton.title = currentIndex > 0 ? projects[currentIndex - 1].name : projects[projects.length - 1].name;
@@ -127,7 +127,7 @@ fetch('js/projects.json')
         // Create the button
         const projectsButton = document.createElement('button');
         // Set the class
-        projectsButton.className = 'btn btn-sm btn-outline-primary';
+        projectsButton.className = 'btn btn-sm btn-outline-light';
         // Set the type
         projectsButton.type = 'button';
         // Set the data-bs-toggle attribute
@@ -148,7 +148,7 @@ fetch('js/projects.json')
 
         // Create the "next" button
         const nextButton = document.createElement('a');
-        nextButton.className = 'btn btn-sm btn-outline-primary';
+        nextButton.className = 'btn btn-sm btn-outline-light';
         nextButton.innerHTML = '<span class="d-none d-md-inline">Next</span><i class="bi bi-chevron-right"></i>';
         nextButton.href = projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].url;
         nextButton.title = currentIndex < projects.length - 1 ? projects[currentIndex + 1].name : projects[0].name;
