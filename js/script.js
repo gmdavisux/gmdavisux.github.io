@@ -333,4 +333,4 @@ img2.onload = function() {
   var end2 = performance.now();
   console.log('Time taken to load image from CDN: ', end2 - start2, 'ms');
 };
-img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png?w=1024' + '&v=' + Date.now();
+img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png' + '?v=' + Date.now();
