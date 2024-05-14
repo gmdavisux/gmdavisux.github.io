@@ -120,6 +120,9 @@ img.card-img-top {
 .r1to1 {
   padding-bottom: 100%; /* combine with .img-ratio for 1:1 aspect ratio */
 }
+.r5to3 {
+  padding-bottom: 60%; /* combine with .img-ratio for 5:3 aspect ratio */
+}
 
 .img-ratio img {
   position: absolute;
