@@ -24,7 +24,7 @@ fetch('js/projects.json')
 
         // Create the 'h3' element
         const h3 = document.createElement('h3');
-        h3.textContent = 'My Work';
+        h3.textContent = 'All Projects';
         h3.id = 'projects';
 
         // Append the 'h3' element to the 'col' div
@@ -208,43 +208,26 @@ fetch('js/projects.json')
 
                 // After the content has been loaded, replace the images and add a link to themselves
                 const images = specialContent.querySelectorAll('img');
-const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
-let currentIndex = 0;
+                const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
+                for (let i = 0; i < images.length; i++) {
+                    const image = images[i];
+                    const currentSrc = image.src;
 
-for (let i = 0; i < images.length; i++) {
-  const image = images[i];
-  const currentSrc = image.src;
+                    // If the image src matches the regex, replace the src
+                    if (regex.test(currentSrc)) {
+                        const newSrc = currentSrc.replace(regex, 'images');
+                        image.src = newSrc;
+                    }
 
-  // If the image src matches the regex, replace the src
-  if (regex.test(currentSrc)) {
-    const newSrc = currentSrc.replace(regex, 'images');
-    image.src = newSrc;
-  }
+                    // Create a new link element
+                    const link = document.createElement('a');
+                    link.href = image.src; // Use the potentially updated image src
+                    link.target = '_blank'; // This makes the link open in a new tab
 
-  // Add a click event to open the overlay
-  image.addEventListener('click', function() {
-    currentIndex = i;
-    document.getElementById('overlay-img').src = image.src;
-    document.getElementById('overlay').style.display = 'flex';
-  });
-}
-
-document.getElementById('prev').addEventListener('click', function() {
-  currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-  document.getElementById('overlay-img').src = images[currentIndex].src;
-});
-
-document.getElementById('next').addEventListener('click', function() {
-  currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-  document.getElementById('overlay-img').src = images[currentIndex].src;
-});
-
-// Close the overlay when clicking outside the image
-document.getElementById('overlay').addEventListener('click', function(e) {
-  if (e.target.id === 'overlay') {
-    this.style.display = 'none';
-  }
-});
+                    // Replace the image with the link, and add the image inside the link
+                    image.parentNode.replaceChild(link, image);
+                    link.appendChild(image);
+                }
                 defaultContent.style.display = 'none';
                 specialContent.style.display = 'block';
                 heroContent.style.display = 'none';
