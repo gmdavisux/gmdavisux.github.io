@@ -16,7 +16,7 @@ fetch('js/projects.json')
 
         // Create the 'row' div for the heading
         const headingRowDiv = document.createElement('div');
-        headingRowDiv.className = 'row';
+        headingRowDiv.className = 'row d-none';
 
         // Create the 'col' div for the heading
         const headingColDiv = document.createElement('div');
