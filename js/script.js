@@ -4,8 +4,8 @@ fetch('js/projects.json')
     .then(projects => {
         // Get the current page from the URL query parameter
         const params = new URLSearchParams(window.location.search);
-        const currentPage = '?page=' + params.get('page');
-
+        const pageParam = params.get('page');
+        const currentPage = pageParam ? '?page=' + pageParam : './';
         // -- -- --  create the gallery of images -- -- -- //
         // Get the 'features' div
         const featuresDiv = document.getElementById('features');
