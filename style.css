@@ -124,14 +124,6 @@ img.card-img-top {
   padding-bottom: 60%; /* combine with .img-ratio for 5:3 aspect ratio */
 }
 
-.img-ratio img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 .pos-left {
   object-position: 0 center;
 }
@@ -139,6 +131,20 @@ img.card-img-top {
   object-position: 100% center;
 }
 .nav-link.active{color: yellow; border-bottom: 3px solid yellow;}
+
+/* ************for carousel sizing */
+#testimonials .carousel-item {
+  height: 400px; /* Adjust this value according to your needs */
+  overflow: hidden;
+}
+.img-container {
+  width: 100px; /* adjust as needed */
+  height: 100px; /* adjust as needed */
+  background-size: cover;
+  background-position: center;
+  border:1px solid #ccc;
+  border-radius: 5px;
+}
 
 /* ********* new styles for image overlay */
 #overlay {

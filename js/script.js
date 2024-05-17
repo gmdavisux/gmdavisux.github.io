@@ -75,7 +75,7 @@ fetch('js/projects.json')
         containerDiv.appendChild(rowDiv);
 
         // Append the 'container' div to the 'features' div
-        featuresDiv.appendChild(containerDiv);
+        featuresDiv.prepend(containerDiv);
 
         // Initialize tooltips
         new bootstrap.Tooltip(document.querySelector('[data-bs-toggle="tooltip"]'));
@@ -137,7 +137,7 @@ fetch('js/projects.json')
         // Set the aria-controls attribute
         projectsButton.setAttribute('aria-controls', 'mywork');
         // Set the text
-        projectsButton.textContent = 'All Projects';
+        projectsButton.textContent = 'My Work';
 
 
         // if (!isTouchDevice) {
@@ -170,6 +170,7 @@ fetch('js/projects.json')
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
+
     });
 // END Instead, I think what I need is the projects from the JSON file
 
@@ -208,43 +209,43 @@ fetch('js/projects.json')
 
                 // After the content has been loaded, replace the images and add a link to themselves
                 const images = specialContent.querySelectorAll('img');
-const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
-let currentIndex = 0;
+                const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
+                let currentIndex = 0;
 
-for (let i = 0; i < images.length; i++) {
-  const image = images[i];
-  const currentSrc = image.src;
+                for (let i = 0; i < images.length; i++) {
+                    const image = images[i];
+                    const currentSrc = image.src;
 
-  // If the image src matches the regex, replace the src
-  if (regex.test(currentSrc)) {
-    const newSrc = currentSrc.replace(regex, 'images');
-    image.src = newSrc;
-  }
+                    // If the image src matches the regex, replace the src
+                    if (regex.test(currentSrc)) {
+                        const newSrc = currentSrc.replace(regex, 'images');
+                        image.src = newSrc;
+                    }
 
-  // Add a click event to open the overlay
-  image.addEventListener('click', function() {
-    currentIndex = i;
-    document.getElementById('overlay-img').src = image.src;
-    document.getElementById('overlay').style.display = 'flex';
-  });
-}
+                    // Add a click event to open the overlay
+                    image.addEventListener('click', function () {
+                        currentIndex = i;
+                        document.getElementById('overlay-img').src = image.src;
+                        document.getElementById('overlay').style.display = 'flex';
+                    });
+                }
 
-document.getElementById('prev').addEventListener('click', function() {
-  currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-  document.getElementById('overlay-img').src = images[currentIndex].src;
-});
+                document.getElementById('prev').addEventListener('click', function () {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                    document.getElementById('overlay-img').src = images[currentIndex].src;
+                });
 
-document.getElementById('next').addEventListener('click', function() {
-  currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-  document.getElementById('overlay-img').src = images[currentIndex].src;
-});
+                document.getElementById('next').addEventListener('click', function () {
+                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                    document.getElementById('overlay-img').src = images[currentIndex].src;
+                });
 
-// Close the overlay when clicking outside the image
-document.getElementById('overlay').addEventListener('click', function(e) {
-  if (e.target.id === 'overlay') {
-    this.style.display = 'none';
-  }
-});
+                // Close the overlay when clicking outside the image
+                document.getElementById('overlay').addEventListener('click', function (e) {
+                    if (e.target.id === 'overlay') {
+                        this.style.display = 'none';
+                    }
+                });
                 defaultContent.style.display = 'none';
                 specialContent.style.display = 'block';
                 heroContent.style.display = 'none';
@@ -265,22 +266,22 @@ document.getElementById('overlay').addEventListener('click', function(e) {
     window.addEventListener('load', loadContent);
 
     // Function to load the HTML snippet (legacy code)
-    async function loadCarousel() {
-        const carouselContainer = document.getElementById('work');
+    async function loadmywork() {
+        const myworkContainer = document.getElementById('work');
 
         try {
             const response = await fetch('pages/offcanvas.html?' + new Date().getTime());
             const data = await response.text();
-            carouselContainer.innerHTML = data;
+            myworkContainer.innerHTML = data;
         } catch (error) {
             // Handle errors
-            console.error('Error fetching carousel:', error);
+            console.error('Error fetching mywork:', error);
         }
     }
 
 
-    // Call the loadCarousel function when the page loads
-    window.addEventListener('load', loadCarousel); // don't do this anymore
+    // Call the loadmywork function when the page loads
+    window.addEventListener('load', loadmywork); // don't do this anymore
 })();
 
 // add the phone number and email to the contact dropdown
@@ -334,7 +335,24 @@ document.addEventListener('DOMContentLoaded', function () {
         defaultLink.classList.add('active');
     }
 });
-// images loading-time script (helped me to decide to not use)
+
+// Listen for changes to the DOM
+const observer = new MutationObserver((mutationsList, observer) => {
+    // Check if the Bootstrap component exists in the DOM
+    const bootstrapComponent = document.querySelector('.bootstrap-component-selector');
+    if (bootstrapComponent) {
+      // Initialize the Bootstrap component
+      new bootstrap.Carousel(bootstrapComponent);
+  
+      // Stop observing once we've found the Bootstrap component
+      observer.disconnect();
+    }
+  });
+  
+  // Start observing the document with the configured parameters
+  observer.observe(document.body, { childList: true, subtree: true });
+  
+// images loading-time script (helped me to decide to not use CDN for images)
 /*
 var img1 = new Image();
 var img2 = new Image();

@@ -58,10 +58,10 @@
         "description": "Centered around the user&apos;s own images, rather than the user interface"
     },
     {
-        "name": "Beyond Expectations",
-        "url": "?page=beyond",
-        "src": "images/clientflow-clip.jpeg",
-        "description": "Enabling future sales of lucrative supplies"
+        "hide_name": "Beyond Expectations",
+        "hide_url": "?page=beyond",
+        "hide_src": "images/clientflow-clip.jpeg",
+        "hide_description": "Enabling future sales of lucrative supplies"
     },
     {
         "name": "About me",

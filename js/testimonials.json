@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Ini Uto-Uko",
+        "title": "Director Of Product Design at Coupa Software",
+        "relation": "Managed Gary directly at Coupa and was a peer at Dell/Kace",
+        "img": "pics/ini.jpeg",
+        "words": [
+            "Gary is an exceptional and highly skilled designer whom I had the pleasure of managing at Coupa and collaborating with at a previous company. Gary consistently demonstrates his talent and dedication, delivering outstanding designs in every project."
+        ],
+        "x_words": [
+            "Gary is an exceptional and highly skilled designer whom I had the pleasure of managing at Coupa and collaborating with at a previous company. Gary consistently demonstrates his talent and dedication, delivering outstanding designs in every project.",
+            "At Coupa, he played a pivotal role in enhancing our Supplier products. Despite the complexity of Suppliers, which involved multiple product managers and a large development team, Gary&apos;s expertise and unwavering commitment ensured that the design surpassed expectations and had a significant business impact. The Suppliers experience he crafted proved instrumental in generating an impressive $43 billion in value for diverse suppliers. His ability to deeply understand user needs and translate them into intuitive and impactful designs made a tangible difference, empowering suppliers and driving their success within our ecosystem."
+        ]
+    },
+    {
+        "name": "Nikki Murray",
+        "title": "Principal UX Researcher at Coupa Software",
+        "relation": "Worked with Gary on the same team at Coupa",
+        "img": "pics/nikki.jpeg",
+        "words": [
+            "Gary is an amazing and thoughtful designer of experiences. His sharp eye, user empathy, and understanding of the audience always impresses."
+        ]
+    },
+    {
+        "name": "Brian Bucklew",
+        "title": "CTO, Principal Software Engineer and Producer",
+        "relation": "Worked with Gary on the same team at Dell/Kace",
+        "img": "pics/brian.jpeg",
+        "words": [
+            "Gary is a singularly skilled individual. He is the most thorough and thoughtful user interface designer I&apos;ve had the honor to work with in my career.",
+            "He has a truly impressive ability to take a a set of technical requirements and programmer-produced functionally-designed interface mockups, internalize the rationale behind each of those components and then extrapolate from that a human-centric design that leaps the great chasm from merely functional to truly usable.",
+            "I would be thrilled to work with Gary again on any design project whether it be a door handle or a jet cockpit."
+        ]
+    },
+    {
+        "name": "Mikhail Ershov",
+        "title": "Operational Director",
+        "relation": "Worked with Gary on the same team at Dell/Kace",
+        "img": "pics/mikhail.jpeg",
+        "words": [
+            "It has been great to work with Gary. He is organized, efficient, and extremely competent. He has proven to be a skilled specialist with a clear vision to convert problematic areas within an interface to intuitive and straightforward interaction solutions."
+        ]
+    },
+    {
+        "name": "David M. Parsons",
+        "title": "Director, Experience Design Group at Xerox",
+        "relation": "Managed Gary directly and indirectly at Xerox",
+        "img": "pics/dave.jpeg",
+        "words": [
+            "I worked with Gary at Xerox Corporation, and I found him to be a skilled problem solver and interaction designer. In this capacity, he contributed to many innovative hardware and software application user interfaces."
+        ]
+    },
+    {
+        "name": "Arlene Jourdan",
+        "title": "UX Researcher: Senior Human Factors Engineer",
+        "relation": "Worked with Gary on the same team at Eastman Kodak",
+        "img": "pics/arlene.jpeg",
+        "words": [
+            "As a colleague most recently, I have seen his mixed background in Industrial design, Interaction design and Human Factors bring a depth and quality to work, that few can offer. His broad interests in everything from web design to cell phones make him a great resource as well. His skill on both Macintosh as well as PCs, more than once helped me solve an issue. I really can’t say enough about how much he knows, due to his own interests in researching topics that interest him.",
+            "In a nutshell Gary knows how to do a lot of things and has the professionalism to carry them out to perfection."
+        ],
+        "x_words": [
+            "I have had the opportunity to work with Gary at two levels; directing his work in Human factors and as a colleague in overlapping projects. I can also say after working with Gary these last two years he has capabilities and interests that are broad and refined.",
+            "A few years ago when directing his work in creating state-event tables, as well as bug reports, Gary showed a fine attention to detail and understanding of camera software architecture just from reviewing the tables. His work was invaluable to get a project out quickly.",
+            "As a colleague most recently, I have seen his mixed background in Industrial design, Interaction design and Human Factors bring a depth and quality to work, that few can offer. His broad interests in everything from web design to cell phones make him a great resource as well. His skill on both Macintosh as well as PCs, more than once helped me solve an issue. I really can’t say enough about how much he knows, due to his own interests in researching topics that interest him.",
+            "In a nutshell Gary knows how to do a lot of things and has the professionalism to carry them out to perfection."
+        ]
+    },
+    {
+        "name": "Bill Bogart",
+        "title": "Senior Software Engineer at Kodak",
+        "relation": "Worked with Gary on different teams at Eastman Kodak",
+        "img": "pics/bill.jpeg",
+        "words": [
+            "I have worked with Gary Davis on three advance development future products. I have grown to appreciate his forward looking ideas. He has been instrumental in designing the new look of our future kiosk interfaces. Gary often reminds me of the type of person who would work for Apple or Microsoft, but mostly Apple. His ideas are refreshing and innovative and at times, have challenged me as a developer to go beyond what is conventional."
+        ]
+    },
+    {
+        "name": "Joseph Miska",
+        "title": "Sales and Marketing/Product Development expert",
+        "relation": "Managed Gary directly at Xerox",
+        "img": "pics/joe.jpeg",
+        "words": [
+            "Gary is an outstanding user interaction designer at every level. He possesses a thorough understanding of UI architecture principles, is extremely inventive and creative in his approach, uses technology to improve the effectiveness and ease of use of his designs and is able to create very high quality graphics to accompany his UI architecture. I can, without reservation, recommend Gary for any User Interface Design position at the most senior levels."
+        ]
+    },
+    {
+        "name": "Keith S. Karn, PhD",
+        "title": "Principal Consultant - Human Factors in Context",
+        "relation": "Worked with Gary on the same team",
+        "img": "pics/keith.jpeg",
+        "words": [
+            "Gary and I worked closely together at Xerox. He is a superb user interaction designer. He is attentive to both the big picture (e.g., user experience architecture and logical design) and the details (e.g., widgets and graphics). He is truly creative and innovative in his approach to human-machine interaction design."
+        ]
+    }
+]
