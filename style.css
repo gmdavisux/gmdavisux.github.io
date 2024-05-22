@@ -1,3 +1,17 @@
+:root {
+  --main-font: "Inter", sans-serif;
+  --main-text-color: rgb(14,14,14); /* Replace with the color you want */
+}
+body {
+  font-family: var(--main-font);
+  color: var(--main-text-color);
+  font-weight: 400;
+  letter-spacing: -0.2px;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--main-font);
+  font-weight: 600;
+}
 /* Change navbar background color */
 .navbar {
   background-color: transparent
