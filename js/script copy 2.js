@@ -46,36 +46,22 @@ fetch('js/projects.json')
             if (item.src) {
                 // Create the 'col' div
                 const colDiv = document.createElement('div');
-                colDiv.className = 'col-md-6 col-lg-4 py-2 d-flex align-items-center justify-content-center';
+                colDiv.className = 'col-md-6 col-lg-4 py-2';
 
                 // Create the 'a' element
                 const a = document.createElement('a');
                 a.href = item.url;
-                a.className = 'image-container';
+                a.setAttribute('data-bs-toggle', 'tooltip');
+                a.setAttribute('data-bs-placement', 'top');
+                a.setAttribute('data-bs-original-title', item.name);
 
                 // Create the 'img' element
                 const img = document.createElement('img');
                 img.src = item.src;
                 img.className = 'img-fluid rounded border';
 
-                // Create the 'div' for the overlay
-                const overlayDiv = document.createElement('div');
-                overlayDiv.className = 'image-overlay rounded d-flex align-items-center justify-content-center';
-
-                // Add your content to the overlay
-                const overlayContent = document.createElement('div');
-                overlayContent.className = 'overlay-content';
-                overlayContent.innerHTML = `
-            <h2>${item.name}</h2>
-            <p>${item.description}</p>
-        `;
-
-                // Append the overlay content to the overlay div
-                overlayDiv.appendChild(overlayContent);
-
-                // Append the 'img' element and the overlay div to the 'a' element
+                // Append the 'img' element to the 'a' element
                 a.appendChild(img);
-                a.appendChild(overlayDiv);
 
                 // Append the 'a' element to the 'col' div
                 colDiv.appendChild(a);
@@ -91,13 +77,8 @@ fetch('js/projects.json')
         // Append the 'container' div to the 'features' div
         featuresDiv.prepend(containerDiv);
 
-        // Initialize tooltips after the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', (event) => {
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl)
-            })
-        });
+        // Initialize tooltips
+        new bootstrap.Tooltip(document.querySelector('[data-bs-toggle="tooltip"]'));
 
         // -- -- -- create the footer back-next nav bar -- -- -- //
         // Check if the page query parameter is in the JSON list
@@ -189,6 +170,7 @@ fetch('js/projects.json')
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
+
     });
 // END Instead, I think what I need is the projects from the JSON file
 
@@ -359,17 +341,17 @@ const observer = new MutationObserver((mutationsList, observer) => {
     // Check if the Bootstrap component exists in the DOM
     const bootstrapComponent = document.querySelector('.bootstrap-component-selector');
     if (bootstrapComponent) {
-        // Initialize the Bootstrap component
-        new bootstrap.Carousel(bootstrapComponent);
-
-        // Stop observing once we've found the Bootstrap component
-        observer.disconnect();
+      // Initialize the Bootstrap component
+      new bootstrap.Carousel(bootstrapComponent);
+  
+      // Stop observing once we've found the Bootstrap component
+      observer.disconnect();
     }
-});
-
-// Start observing the document with the configured parameters
-observer.observe(document.body, { childList: true, subtree: true });
-
+  });
+  
+  // Start observing the document with the configured parameters
+  observer.observe(document.body, { childList: true, subtree: true });
+  
 // images loading-time script (helped me to decide to not use CDN for images)
 /*
 var img1 = new Image();
