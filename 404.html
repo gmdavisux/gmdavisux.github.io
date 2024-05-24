@@ -27,11 +27,11 @@
   gtag('config', 'G-X6Q4HXSVGD');
 </script>
 
-<body>
+<body class="bg-dark text-white">
   <div class="container-fluid fixed-top header">
     <!-- bootstrap code to add full width header at the top of the page -->
     <nav class="navbar navbar-dark navbar-expand-md">
-      <div class="container">
+      <div class="container" data-bs>
         <a class="navbar-brand" href="./">gary m davis</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,17 +70,11 @@
     </nav>
   </div>
   <!-- // add a container with a row and two columns -->
-  <div id="no">
-    <!-- code within default content should only appear on the home page -->
-
-    <div id="404" class="container-fluid pt-3">
-      Page not found
+    <div id="404" class="container pt-3" >
+      <p>404</p>
+      <h2>Page not found</h2>
+      <p>Select one below</p>
     </div> <!-- // container-fluid -->
-
-
-  </div> <!-- end defaultContent -->
-
-
 
   <div id="overlay" style="display: none;">
     <button class="btn btn-light btn-secondary" id="prev"><i class="bi bi-chevron-left"></i></button>
@@ -96,5 +90,31 @@
   <!-- below is the script that makes all the magic happen -->
   <script src="js/script.js?v=1" type="module"></script>
 </body>
+<script>
+  fetch('js/projects.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.createElement('div');
+      container.className = 'container';
 
+      const row = document.createElement('div');
+      row.className = 'row';
+
+      data.forEach(item => {
+        const col = document.createElement('div');
+        col.className = 'col-md-3 py-2';
+
+        const a = document.createElement('a');
+        a.href = './' + item.url;
+        a.textContent = item.name;
+
+        col.appendChild(a);
+        row.appendChild(col);
+      });
+
+      container.appendChild(row);
+      document.body.appendChild(container);
+    })
+    .catch(error => console.error('Error:', error));
+</script>
 </html>
