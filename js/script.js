@@ -50,7 +50,7 @@ fetch('js/projects.json')
 
                 // Create the 'a' element
                 const a = document.createElement('a');
-                a.href = item.url;
+                a.href = '/' + item.url;
                 a.className = 'image-container';
 
                 // Create the 'img' element
