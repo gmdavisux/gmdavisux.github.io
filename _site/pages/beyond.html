@@ -1,0 +1,49 @@
+<!-- bootstrap container div with one row and one column -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>Beyond Expectations</h1>
+            <p class="small">Xerox | Design Lead | 2006</p>
+            <p>Originally I was asked to simply create graphics for a printer monitoring app. I started asking questions to discover the actual problem this was solving.</p>
+            <h2>Problem</h2>
+            <p>I learned that it was difficult to get resellers interested in carrying Xerox products because of small margins and no guarantee of future sales of lucrative supplies. The real problem was making it easy for customers to order from resellers.</p>
+            <h2>Innovation</h2>
+            <p>I went beyond the original scope of the project and proposed an end-to-end system that not only notifies the user when supplies are low but also directs the purchase to the original vendor.</p>
+            <p>This was all done using existing infrastructure in a novel way that required no configuration by the user or vendor. When the software solution was announced in Europe, it generated enthusiastic interest from vendors and promises to help drive third-party distribution of new products.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <img src="https://usersimple.files.wordpress.com/2023/07/clientflow.jpg?w=1024" alt=""
+                    class="img-fluid border">
+            </div> <!-- // col -->
+            <div class="col-md-12 col-lg-6">
+                <h2>Process Flow</h2>
+                <p>The "Order Supplies" link within the status monitor launches a background application that will open
+                    a link to a Xerox URL in the user's browser.</p>
+                <p>Encoded in the URL query are the device serial number and other data.</p>
+                <p>The Xerox web server looks up the reseller based on the data in the URL and redirects the user to the
+                    reseller&rsquo;s site.</p>
+                <p>To the user, the background app and redirection are invisible steps. From their view, they clicked
+                    and ended up at the seller&rsquo;s site.</p>
+            </div>
+        </div> <!-- // row -->
+        <div class="row">
+            <div class="col-md-12 pt-4">
+                <h2>Visual Design</h2>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <img class="img-fluid border" src="images/bubble3b.gif.webp">
+            </div> <!-- // col -->
+            <div class="col-md-12 col-lg-6">
+                <p>A notification will appear when the printer is low on a supply. Selecting "Order Supplies" will
+                    direct the user to the third party vendor's website.</p>
+            </div>
+        </div> <!-- // row -->
+        <div class="row pt-4">
+            <div class="col-md-12 col-lg-6">
+                <p>The original reseller's website opens with a list of Xerox part numbers for their printer above. The vendor can choose to parse the URL and display a product specific page.</p>
+            </div> <!-- // col -->
+            <div class="col-md-12 col-lg-6">
+                <img class="img-fluid border" src="images/vendor.jpg">
+            </div> <!-- // col -->
+        </div> <!-- // row -->

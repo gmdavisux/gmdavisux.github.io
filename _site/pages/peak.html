@@ -1,0 +1,117 @@
+<!-- bootstrap container div with one row and one column -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col">
+            <h1>Peak Productivity</h1>
+            <p class="small">EagleView | Research and Design | 2018-2019</p>
+            <p>EagleView creates mapping and measurement products from high-resolution aerial photos. However, they need
+                human beings to review many thousands of images to check for focus, cloud-cover, and other anomalies.
+                Their current system was labor intensive and caused burnout and employee pain. I was hired to fix that.
+            </p>
+        </div> <!-- // col -->
+    </div> <!-- // row -->
+
+    <div class="row pt-4">
+        <div class="col-lg-12">
+            <h2 class="">New Design</h2>
+            <p>The new design vastly accelerated the most common tasks and automated others. Selecting images and adding
+                tags is faster and more standardized.</p>
+            <img src="https://usersimple.files.wordpress.com/2023/06/select-one-w-tags.png?w=1024" alt=""
+                class="img-fluid border">
+        </div>
+    </div> <!-- // row -->
+    <div class="row pt-4">
+        <div class="col-lg-12">
+            <h2>Legacy Design</h2>
+        </div>
+        <div class="col-lg-6">
+            <p>Existing software was laborious and clunky. </p>
+            <ul>
+                <li>Controls were a series of small, unlabeled icons</li>
+                <li>Images wwwere displayed in the order of the computer byte blocks</li>
+                <li>Adjacent images were rarely next to each other.</li>
+            </ul>
+        </div> <!-- // col -->
+        <div class="col-lg-6">
+            <img src="https://usersimple.files.wordpress.com/2023/06/buildmode.png?w=764" alt=""
+                class="img-fluid border">
+        </div> <!-- // col -->
+    </div> <!-- // row -->
+
+    <div class="row pt-4">
+        <div class="col-lg-12">
+            <h2 class="">Research: Understanding the User needs</h2>
+            <p>I shadowed and interviewed several current Geomatics QC technicians to understand their job and current
+                workflow. I learned a lot about their work and identified several ways a new design could speed their
+                process. I showed them early versions of the design for their input as well.</p>
+            <p>Technicians did needed different information at different stages of their work. </p>
+            <ul>
+                <li>They only needed the file name if selecting an image. Otherwise it takes up valuable space</li>
+                <li>Likewise, metadata is relevant only in certain diagnostic situations.</li>
+                <li>Less than 1% of images are viewed enlarged but any image may be chosen. </li>
+                <li>Images with anomalies may need further review but they were difficult to locate when mixed within
+                    the full image set.</li>
+                <li>Technicians very quickly visually scanned images for anomalies. </li>
+                <li>They needed not only to reject these images but to mark the reason for the rejection. </li>
+                <li>Marking images with problems such as cloud-cover, focus, or oil-on-lens would involve selecting
+                    multiple images one at a time and required several clicks to reject and note the reason.</li>
+                <li>Finding images with problems such as cloud-cover, focus, or oil-on-lens would involve selecting
+                    multiple images one at a time and required several clicks to reject and note the reason.</li>
+                <li>Images were previously in a random order based on memory blocks. This made it inefficient to select
+                    adjacent images with the same cloud-cover for instance.</li>
+            </ul>
+            <h2 class="">Innovations</h2>
+            <ul>
+                <li>I determined that if they&rsquo;re arranged by each of 6 cameras and time stamp, the images would
+                    now be in a spatially adjacent grid making it easy to select groups.</li>
+                <li>Sometimes a camera problem would eliminate a series of images. With images randomly placed, manual
+                    selection was difficult. Now the entire camera (column) could be selected easily for comment or
+                    rejection.</li>
+                <li>Time stamp also allowed selection across rows with similar advantages.</li>
+                <li>Selecting the “line” selects a large group related to the motion of the aerial cameras, also useful
+                    for certain anomalies. </li>
+                <li>Tags are created by the QC community. When user types a tag, it becomes part of the autocomplete
+                    menu. </li>
+                <li>Once tagged, images would also be sorted into tabs for later review.</li>
+            </ul>
+            <h2 class="">Selecting columns, rows, and lines</h2>
+            <p>Users can easily select single images, rows, columns or lines (common tasks in image QC).</p>
+        </div> <!-- // col -->
+    </div> <!-- // row -->
+
+
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="https://usersimple.files.wordpress.com/2023/06/select-column.png?w=1024" alt=""
+                class="img-fluid border">
+        </div> <!-- // col -->
+        <div class="col-lg-4">
+            <img loading="lazy" src="https://usersimple.files.wordpress.com/2023/06/select-row.png?w=1024" alt=""
+                class="img-fluid border">
+        </div> <!-- // col -->
+        <div class="col-lg-4">
+            <img loading="lazy" src="https://usersimple.files.wordpress.com/2023/06/select-line.png?w=1024" alt=""
+                class="img-fluid border">
+        </div> <!-- // col -->
+    </div> <!-- // row -->
+    <div class="row pt-4">
+        <div class="col">
+            <p>The homepage gives a visual overview of all the active surveys ready for QC. Color and tooltips would
+                denote the current status of the survey. Tabs helped to sort but user and current status.</p>
+            <img loading="lazy" src="https://usersimple.files.wordpress.com/2023/06/marianas-home.png?w=1024" alt=""
+                class="img-fluid border">
+            <p>Individual images can be enlarged providing additional data useful to understanding image coverage.</p>
+            <img loading="lazy" src="https://usersimple.files.wordpress.com/2023/06/detail-w-coverage.png?w=1024" alt=""
+                class="img-fluid border">
+            <h2 class="">Code help</h2>
+            <p>Sometimes I needed to devise solutions to developer problems so the design would get implemented as
+                designed. I did this as a way to help expand the teams capacity. </p>
+            <img loading="lazy" src="https://usersimple.files.wordpress.com/2023/08/slack-message.png?w=772" alt=""
+                class="img-fluid border">
+            <h2 class="">Styles</h2>
+            <img loading="lazy" src="https://usersimple.files.wordpress.com/2023/06/marianas-styles-1.png?w=1024" alt=""
+                class="img-fluid border">
+            <p>I also created a style guide to help developers create consistent elements.</p>
+        </div> <!-- // col -->
+    </div> <!-- // row -->
+</div> <!-- // container -->
