@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email Generator</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./fav/apple-touch-icon.png?=v2">
+    <link rel="icon" type="image/png" sizes="32x32" href="./fav/favicon-32x32.png?=v2">
+    <link rel="icon" type="image/png" sizes="16x16" href="./fav/favicon-16x16.png?=v2">
+    <link rel="manifest" href="./fav/site.webmanifest?=v2">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+        .editable {
+            border: 1px solid orangered;
+            border-radius: 3px;
+            display: inline-block;
+            color: blue;
+            background-color: lightcyan;
+            min-width: 1em;
+        }
+
+        .editable:focus {
+            background-color: none;
+            border: none;
+            color: inherit;
+        }
+
+        .editable.changed {
+            /* Change the appearance of the element when it's changed */
+            background-color: inherit;
+            border: none;
+        }
+
+        #myMessage {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-bottom: 1em;
+            border-radius: .5em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container py-5">
+    </div>
+    <div class="container py-3" id="emailContainer">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Message to an insider</h2>
+                <!-- <p><i class="bi bi-clipboard" style="display:inline-block; width:1.5em;"></i>Copy the text if you want
+                    to use it via Linkedin messaging or some other text message system. </p>
+                <p><i class="bi bi-envelope" style="display:inline-block; width:1.5em;"></i>You can Send it via email in
+                    your usual email app if you have the reciepients email address. </p> -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="relationship" class="form-label">Insider's Relationship</label>
+                <select class="form-select" id="relationship">
+                    <option value="workInTheSameField" selected>Work in the same field</option>
+                    <option value="workedWith">Once worked with</option>
+                    <option value="workWithNow">Currently work with</option>
+                    <option value="fellowAlumni">Fellow alumni</option>
+                    <option value="studentWith">Student with</option>
+                    <option value="metAtEvent">Met at</option>
+                    <option value="referredBy">Referred</option>
+                    <option value="dontKnowAtAll">We've never met</option>
+                </select>
+                <div id="relationshipHelp" class="form-text">Select how (or if) you know the person you're contacting.
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div id="myMessage">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <!-- Edit toggle button -->
+                <button id="toggleEditButton" class="btn btn-secondary"  style="width:86px;">
+                    <i id="editIcon" class="bi bi-pencil-square"></i>
+                    <span id="editText">Edit</span>
+                </button>
+            </div>
+            <div class="col-auto">
+                <button id="copyButton" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                    title="Copied to clipboard"><i class="bi bi-clipboard"></i> Copy
+                    Text</button>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-outline-secondary" type="button" id="mailtoLink"><i class="bi bi-envelope"></i> Send
+                    via Email</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Define the message templates
+        var messages = {
+            workInTheSameField: '<p>Hi {contactName},</p><p>I’m {myName}, a fellow {myTitle}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            workedWith: '<p>Hi {contactName},</p><p>This is {myName}. It’s been some time since we both worked at {contactCompany}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            workWithNow: '<p>Hi {contactName},</p><p>This is {myName}. I am a {myTitle} at {contactCompany}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            fellowAlumni: '<p>Hi {contactName},</p><p>I’m {myName}, a fellow alumni at {mySchool}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            studentWith: '<p>Hi {contactName},</p><p>I’m {myName}, a student at {mySchool}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            metAtEvent: '<p>Hi {contactName},</p><p>I’m {myName}. We met at at {myEvent}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            referredBy: '<p>Hi {contactName},</p><p>I’m {myName}. {myFriend} suggested I contact you. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName} </p>',
+            dontKnowAtAll: '<p>Hi {contactName},</p><p>I’m {myName}, {myTitle}. Would you have a few minutes to chat about {topic} at {contactCompany}?</p><p>I am a {myTitle} trying to learn more about your company, so your insights would be greatly appreciated.</p><p>Best regards,<br />{myFullName}</p>',
+            // Add more messages for other relationship values...
+        };
+
+
+        // Function to update the message based on the selected relationship
+        function updateMessage() {
+            var message = messages[this.value];
+            if (message) {
+                document.getElementById('myMessage').innerHTML = message
+                    .replace(/{contactName}/g, '<span class="editable" contenteditable="true" tabindex="0">Drew</span>')
+                    .replace(/{myName}/g, '<span class="editable" contenteditable="true" tabindex="1">Casey</span>')
+                    .replace(/{myTitle}/g, '<span class="editable" contenteditable="true" tabindex="2">Manager</span>')
+                    .replace(/{mySchool}/g, '<span class="editable" contenteditable="true" tabindex="2">Woodcreek College</span>')
+                    .replace(/{myEvent}/g, '<span class="editable" contenteditable="true" tabindex="2">SxSW</span>')
+                    .replace(/{myFriend}/g, '<span class="editable" contenteditable="true" tabindex="2">Someone</span>')
+                    .replace(/{topic}/g, '<span class="editable" contenteditable="true" tabindex="3">Operations</span>')
+                    .replace(/{contactCompany}/g, '<span class="editable" contenteditable="true" tabindex="4">Company Inc</span>')
+                    .replace(/{myFullName}/g, '<span class="editable" contenteditable="true" tabindex="5">Casey Jones</span>');
+
+                // Add event listeners to the editable spans
+                document.querySelectorAll('.editable').forEach(function (span) {
+                    span.addEventListener('input', function () {
+                        this.classList.add('changed');
+                    });
+                });
+                // Function to select all text in a span
+                function selectText() {
+                    var range = document.createRange();
+                    range.selectNodeContents(this);
+                    var sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+
+                // Add event listeners to the editable spans
+                document.querySelectorAll('.editable').forEach(function (span) {
+                    span.addEventListener('focus', selectText, false);
+                    span.addEventListener('click', function (event) {
+                        setTimeout(selectText.bind(this), 0);
+                    }, false);
+                });
+            }
+        }
+        // Add a change event listener to the relationship select
+        document.getElementById('relationship').addEventListener('change', updateMessage);
+
+        // Update the message with the default relationship on page load
+        window.addEventListener('load', function () {
+            document.getElementById('relationship').dispatchEvent(new Event('change'));
+        });
+
+        // Add a click event listener to the copy button
+        document.getElementById('copyButton').addEventListener('click', function () {
+            var text = document.getElementById('myMessage').innerText; //innerHTML.replace(/<br>/g, '\n').replace(/<\/p><p>/g, '\n\n');
+            // make the icon change when clicked
+            var icon = this.querySelector('i.bi');
+            icon.classList.add('bi-check-square'); // Change the icon when active
+            icon.classList.remove('bi-clipboard');
+
+            setTimeout(function () {
+                icon.classList.remove('bi-check-square'); // Change the icon back after a delay
+                icon.classList.add('bi-clipboard');
+            }, 2000); // 2000ms = 2s
+
+            navigator.clipboard.writeText(text).then(function () {
+                console.log('Copying to clipboard was successful!');
+                //document.getElementById('copyButton').classList.add('copied'); // Add the 'copied' class to the button
+            }, function (err) {
+                console.error('Could not copy text: ', err);
+            });
+        });
+
+        // Add a click event listener to the send button
+        document.getElementById('toggleEditButton').addEventListener('click', function() {
+            var myMessage = document.getElementById('myMessage');
+            var editIcon = document.getElementById('editIcon');
+            var editText = document.getElementById('editText');
+
+            if (myMessage.getAttribute('contenteditable') === 'true') {
+                myMessage.setAttribute('contenteditable', 'false');
+                myMessage.classList.remove('editable','d-block'); // remove the class when not editable
+
+                // Change the icon and text back to 'Edit'
+                editIcon.className = 'bi bi-pencil-square';
+                editText.textContent = 'Edit';
+            } else {
+                myMessage.setAttribute('contenteditable', 'true');
+                myMessage.classList.add('editable','d-block'); // add the class when editable
+
+                // Change the icon and text to 'Done'
+                editIcon.className = 'bi bi-check-square';
+                editText.textContent = 'Done';
+            }
+        });
+    </script>
+</body>
+
+</html>
