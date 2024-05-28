@@ -76,9 +76,10 @@
       <h2>Page not found</h2>
       <p>Select one below</p>
     </div> <!-- // container-fluid -->
-<div id="mywork">
+    <div id="work">
 
-</div>
+    </div>
+
 
   <div id="overlay" style="display: none;">
     <button class="btn btn-light btn-secondary" id="prev"><i class="bi bi-chevron-left"></i></button>
@@ -95,7 +96,7 @@
   <script src="js/script.js?v=1" type="module"></script>
 </body>
 <script>
-  fetch('/js/projects.json')
+  fetch('js/projects.json')
     .then(response => response.json())
     .then(data => {
       const container = document.createElement('div');
