@@ -4,7 +4,6 @@
 }
 body {
   font-family: var(--main-font);
-  color: var(--main-text-color);
   font-weight: 400;
   letter-spacing: -0.2px;
 }
