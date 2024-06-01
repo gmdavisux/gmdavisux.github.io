@@ -19,6 +19,7 @@
         :root {
             --main-font: "Inter", sans-serif;
             /* --main-text-color: rgb(14, 14, 14); */
+            --bs-accordion-button-active-bg: #fc0;
             /* Replace with the color you want */
         }
 
@@ -163,7 +164,7 @@
                 <p>It's time to rethink this outdated strategy and explore more effective, modern methods to uncover and
                     secure rewarding career opportunities.</p>
                     <p>This is simply a free resource I'm offering to be helpful, based on what I learned from my own job-searches and career counseling. I'm not an expert but this is what works for me. I provide links and advice but will offfer tools when I can.</p>
-                    <p><strong>There is not list of hidden jobs. </strong>You have to do the work.</p>
+                    <p><strong>There is no online list of hidden jobs. </strong>You have to do the work.</p>
                 </p>
             </div> <!-- end of col -->
         </div> <!-- end of row -->
@@ -362,7 +363,7 @@
                     accordionButton.ariaControls = itemId;
 
                     const badge = document.createElement('span');
-                    badge.className = 'badge text-bg-secondary d-inline me-2';
+                    badge.className = 'badge text-bg-dark d-inline me-2';
                     badge.textContent = index + 1;
 
                     accordionButton.appendChild(badge);
@@ -375,9 +376,15 @@
                     accordionCollapse.className = 'accordion-collapse collapse';
                     accordionCollapse.dataset.bsParent = '#jobSteps';
 
+                    if (index === 0) {
+                        accordionCollapse.classList.add('show');
+                        accordionButton.classList.remove('collapsed');
+                        accordionButton.ariaExpanded = 'true';
+                    }
+
                     const accordionBody = document.createElement('div');
                     accordionBody.className = 'accordion-body';
-                    accordionBody.innerHTML = item.content; // Changed from textContent to innerHTML
+                    accordionBody.innerHTML = item.content;
 
                     accordionCollapse.appendChild(accordionBody);
 
@@ -388,8 +395,7 @@
                 });
 
                 contentList.appendChild(accordion);
-            });
-    </script>
+            });    </script>
 </body>
 
 </html>
