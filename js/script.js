@@ -56,11 +56,11 @@ fetch('js/projects.json')
                 // Create the 'img' element
                 const img = document.createElement('img');
                 img.src = item.src;
-                img.className = 'img-fluid rounded border';
+                img.className = 'img-fluid border';
 
                 // Create the 'div' for the overlay
                 const overlayDiv = document.createElement('div');
-                overlayDiv.className = 'image-overlay rounded d-flex align-items-center justify-content-center';
+                overlayDiv.className = 'image-overlay d-flex align-items-center justify-content-center';
 
                 // Add your content to the overlay
                 const overlayContent = document.createElement('div');

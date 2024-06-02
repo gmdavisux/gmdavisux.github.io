@@ -63,7 +63,6 @@
         #myMessage {
             border: 1px solid #ccc;
             padding: 1em;
-            margin-bottom: 1em;
             border-radius: .5em;
         }
     </style>
@@ -115,9 +114,10 @@
                 <h3>It feels productive, but it's not.</h3>
                 <p> Despite the illusion of
                     productivity from sending out countless resumes and cover letters, the hard truth is that you're
-                    unlikely to gain any traction. 
-                    <p>I know it's not easy to stop. I usually start my job search on Linkedin and it takes a while for me to learn again it is not working. <br/><strong>I WANT to believe.</strong></p>
-                    <p>There are several reasons why this dated method yields
+                    unlikely to gain any traction.
+                <p>I know it's not easy to stop. I usually start my job search on Linkedin and it takes a while for me
+                    to learn again it is not working. <br /><strong>I WANT to believe.</strong></p>
+                <p>There are several reasons why this dated method yields
                     diminishing
                     returns:</p>
             </div>
@@ -156,15 +156,18 @@
                     <h3>The machine has no&nbsp;soul</h3>
                     <p>Your carefully crafted resume and cover letter can easily get lost in the digital abyss, failing
                         to
-                        truly showcase your unique capabilities and potential value to the employer. Tweaking keywords and endless rewrites are not the answer.</p>
+                        truly showcase your unique capabilities and potential value to the employer. Tweaking keywords
+                        and endless rewrites are not the answer.</p>
                 </div>
             </div>
             <div class="col-md-12">
                 <h2>What to do instead</h2>
                 <p>It's time to rethink this outdated strategy and explore more effective, modern methods to uncover and
                     secure rewarding career opportunities.</p>
-                    <p>This is simply a free resource I'm offering to be helpful, based on what I learned from my own job-searches and career counseling. I'm not an expert but this is what works for me. I provide links and advice but will offfer tools when I can.</p>
-                    <p><strong>There is no online list of hidden jobs. </strong>You have to do the work.</p>
+                <p>This is simply a free resource I'm offering to be helpful, based on what I learned from my own
+                    job-searches and career counseling. I'm not an expert but this is what works for me. I provide links
+                    and advice but will offfer tools when I can.</p>
+                <p><strong>There is no online list of hidden jobs. </strong>You have to do the work.</p>
                 </p>
             </div> <!-- end of col -->
         </div> <!-- end of row -->
@@ -202,9 +205,9 @@
                 <div id="relationshipHelp" class="form-text">Select how (or if) you know the person you're contacting.
                 </div>
             </div>
-            <div class="col-md-12">
-                <div id="myMessage">
-                </div>
+            <div class="col-md-12 mb-2">
+                <div id="myMessage"></div>
+                <div id="wordCount" class="small"></div>
             </div>
         </div>
         <div class="row">
@@ -395,7 +398,32 @@
                 });
 
                 contentList.appendChild(accordion);
-            });    </script>
+            });
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const myMessage = document.getElementById('myMessage');
+            const wordCount = document.getElementById('wordCount');
+
+            const updateWordCount = () => {
+                const textContent = myMessage.textContent;
+                const count = textContent.split(/\s+/).filter(Boolean).length;
+                let message = `Word count: ${count} (Keep it less than 75 words)`;
+                if (count > 75) {
+                    wordCount.style.color = 'red';
+                } else {
+                    wordCount.style.color = 'black';
+                }
+
+
+                wordCount.textContent = message;
+            };
+
+            // Update the word count initially
+            updateWordCount();
+
+            // Update the word count whenever the content of myMessage changes
+            new MutationObserver(updateWordCount).observe(myMessage, { childList: true, subtree: true });
+        });
+    </script>
 </body>
 
 </html>

@@ -5,6 +5,34 @@
     },
     {
         "title": "Uncover contacts within the company",
-        "content": "<p>There are people you can connect to, even if you dont know them. It's best if you have at least one thing in common.</p><ul><li>People you already know</li><li>Fellow alumni of your school (even if you didn't know them)</li><li>Coworkers at a former or current employer</li><li>Group members in common</li><li>Colleagues in the same field or industry (that one is easy)</li><li>People that are in the same location as you</li><li>People you don't even know</li></ul> <p>You can contact them through Linkedin or other social media platforms, or email them.</p>You can get emails in a variety of ways. One of my favorites is <a href=\"http://hunter.io\" target=\"_blank\">Hunter.io</a>. Even the free version is helpful. Also, you can often find senior officers contact info listed somewhere on their company website. Even if the person you want is not there, you can look at the structure of the address and \"guess\" as a last resort.<p>"
+        "content": "<p>There are people you can connect to, even if you dont know them. It's best if you have at least one thing in common.</p><ul><li>People you already know</li><li>Fellow alumni of your school (even if you didn't know them)</li><li>Coworkers at a former or current employer</li><li>Group members in common</li><li>Colleagues in the same field or industry (that one is easy)</li><li>People that are in the same location as you</li><li>People you don't even know</li></ul> <p>You can contact them through Linkedin or other social media platforms, or email them.</p>You can get email addresses in a variety of ways. One of my favorites is <a href=\"http://hunter.io\" target=\"_blank\">Hunter.io</a>. Even the free version is helpful. Also, you can often find senior officers contact info listed somewhere on their company website. Even if the person you want is not there, you can look at the structure of the address and \"guess\" as a last resort.<p>"
+    },
+    {
+        "title": "Prepare your resume",
+        "content": "<p>Make sure your resume is up to date, and tailored to the role you are applying for. This means highlighting your relevant skills, experience, and achievements, and customizing your resume to match the job description. You should also proofread your resume carefully, and ask a friend or family member to review it for you. Finally, save your resume as a PDF file, and name it with your full name and the job title you are applying for.</p>"
+    },
+    {
+        "title": "Write a very short message",
+        "content": "<p>It's short because you want them to read it. This is not the time to list all your skills and why you're such a perfect fit.</p><p>The purpose of this email is to introduce yourself, express your interest in the company and the role, and ask for an informational discussion. Keep it short and to the point, and DON'T include your resume as an attachment.</p><p>I like to keep it informal but business like. You might have a more formal professional style. That's fine. Just be yourself.</p><p>I provided a tool for you to write a sample message. You can use it as a template or just to get an idea of what to write.</p>"
+    },
+    {
+        "title": "Prepare for the interview",
+        "content": "<p>Prepare for the interview by researching the company, the role, and the people you will be meeting with. This will help you to understand the company's culture, values, and goals, and to demonstrate your interest in the role. You should also prepare answers to common interview questions, and practice your responses with a friend or family member. Finally, make sure you have a professional outfit, and that you arrive on time for the interview.</p>"
+    },
+    {
+        "title": "Follow up after the interview",
+        "content": "<p>After the interview, send a thank you email to the interviewer, expressing your appreciation for the opportunity to interview for the role. You should also reiterate your interest in the position, and highlight your qualifications and experience. This will help to keep you top of mind with the interviewer, and demonstrate your professionalism and enthusiasm for the role.</p>"
+    },
+    {
+        "title": "Write a very short email",
+        "content": "<p>This is not the time to list all your skills and why you'r such a great find.</p>"
+    },
+    {
+        "title": "Prepare for the interview",
+        "content": "<p>Prepare for the interview by researching the company, the role, and the people you will be meeting with. This will help you to understand the company's culture, values, and goals, and to demonstrate your interest in the role. You should also prepare answers to common interview questions, and practice your responses with a friend or family member. Finally, make sure you have a professional outfit, and that you arrive on time for the interview.</p>"
+    },
+    {
+        "title": "Follow up after the interview",
+        "content": "<p>After the interview, send a thank you email to the interviewer, expressing your appreciation for the opportunity to interview for the role. You should also reiterate your interest in the position, and highlight your qualifications and experience. This will help to keep you top of mind with the interviewer, and demonstrate your professionalism and enthusiasm for the role.</p>"
     }
 ]
