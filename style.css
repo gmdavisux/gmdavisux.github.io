@@ -93,7 +93,7 @@ img.card-img-top {
 
 #logos .img-fluid {
   filter: grayscale(100%) brightness(180%);
-  max-height: 50px;
+  max-height: 45px;
   width: auto;
 }
 
