@@ -1,4 +1,4 @@
-// Instead, projects from the JSON file
+// Features built on, projects from the JSON file
 fetch('js/projects.json')
     .then(response => response.json())
     .then(projects => {
@@ -89,7 +89,7 @@ fetch('js/projects.json')
         containerDiv.appendChild(rowDiv);
 
         // Append the 'container' div to the 'features' div
-        featuresDiv.prepend(containerDiv);
+        featuresDiv.append(containerDiv);
 
         // Initialize tooltips after the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', (event) => {
