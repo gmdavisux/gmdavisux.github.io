@@ -2,6 +2,25 @@
   --main-font: "Inter", sans-serif;
   --main-text-color: rgb(14,14,14); /* Replace with the color you want */
 }
+/* media queries for printing */
+@media print {
+  :root {
+    --bs-body-font-size: 12px;
+  }
+  .print-show {
+    display: block !important;
+    color: black !important;
+  }
+
+  .print-hide, #navbarNav.print-hide {
+    display: none !important;
+  }
+  .img-fluid{
+    max-width: 80% !important;
+    height: auto !important;
+  }
+}
+/* END media queries */
 body {
   font-family: var(--main-font);
   font-weight: 400;

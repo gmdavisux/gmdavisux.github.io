@@ -91,95 +91,6 @@ fetch('js/projects.json')
         // Append the 'container' div to the 'features' div
         featuresDiv.append(containerDiv);
 
-        // * * * * -- -- -- create offcanvas "My Work" menu -- -- -- //
-        // Get the div with id 'work'
-        const workDiv = document.getElementById('work');
-
-        // Create the outer div
-        const outerDiv = document.createElement('div');
-        outerDiv.setAttribute('data-bs-theme', 'dark');
-        outerDiv.setAttribute('data-bs-scroll', 'true');
-        outerDiv.className = 'offcanvas offcanvas-start';
-        outerDiv.tabIndex = '-1';
-        outerDiv.id = 'mywork';
-        outerDiv.setAttribute('aria-labelledby', 'offcanvasBottomLabel');
-
-        // Create the header div
-        const headerDiv = document.createElement('div');
-        headerDiv.className = 'offcanvas-header';
-
-        // Create the h3 element
-        const outerh3 = document.createElement('h3');
-        outerh3.className = 'offcanvas-title';
-        outerh3.id = 'offcanvasBottomLabel';
-        outerh3.textContent = 'My work';
-
-        // Create the button
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'btn-close';
-        button.setAttribute('data-bs-dismiss', 'offcanvas');
-        button.setAttribute('aria-label', 'Close');
-
-        // Append h3 and button to headerDiv
-        headerDiv.appendChild(outerh3);
-        headerDiv.appendChild(button);
-
-        // Create the body div
-        const bodyDiv = document.createElement('div');
-        bodyDiv.className = 'offcanvas-body';
-
-        // Append headerDiv and bodyDiv to outerDiv
-        outerDiv.appendChild(headerDiv);
-        outerDiv.appendChild(bodyDiv);
-
-        // Add the row to the div with id 'work'
-        workDiv.appendChild(outerDiv);
-
-        // Iterate over the data
-        projects.forEach(project => {
-            if (project.src) {
-                // Create a new row for each project
-            const row = document.createElement('div');
-            row.className = 'row row-cols-1';
-
-            // Create a new column for each project
-            const col = document.createElement('div');
-            col.className = 'col pb-3';
-
-            // Create a new card for each project
-            const card = document.createElement('div');
-            card.className = 'card h-100';
-            card.dataset.bsTheme = 'light';
-
-            // Create the card content
-            const cardContent = `
-        <a href="${project.url}">
-          <img src="${project.src}" class="card-img-top" alt="${project.description}">
-        </a>
-        <div class="card-body">
-          <h5 class="card-title">${project.name}</h5>
-          <p class="card-text">${project.description}</p>
-          <a href="${project.url}" class="card-link">Learn more</a>
-        </div>
-      `;
-
-            // Add the card content to the card
-            card.innerHTML = cardContent;
-
-            // Add the card to the column
-            col.appendChild(card);
-
-            // Add the column to the row
-            row.appendChild(col);
-
-            // Add the row to the bodyDiv
-            bodyDiv.appendChild(row);
-            }
-        });
-
-        // -- -- -- END offcanvas "My Work" menu -- -- -- //
-
         // Initialize tooltips after the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', (event) => {
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -388,7 +299,7 @@ fetch('js/projects.json')
 
 
     // Call the loadmywork function when the page loads
-    // window.addEventListener('load', loadmywork); // don't do this anymore
+    window.addEventListener('load', loadmywork); // don't do this anymore
 })();
 
 // add the phone number and email to the contact dropdown
