@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Home",
+        "url": "./"
+    },
+    {
+        "name": "Replenishing Suppliers",
+        "url": "?page=suppliers",
+        "src": "images/final-with-side-announcements.png.webp",
+        "description": "Giving suppliers a landing-page they can use"
+    },
+    {
+        "name": "Increasing Success",
+        "url": "?page=success",
+        "src": "images/screenshot-2024-02-23-at-12.56.10-pm.png",
+        "description": "Improving profile completion by more than 50%"
+    },
+    {
+        "name": "Best Laid Plans",
+        "url": "?page=plans",
+        "src": "images/cc-billingplans-rules.png",
+        "description": "Changing the app from a monitoring tool to a cash-flow machine"
+    },
+    {
+        "name": "Story Telling",
+        "url": "?page=story",
+        "src": "images/bpc-clean2.png",
+        "description": "Displaying resource trends at a glance and at scale"
+    },
+    {
+        "name": "Peak Productivity",
+        "url": "?page=peak",
+        "src": "images/marianas-home2.png",
+        "description": "Reducing employee burnout and turnover"
+    },
+    {
+        "name": "Design Rescue",
+        "url": "?page=rescue",
+        "src": "images/iix-current-crop.png",
+        "description": "Turning an engineering prototype into a product with no time"
+    },
+    {
+        "name": "Pocket-sizing a Flagship",
+        "url": "?page=flagship",
+        "src": "images/k1gob.png",
+        "description": "Creating a pocket interface to this powerful tool"
+    },
+    {
+        "name": "Managing Complexity",
+        "url": "?page=complexity",
+        "src": "images/complexity.webp",
+        "description": "Organizing IT tasks for endpoint management"
+    },
+    {
+        "name": "Enhanced Focus",
+        "url": "?page=focus",
+        "src": "images/focus.png",
+        "description": "Centered around the user&apos;s own images, rather than the user interface"
+    },
+    {
+        "name": "Visualizing Sunlight",
+        "url": "?page=sunlight",
+        "src": "images/sunlight.png",
+        "description": "Using color to communicate is not as easy as it may seem"
+    },
+    {
+        "name": "About me",
+        "url": "?page=about"
+    },
+    {
+        "name": "Recommendations",
+        "url": "?page=reco"
+    }
+]
+
+
+

@@ -118,6 +118,7 @@ img.card-img-top {
 
 .img-fluid.border {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 1em;
 }
 
 #hero {
