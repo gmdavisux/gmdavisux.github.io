@@ -1,0 +1,100 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script>
+      $(document).ready(function(){
+        $("#submit").click(function(){
+          $("#activate").collapse('hide');
+          $("#isActive").removeClass('text-danger').addClass('text-success').text('Activated');
+          $('#release').removeClass('disabled');
+          $('#serial').addClass('in');
+            $('#serialNum').text($('#entry').val());
+        });
+        $("#confirm").click(function(){
+          $("#activate").collapse('show');
+          $("#isActive").removeClass('text-success').addClass('text-danger').text('Not Activated');
+          $('#release').addClass('disabled');
+          $('#serial').removeClass('in');
+        });
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+      });
+    </script>
+  </head><body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>License:
+                    <span class="text-danger" id="isActive">Not Activated</span>
+                  </th>
+                  <th>
+                    <button class="btn btn-default disabled" id="release" data-toggle="modal" data-target="#releaseModal">Release license</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="collapse in" id="activate">
+                  <td colspan="4">
+                      <label class="inline">To activate, enter your serial number or license key. <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Where do I get this?" data-content="A serial number may be included with your scanner. Or you can get a license key by contacting customer service at someone@kodakalaris.com or 1-800-123-4567."><span class="fa fa-question-circle"></span></a></label>
+                    <div class="form-group">
+                      <input id="entry" type="text" class="form-control" placeholder="serial number or license key">
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-success" type="button" id="submit">Submit</button>
+                    </div>
+                  </td>
+                </tr>
+                 <tr id="serial" class="collapse">
+                  <td>Serial number:</td>
+                  <td class="col-md-8" id="serialNum">01234567890</td>
+                </tr>
+
+                <tr>
+                  <td class="col-md-4">Hardware ID:</td>
+                  <td class="col-md-8">41E46ECF0CEFA3D143B797B73B6C387C2929</td>
+                </tr>
+                <tr>
+                  <td class="col-md-4">Installed Options:
+                    <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Installed Options" data-content="Contact your reseller to add optional features."><span class="fa fa-question-circle"></span></a></td>
+                  <td class="col-md-8">
+                    <p>OCR upgrade - enabled <span class="fa fa-check text-success"></span></p>
+                    <p><span style="opacity:.4;">Additional users - none</span></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="releaseModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Release license?</h4>
+          </div>
+          <div class="modal-body">
+            <p>Release this license so it can be assigned to a different computer?&nbsp;
+              <br>
+              <br>This will immediately deactivate the software on this computer.</p>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Keep</a>
+            <a class="btn btn-primary" id="confirm" data-dismiss="modal">Release</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body></html>

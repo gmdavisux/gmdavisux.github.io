@@ -1,0 +1,124 @@
+{
+  "records": [
+    {
+      "Name": "Alfreds Futterkiste",
+      "City": "Berlin",
+      "Country": "Germany",
+      "Type": "Receipt",
+      "Amount": "4.50",
+      "Description": "Exploratory trip to Germany for scoping the next project.",
+      "PO Number": "12345567",
+      "Approval": "General",
+      "Activity": "Travel"
+    },
+    {
+      "Name": "Berglunds snabbköp",
+      "City": "Luleå",
+      "Type": "Invoice",
+      "Country": "Sweden",
+      "PO Number": "12345678",
+      "Approval": "CEO",
+      "Activity": "Travel"
+    },
+    {
+      "Name": "Centro comercial Moctezuma",
+      "City": "México D.F.",
+      "Country": "Mexico",
+      "PO Number": "0987654",
+      "Approval": "Level2",
+      "Activity": "Accounting"
+    },
+    {
+      "Name": "Ernst Handel",
+      "City": "Graz",
+      "Country": "Austria",
+      "PO Number": "9876543",
+      "Type": "Document",
+      "Approval": "Yes",
+      "Activity": "Crunch"
+    },
+    {
+      "Name": "FISSA Fabrica Inter. Salchichas S.A.",
+      "City": "Madrid",
+      "Country": "Spain",
+      "PO Number": "3456789",
+      "Activity": "QuickBooks"
+    },
+    {
+      "Name": "Galería del gastrónomo",
+      "City": "Barcelona",
+      "Type": "Receipt",
+      "Country": "Spain",
+      "Activity": "Braun"
+    },
+    {
+      "Vendor": "Island Trading",
+      "City": "Cowes",
+      "Country": "UK",
+      "Type": "Invoice",
+      "PO Number": "098765432",
+      "Approval": "Yes",
+      "Activity": "Braun"
+    },
+    {
+      "Name": "Königlich Essen",
+      "City": "Brandenburg",
+      "Country": "Germany",
+      "Activity": "Braun"
+    },
+    {
+      "Name": "Laughing Bacchus Wine Cellars",
+      "City": "Vancouver",
+      "Country": "Canada",
+      "Activity": "Travel"
+    },
+    {
+      "Name": "Magazzini Alimentari Riuniti",
+      "City": "Bergamo",
+      "Country": "Italy",
+      "Activity": "Contracts"
+    },
+    {
+      "Name": "North/South",
+      "City": "London",
+      "Country": "UK",
+      "Activity": "Kodak Alaris"
+    },
+    {
+      "Name": "Paris spécialités",
+      "City": "Paris",
+      "Country": "France",
+      "Activity": "Porta ac consectetur ac"
+    },
+    {
+      "Name": "Rattlesnake Canyon Grocery",
+      "City": "Albuquerque",
+      "Country": "USA",
+      "Activity": "Contracts"
+    },
+    {
+      "Name": "Simons bistro",
+      "City": "København",
+      "Country": "Denmark",
+      "Activity": "Contracts"
+    },
+    {
+      "Name": "The Big Cheese",
+      "City": "Portland",
+      "Country": "USA",
+      "Activity": "Contracts"
+    },
+    {
+      "Name": "Vaffeljernet",
+      "City": "Århus",
+      "Country": "Denmark",
+      "Activity": "Contracts"
+    },
+    {
+      "Name": "Wolski Zajazd",
+      "City": "Warszawa",
+      "Country": "Poland",
+      "Activity": "Accounting"
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+/*! This is for customizations that do not fit within bootstrap */
+
+html, body{
+}
+body.with-brand-header{
+    padding-top: 110px;
+    padding-bottom: 50px;
+}
+.navbar-brand{
+    float:none;
+    height: auto;
+    font-weight: 100;
+    border-top: 1px solid #444;
+}
+.left-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.brand-mod{opacity: .5;}
+h1.navbar-brand {
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    line-height: 40px;
+    white-space: nowrap;
+}
+h1, .h1, h2, .h2, h3, .h3{
+    font-weight: 100;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+    border-bottom: 3px solid #3fb0a8;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
+    border-bottom: 3px solid #3fb0a8;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border-top-width: 3px;
+    position: relative;
+    bottom: 0;
+    background-color: #fff;
+}
+.nav-tabs > li > a {
+    border-top-width: 3px;
+}
+.nav-tabs > li {
+    position: relative;
+    bottom: 0;
+}
+.nav-tabs > li > a:hover {
+    border-top-color: #3fb0a8;
+}
+.nav-tabs > li.disabled > a:hover {
+    border-top-color: #d1d1d1;
+}
+
+/***** sidebar
+nav.leftbar, .nav.leftbar{
+    margin-right:83.333%;
+    height:100%;
+} *****/
+.navbar-inverse.leftbar.nav-pills li.active > a{
+    background-color: #000;
+    border-left:3px solid #3fb0a8;
+
+}
+.btn.disabled, .btn.disabled:hover, .btn[disabled], fieldset[disabled] .btn {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    background-color: #fff;
+    border-color: #ccc;
+    color: #333;
+}
+.btn-link.disabled, .btn-link.disabled:hover{
+    background-color: transparent;
+    border:none;
+}
+.nav-pills.nav-stacked.navbar-inverse li a{
+    border-left: 3px solid transparent;
+    color:#eee;
+    vertical-align: middle;
+    /* transparent border needed or scrollspy will bug-out */
+}
+.nav-pills.nav-stacked.navbar-inverse li a *{
+    vertical-align: inherit;
+}
+.nav-pills.nav-stacked.navbar-inverse li a:hover{
+    background-color: #000;
+}
+.nav-pills.nav-stacked.navbar-inverse li.active a{
+    background-color: #000;
+    color:#3fb0a8;
+    border-left: 3px solid #3fb0a8;
+}
+label{font-weight: normal;}
+/*=================== .reveal button ======================*/
+.reveal::before{
+    font-family: 'Glyphicons Halflings';
+    content: "\e252";
+    margin-right: 3px;
+}
+.reveal.collapsed::before{
+    font-family: 'Glyphicons Halflings';
+    content: "\e250";
+    margin-right: 3px;
+}
+
+/*=================== layout specific =====================*/
+            .left-tall-nav{height: 100%; padding: 0; position: fixed;width: 100%;}
+            .left-tall-nav div.mid{padding-bottom: 55px;}
+            .left-tall-nav div.mid, .mid .row, .mid .l-side, .mid .main, .mid .scrl{
+                height: 100%;
+                position: relative;
+                padding-bottom: 0;
+                /* keeps top header scrolling off*/
+            }
+            .left-tall-nav div.nav{
+                padding: 15px;
+                width:100%;
+                height:70px;
+            }
+            .left-tall-nav div.nav.header{
+                margin: 0 -15px;
+                position:absolute;
+                z-index: 100;
+            }
+            .left-tall-nav div.scrl{overflow-y: auto; margin: 0 -15px; padding-bottom: 0;}
+            .left-tall-nav .main .scrl{padding:40px 0;}
+            .left-tall-nav .scrl{background-color: transparent;}
+            .nav-pills.nav.navbar-inverse > li > a{
+                padding: 25px;
+            }
+    /*================ fixing default bootstrap button styles ===================*/
+    button.btn-link:hover, button.btn-link:active, button.btn-link:focus{
+        text-decoration: none;
+    }
+    .btn:focus,
+    .btn:active:focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn:active.focus,
+    .btn.active.focus {
+      outline:none;
+    }
+
+/*======================== Full screen modal dialog ============================*/
+      .fill .modal-dialog{
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+      .fill .modal-content{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: 100%;
+      }
+      .fill .modal-body{
+        position: fixed;
+        padding: 15px;
+        bottom: 0;
+        top: 57px;
+        overflow: hidden;
+        width: inherit;
+        margin-bottom: 65px;
+      }
+      .fill .modal-footer{
+        position: absolute;
+        width: inherit;
+        bottom: 0;
+      }
+/*================================ Activities view =========================================*/
+      .list-120>.list-group-item{
+        min-height:120px;
+        background-color:transparent;
+        border-color:#ccc;
+        border-left-style:none;
+        border-right-style:none;
+        border-top-style:none;
+      }
+
+      .list-120>.list-group-item .list-group-item-heading{font-size:30px; font-weight: 100;}
+        .list-120>.list-group-item .list-group-item-heading .label{
+            font-size:x-small;
+            margin:1em;
+            position: relative;
+            bottom: 1em;
+        }
+      .list-120 p.list-group-item-text{color: #999; font-weight:100; font-size: 1.3em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+        .list-120 .fa-stack{
+            font-size: 1.7em;
+            margin-right: .3em;
+        }
+        .list-120 table{
+            margin:5px 0 0;
+            background-color: transparent;
+        }
+        .list-120 table thead{
+            background-color: #fff;
+        }
+        .list-120 table tbody{
+            background-color: rgba(255,255,255,.5);
+        }
+        .list-120 .btn-link.disabled{
+            color:#999;
+        }
+    .list-120>.list-group-item .row .xhover{visibility: hidden;margin-top:30px;}
+    .list-120>.list-group-item:hover .row .xhover{visibility: visible;}
+a.touch-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display: none;
+}
+@media (max-width: 767px) {
+    .list-120>.list-group-item .row .xhover{display:none;}
+    .list-120>.list-group-item .row .list-group-item-text.xhover{display:inline-block;visibility: hidden;}
+    a.touch-overlay{display: inline-block;}
+}
+
+        /* fixing default bootstrap button styles */
+        button.btn-link:hover, button.btn-link:active, button.btn-link:focus{
+            text-decoration: none;
+        }
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus {
+          outline:none;
+        }
+        /* /end fixing default bootstrap button styles */
+
+        button.reveal::before{
+            font-family: 'Glyphicons Halflings';
+            content: "\e252";
+            margin-right: 3px;
+        }
+        button.reveal.collapsed::before{
+            font-family: 'Glyphicons Halflings';
+            content: "\e250";
+            margin-right: 3px;
+        }
+        .edit{
+/*            padding-top: 30px;*/
+            padding-bottom: .5em;
+            margin-bottom: .5eml
+        }
+/*================================== Edit dialog =====================================*/
+.fa-rotate-135{
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+li.list-group-item.split:last-child{display: none;}
+.sm-img li.list-group-item.split{padding-top:0; padding-bottom: 0; background-color:rgb(68,68,68);height: 0; border:none;}
+.sm-img li.list-group-item.split.in{height:auto;}
+.split a.btn{position: relative; top:-25px; color:#ccc;  z-index: 1000;}
+.split a.btn:hover{color: rgb(55,180,170);}
+.sm-img li.list-group-item.split.in a.btn{top:auto}
+.split .fa-expand{display: inline-block;}
+.split .fa-times{display: none;}
+.split.in a.btn{color: rgb(55,180,170);}
+.split.in i.fa-expand{display: none;}
+.split.in i.fa-times{display: inline-block;}
+/*=================================== History page ==================================*/
+
+.ka_list .ul{clear:both; overflow-y:auto;overflow-x: hidden; padding:0;position: relative;}
+.ka_list .ck-right{position: absolute; top:6px; right:0; z-index:inherit;}
+.ka_list .li{display:block; width:25%; float:left; padding:4px;min-height:40px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.ka_list .li .l{display:block; font-size:smaller; text-transform: uppercase; color:#ccc;}
+.ka_box{float:left; margin-right:.5em;width:100px; height:100px; background-color:#eee; border:1px solid #ccc;background-size:cover;}
+.ka_list .li.img{width:110px;}
+.ka_list .list-group-item{margin-left: 1em; margin-right: 1em;}
+.list-group-item{border-left:transparent; border-right:transparent;border-radius:0;border-color:rgb(217,217,215);background-color:transparent;}
+.list-group-item:last-child, .list-group-item:first-child, .btn-lg{border-radius:0;}
+.ka_list .li.name{width:auto;white-space: normal;float:none;}
+.name h2{font-size:20px; padding-top:4px;margin-top:0;}
+.name h2 small{display:block;color:#ccc;}
+/*================================ edit activity ===================================*/
+.activities li.list-group-item{background-color:transparent; min-height:200px; border-width:0; border-bottom-width:1px; border-color:rgb(217,217,215); position:relative; padding-top:50px;}
+.activities li.list-group-item a.btn{margin-top:20px;}
+.crud li.list-group-item div{margin-top:50px;}
+li.list-group-item .h2 small{display:block; color:#ccc; margin-top:6px;}
+div.row.workspace{overflow-y:scroll;padding-bottom: 100px;}
+div.workspace ul .list-group-item.adv a{color:#aaa;}
+div.workspace ul .list-group-item.adv a:hover, div.workspace .list-group-item a i{text-decoration: none; color:rgb(55,180,170);}
+div.workspace .list-group-item a i.fa-inverse{color:#fff;}
+div.editspace{ padding-top:77px;}
+.list-group-item:last-child, .list-group-item:first-child, .btn-lg{border-radius:0;}
+.list-group-item:first-child{border-top-width:0;}
+.btn-default {
+color: #000;
+background-color: #ffffff;
+border-color: #ddd;
+}
+#editscan .form-group{padding-left: 0; padding-right: 0;}
+#editscan .form-group label{padding-left: 12px;}
+.input[type="text"]{border-color:rgb(238,238,238);}
+
+      .input-un {
+          border-color: transparent;
+          background-color: transparent;
+          box-shadow: none;
+          border-radius: 0;
+/*          padding-left: 0;*/
+      }
+      .input-un:hover, .input-un:placeholder-shown,.form-control.input-un:focus {
+          border:1px solid #ccc;
+          background-color: #fff;
+/*          padding-left: inherit;*/
+      }
+
+/* sortable */
+ul.drag{padding:0; margin:0;}
+.drag>li{white-space:nowrap; border-radius:3px; font-size:smaller; list-style: none; display: inline-block; margin:2px; padding: 2px;border:1px solid powderblue; background-color: aliceblue;}
+.form-control[contenteditable]{height: auto;}
+.ui-draggable-handle:hover{cursor:move; background-color: powderblue;}
+
+.svcs .fa-stack{color:#3fb0a8;}
+
+.ui-widget-content .ui-state-active{background:#3fb0a8; border-color:#389d96}
+
+/*
+      .form-control.input-un:focus{
+          border-color: inherit;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+      }
+*/
+      .color-sel .btn{background-color:transparent; border-radius:50%; padding:.3em;border-color:transparent; margin:2em 0;}
+.color-sel .btn.active{background-color:#fff;border-color:#d9d9d9;}
+      .color-sel .btn-num{margin:0}
+/*scan edit panel*/
+#editscan .panel-heading{border-color:rgb(68,68,68); }
+#editscan .panel-heading{background-color:#eee; }
+.ctrl .btn-link{color:#333;}
+.ctrl .btn-link i.fa{display: block; margin: auto;}
+
+/*  inverse dropdown */
+.navbar-inverse .dropdown-menu {
+    background-color: #1a1a1a;
+    z-index:10000;
+  }
+.navbar-inverse.nav .open > a, .navbar-inverse.nav .open > a:hover, .navbar-inverse.nav .open > a:focus {
+    background-color: #1a1a1a;
+  }
+.nav-pills.nav-stacked.navbar-inverse li a:hover{
+    color:#3fb0a8;
+  }
+/*
+.dropdown-menu .divider {
+    opacity:.23
+}
+.nav-pills.nav-stacked.navbar-inverse li.dropdown.open>a{color:#3fb0a8;}
+*/
+.navbar-inverse.dropdown-menu > li > a{
+    color: #dadada;
+}
+.navbar-inverse.dropdown-menu > li > a:hover{
+    color: #333;
+}

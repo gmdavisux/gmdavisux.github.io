@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+    <script src="https://code.angularjs.org/1.4.0/angular.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css" >
+      <script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+        var app = angular.module('pageApp', []);
+        app.controller('imgCtrl', function($scope) {
+            $scope.base="https://farm8.staticflickr.com/";
+            $scope.pages=['7078/7250439172_72562c8e45_k.jpg', '7087/7250440014_a32980508e_k.jpg', '7225/7250440766_8db45aa277_h.jpg'];
+            $scope.current = $scope.pages[0];
+        });
+      </script>
+    </head>
+
+      <body>
+    <div class="container">
+      <div class="row" ng-app="pageApp" ng-controller="imgCtrl" >
+        <div class="col-xs-3">
+          <ul class="list-group sm-img">
+            <li class="list-group-item text-center" >
+              <img class="img-responsive" ng-src="{{ base + pages[0] }}"  ng-click="current='7078/7250439172_72562c8e45_k.jpg'"/>
+            </li>
+            <li class="list-group-item text-center" >
+              <img class="img-responsive" ng-src="{{ base + pages[1] }}" ng-click="current='7087/7250440014_a32980508e_k.jpg'"/>
+            </li>
+            <li class="list-group-item text-center" >
+              <img class="img-responsive" ng-src="{{ base + pages[2] }}"  ng-click="current='7225/7250440766_8db45aa277_h.jpg'"/>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-9">
+          <img class="img-responsive" ng-src="{{ base + current }}" />
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

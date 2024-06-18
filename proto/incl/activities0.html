@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="Kodak Alaris STAR Scanner">
+        <title>STAR Scanner</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/star.css">
+    </head>
+        <body ng-app="scanApp">
+            <div class="navbar navbar-default navbar-fixed-top">
+            <!-- navbarSrc -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>Activities</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="newact.html" class="btn btn-link" data-toggle="tooltip" data-placement="bottom"
+                            title="Create new">&nbsp;<i class="fa fa-plus"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container-fluid submenu">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <p></p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="dropdown no-border">
+                            <label>Sorted:</label>
+                            <button class="btn btn-default dropdown-toggle" type="button"
+                            id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Alphabetically
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">Alphabetically</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">Last modified</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">Most popular</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <!-- END navbarSrc -->
+        </div>
+
+       <div class="section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="workspace">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                        <ul class="list-group activities">
+                            <li class="list-group-item"><a class="lia" href="newact.html?n=Accounting&amp;i=cloud&amp;c=skyblue">
+                                <div class="col-sm-8 h2 c1">
+                                    <span class="fa-stack">
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:lightblue"></i>
+                                      <i id="activityicon" class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    Accounting<small class="hidden-xs">Scan to quickbooks.</small></div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-default">Import</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-primary">Scan</a>
+
+
+                                    </div></a>
+                    <div class="col-sm-4 text-right">
+                        <div class="dropdown no-border">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            </li>
+                            <li class="list-group-item"><a class="lia" href="newact.html?n=Contracts&amp;i=cubes&amp;c=orange">
+                                <div class="col-sm-8 h2 c2">
+                                    <span class="fa-stack">
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:orange"></i>
+                                      <i id="activityicon" class="fa fa-cubes fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    Contracts<small class="hidden-xs">Email to law firm</small></div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-default">Import</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-primary">Scan</a>
+                                </div></a>
+                    <div class="col-sm-4 text-right">
+                        <div class="dropdown no-border">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            </li>
+                            <li class="list-group-item"><a class="lia" href="newact.html?n=Crunch&amp;i=coffee&amp;c=brown">
+                                <div class="col-sm-8 h2 c3">
+                                    <span class="fa-stack">
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:brown"></i>
+                                      <i id="activityicon" class="fa fa-coffee fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    Crunch<small class="hidden-xs">File in dropbox/...crunch</small></div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-default">Import</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-primary">Scan</a>
+                                </div></a>
+                    <div class="col-sm-4 text-right">
+                        <div class="dropdown no-border">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            </li>
+                            <li class="list-group-item"><a class="lia" href="newact.html?n=Kodak%20Alaris&amp;i=camera&amp;c=red">
+                                <div class="col-sm-8 h2 c4">
+                                    <span class="fa-stack">
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:red"></i>
+                                      <i id="activityicon" class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    Kodak Alaris<small class="hidden-xs">Vestibulum at eros</small></div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-default">Import</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-primary">Scan</a>
+                                </div></a>
+                    <div class="col-sm-4 text-right">
+                        <div class="dropdown no-border">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            </li>
+                            <li class="list-group-item"><a class="lia" href="newact.html?n=Porta ac consectetur ac&amp;i=money&amp;c=green">
+                                <div class="col-sm-8 h2 c5">
+                                    <span class="fa-stack">
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:green"></i>
+                                      <i id="activityicon" class="fa fa-money fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    Porta ac consectetur ac<small class="hidden-xs">Vestibulum at eros</small></div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-default">Import</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-primary">Scan</a>
+                                </div></a>
+                    <div class="col-sm-4 text-right">
+                        <div class="dropdown no-border">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            </li>
+                            <li class="list-group-item"><a class="lia" href="newact.html?n=Porta ac consectetur ac&amp;i=rocket&amp;c=violet">
+                                <div class="col-sm-8 h2 c6">
+                                    <span class="fa-stack">
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:violet"></i>
+                                      <i id="activityicon" class="fa fa-rocket fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    Porta ac consectetur ac<small class="hidden-xs">Vestibulum at eros</small></div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-default">Import</a>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 text-right">
+                                        <a class="btn btn-block btn-lg btn-primary">Scan</a>
+                                </div></a>
+                    <div class="col-sm-4 text-right">
+                        <div class="dropdown no-border">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            </li>
+                        </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+              })
+
+            var app = angular.module('scanApp', []);
+              app.controller('customersCtrl', function($scope, $http) {
+                $http.get("data.txt")
+                .success(function(response) {$scope.names = response.records;});
+            });
+
+        </script>
+    </body>
+</html>

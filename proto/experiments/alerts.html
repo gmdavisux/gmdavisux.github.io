@@ -1,0 +1,192 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    </head><body>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- col-md-offset-3 -->
+                    <h1>Alerts</h1>
+                    <p>There need to be two types of alerts.</p>
+                    <h3>Notifications</h3>
+                    <p>Some alerts do not reqiure any contrls within. These should be implemented
+                        as simply as possible.</p>
+                    <p>
+                        <code>class="alert alert-success alert-dismissible"</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:60%; position:fixed; top:20%; left:20%;" class="alert-holder">
+        <!-- dismissable alerts are to be appended to this container. More than
+one willbe displayed -->
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>alert-success: use this to deliver positive feedback of success</div>
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>alert-info: use for informational messages</div>
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>alert-warning: use this class to notify of a situation that needs attention
+            or an action that may result in data-loss</div>
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>alert-danger: Use this class to notify the user of a failure or a fault
+            that cannot be remedied.</div>
+    </div>
+<div class="modal fade " id="scannerErrorDialog" data-keyboard="false" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="alert alert-info" style="text-align: left; margin-bottom: 0px;"><span class="glyphicon fa glyphicon-edit" aria-hidden="true" style="font-size: 1.5em; float: left; margin-right: 0.2em;"></span><span id="dialogMessage">1 index item rule violations
+Field 'Date' of type 'Date/time' has prohibited value '123'
+</span></p>
+            </div>
+            <div class="modal-footer">
+                <a id="btnOk" data-dismiss="modal" class="btn btn-primary">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="scannerErrorDialog" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="alert alert-danger" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span id="dialogMessage"></span></p>
+            </div>
+            <div class="modal-footer">
+                <a id="btnOk" data-dismiss="modal" class="btn btn-primary">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+
+var ScannerErrorDialog = {
+
+    first: true,
+    showing: false,
+
+    //
+    // textAlign: fills in the CSS text-align property ("center", "left", etc);
+    //
+    show: function (message, alertClass, glyphIconClass, textAlign, buttonHtml) {
+        if (!ScannerErrorDialog.showing) {
+            ScannerErrorDialog.showing = true;
+            slimlog("ScannerErrorDialog: show()");
+            var dlg = $("#scannerErrorDialog");
+            $("#dialogMessage", dlg).html(message);
+
+            if (typeof buttonHtml !== "undefined") {
+                var f = $("#scannerErrorDialog div.modal-footer");
+                f.empty();
+                f.append(buttonHtml);
+            }
+
+            //
+            // Fill in the message
+            //
+            $("#dialogMessage", dlg).html(message);
+            if (typeof alertClass == "undefined") {
+                alertClass = "alert-info";
+            }
+            var p = $("#scannerErrorDialog .modal-body p");
+            p.removeClass();
+            p.addClass("alert");
+            p.addClass(alertClass);
+            p.css("margin-bottom", "0");
+
+            if (typeof glyphIconClass == "undefined") {
+                switch (alertClass) {
+                    case "alert-info":
+                        glyphIconClass = "glyphicon-info-sign";
+                        break;
+                    case "alert-success":
+                        glyphIconClass = "glyphicon-ok-sign";
+                        break;
+                    case "alert-warning":
+                        glyphIconClass = "glyphicon-alert";
+                        break;
+                    case "alert-danger":
+                        glyphIconClass = "glyphicon-exclamation-sign";
+                        break;
+                    default:
+                        glyphIconClass = "glyphicon-info-sign";
+                }
+            }
+            var s = $("#scannerErrorDialog .modal-body p span:first");
+            s.removeClass();
+            s.addClass("glyphicon fa");
+            s.addClass(glyphIconClass);
+            s.css({"font-size" : "1.5em", "float" : "left", "margin-right" : ".2em" });
+
+            if (typeof textAlign == "undefined") {
+                textAlign = "left";
+            }
+            var s = $("#scannerErrorDialog .modal-body p");
+            s.css("text-align", textAlign);
+
+            dlg.modal({ show: true });
+
+            if (ScannerErrorDialog.first) {
+                slimlog("ScannerErrorDialog: first");
+                ScannerErrorDialog.first = false;
+                //$("#btnOk", dlg).click(function () {
+                //    ScannerErrorDialog.hide();
+                //});
+            }
+            slimlog("ScannerErrorDialog: show() end");
+        }
+        else {
+            slimlog("already showing");
+        }
+
+    },
+
+    hide: function () {
+        slimlog("ScannerErrorDialog: hide");
+        ScannerErrorDialog.showing = false;
+        $("#scannerErrorDialog").modal('hide');
+    }
+};
+
+$('#scannerErrorDialog').on('hide.bs.modal', function () {
+    slimlog("ScannerErrorDialog: hide");
+    ScannerErrorDialog.showing = false;
+});
+
+
+        ScannerErrorDialog.show("Hello there");
+
+        var txt = "alert-danger: Use this class to notify the user of a failure or a fault that cannot be remedied.";
+        var x = $("<span></span>").text("×").attr("aria-hidden", "true");
+        var xbtn = $("<button></button>").html(x).addClass("close").attr({
+            "type" : "button",
+            "data-dismiss" : "alert",
+            "aria-label" : "Close"
+        });
+        var type = "danger";
+        var alrt = $("<div></div>").html(xbtn).addClass("alert alert-dismissible fade in alert-"+type).append(txt);
+        $("body div.alert-holder").append(alrt);
+
+        function setAlert(message, type, time){}
+
+    </script>
+
+
+    </body></html>

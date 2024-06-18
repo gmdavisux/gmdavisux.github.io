@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="Kodak Alaris STAR Scanner">
+        <title>STAR Scanner</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../css/star.css">
+    </head>
+    <body ng-app="scanApp" >
+           <div class="navbar navbar-default navbar-fixed-top">
+            <!-- navbarSrc -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>Pending</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form  class="form-inline">
+                                <div class="form-group">
+                                    <input ng-model="searchText" type="text" class="form-control input-lg" id="search" placeholder="&#xF002; Search">
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container-fluid submenu">
+                <div class="row">
+                    <div class="col-xs-6 text-left">
+                        <div class="dropdown no-border">
+                            <label for="dropdownView" class="hidden-sm hidden-xs">View</label>
+                            <button class="btn btn-default dropdown-toggle" type="button"
+                            id="dropdownView" data-toggle="dropdown" aria-expanded="true">all items
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="view" class="dropdown-menu" role="menu" aria-labelledby="dropdownView">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">all items</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">assigned</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">unassigned</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown no-border">
+                            <label for="dropdownSort" class="hidden-sm hidden-xs">Sorted by</label>
+                            <button class="btn btn-default dropdown-toggle" type="button"
+                            id="dropdownSort" data-toggle="dropdown" aria-expanded="true">most recent
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="sort" class="dropdown-menu" role="menu" aria-labelledby="dropdownSort">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">most recent</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">activity</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 text-right">
+
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-xs active" data-toggle="tooltip" data-placement="bottom"
+                            title="View as list">
+                                <input type="radio" name="options" id="option2" autocomplete="off" checked> <i class="fa fa-bars"></i>
+                            </label>
+                            <label class="btn btn-xs" data-toggle="tooltip" data-placement="bottom"
+                            title="View as grid">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> <i class="fa fa-th"></i>
+                            </label>
+                        </div>
+                        <div class="cntrl"><a href="#" class="btn">Delete</a></div>
+                        <div class="cntrl"><a href="#" class="btn">Merge</a></div>
+                        <div class="cntrl dropdown no-border">
+                                <label class="pad hidden-sm hidden-xs" for="dropdownMenu2">Set activity</label>
+                                <button class="btn btn-default dropdown-toggle" type="button"
+                                id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">Accounting</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">Legal</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">Purchasing</a>
+                                    </li>
+                                </ul>
+                        </div>
+                        <div class="cntrl "><input class="pad" type="checkbox" ng-model="checked" ></div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- END navbarSrc -->
+        </div>
+
+        <div class="section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="workspace">
+                            <div class="ka_list  list-group" ng-controller="customersCtrl">
+                              <a href="editdoc.html" class="ul list-group-item" ng-repeat="x in names | filter:searchText">
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                        <span class="li name"><!-- name -->
+                                          <div class="ka_box" style="background-image:url(../images/img{{ $index }}.jpeg)"></div>
+                                          <h2>{{ x.Name }}<small>14/06/2015</small></h2>
+                                        </span>
+                                      </div>
+                                      <div class="col-md-8">
+                                        <span class="li" ng-repeat="(key, value) in x"><!-- data -->
+                                          <span class="l ng-class:key;">{{ key }}</span>{{ value }}
+                                        </span>
+                                      </div>
+                                        <input class="ck-right" ng-checked="checked" value="item{{ $index }}" type="checkbox">
+                                  </div>
+                              </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+              })
+
+            var app = angular.module('scanApp', []);
+              app.controller('customersCtrl', function($scope, $http) {
+                $http.get("data.json")
+                .success(function(response) {$scope.names = response.records;});
+            });
+        $('#view li a').click(function(){
+            view=($(this).text());
+            document.getElementById("dropdownView").innerHTML = view + ' <span class="caret"></span>';
+        })
+        $('#sort li a').click(function(){
+            sort=($(this).text());
+            document.getElementById("dropdownSort").innerHTML = sort + ' <span class="caret"></span>';
+        })
+
+        </script>
+    </body>
+</html>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <base href="http://localhost:4000">  
+  <base href="http://localhost:4000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>usersimple &mdash; Gary M Davis Portfolio</title>
   <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png?=v2">
@@ -27,7 +27,11 @@
 
   gtag('config', 'G-X6Q4HXSVGD');
 </script>
-
+<style>
+  #navbarNav li.dropdown{
+    display: none;
+  }
+</style>
 <body class="bg-dark text-white" style="padding-top:100px;">
   <div class="container-fluid fixed-top header">
     <!-- bootstrap code to add full width header at the top of the page -->
@@ -71,14 +75,14 @@
     </nav>
   </div>
   <!-- // add a container with a row and two columns -->
-    <div id="404" class="container pt-3" >
-      <p>404</p>
-      <h2>Page not found</h2>
-      <p>Select one below</p>
-    </div> <!-- // container-fluid -->
-    <div id="work">
+  <div id="404" class="container pt-3">
+    <p>404</p>
+    <h2>Page not found</h2>
+    <p>Select from the menu</p>
+  </div> <!-- // container-fluid -->
+  <div id="work">
 
-    </div>
+  </div>
 
 
   <div id="overlay" style="display: none;">
@@ -92,35 +96,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.20/fetch.min.js"
     integrity="sha512-5vzl35V/cPSXliPbZtxHY0Q6cfYFd2Qld79+d7wLPbOxnKeCHH/LmlMD8aYl0ZN5VZPFM2FnKiAjoNJ2k3vrEg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
-  <!-- below is the script that makes all the magic happen -->
-  <script src="js/script.js?v=1" type="module"></script>
+  <script src="js/404.js?v=3" type="text/javascript"></script>
 </body>
-<script>
-  fetch('js/projects.json')
-    .then(response => response.json())
-    .then(data => {
-      const container = document.createElement('div');
-      container.className = 'container';
 
-      const row = document.createElement('div');
-      row.className = 'row pb-5';
-
-      data.forEach(item => {
-        const col = document.createElement('div');
-        col.className = 'col-md-3 py-2';
-
-        const a = document.createElement('a');
-        a.setAttribute('data-bs-theme', 'dark');
-        a.href = '/' + item.url;
-        a.textContent = item.name;
-
-        col.appendChild(a);
-        row.appendChild(col);
-      });
-
-      container.appendChild(row);
-      document.body.appendChild(container);
-    })
-    .catch(error => console.error('Error:', error));
-</script>
 </html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="Kodak Alaris STAR Scanner">
+        <title>STAR Scanner</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/KAIM_bootstrap_theme.css" >
+        <link rel="stylesheet" href="css/KodakAlaris_IM_extensions.css" >
+        <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" -->
+        <link rel="stylesheet" href="css/star.css">
+        <script>
+        </script>
+    </head>
+
+    <body ng-app="" ng-init="contentSrc='incl/pending.html'">
+        <div class="frame navbar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-10 col-sm-offset-1 col-sm-11 col-xs-12" name="main" ng-include="contentSrc"></div>
+                </div>
+            </div>
+        </div>
+        <div class="frame left-sidebar navbar navbar-default navbar-fixed-top col-md-2 col-sm-1 hidden-xs">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{ active: contentSrc == 'incl/pending.html'}">
+                            <a href="" target="main" ng-click="contentSrc='incl/pending.html'"><i class="material-icons">inbox</i> <span class="hidden-sm">Pending</span></a>
+                        </li>
+                        <li ng-class="{ active: contentSrc == 'incl/archive.html'}">
+                            <a href="" target="main" ng-click="contentSrc='incl/archive.html'"><i class="material-icons">history</i> <span class="hidden-sm">Catalog</span></a>
+                        </li>
+                        <li ng-class="{ active: contentSrc == 'incl/activities.htm'}">
+                            <a href="" target="main" ng-click="contentSrc='incl/activities.htm'"><i class="material-icons">list</i> <span class="hidden-sm">Activities</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+        $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+
+           var $target = $( event.currentTarget );
+
+           $target.closest( '.btn-group' )
+              .find( '[data-bind="label"]' ).text( $target.text() )
+                 .end()
+              .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+           return false;
+
+        });
+        </script>
+
+<!--    Edit Dialogs    -->
+    <div class="fill modal fade" id="editscan">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title">3 Pages</h4>
+          </div>
+          <div class="modal-body" style="padding:0;">
+            <div class="row" style="margin:0; margin-right:2px; height:100%;" ng-app="" ng-init="selected='001'">
+                <div class="col-xs-1 col-sm-2 col-md-3" style="overflow-y:auto; background:#eee; height:100%;">
+            <ul class="list-group sm-img">
+<!-- item and split button -->
+            <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="../book/001.jpg"  ng-click="selected='001'" />
+            </li>
+            <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+            </li>
+<!-- /item and split button -->
+<!-- item and split button -->
+            <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="../book/002.jpg"  ng-click="selected='002'" />
+            </li>
+            <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+            </li>
+<!-- /item and split button -->
+<!-- item and split button -->
+            <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="../book/003.jpg"  ng-click="selected='003'" />
+            </li>
+            <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+            </li>
+<!-- /item and split button -->
+            </ul>
+                </div>
+                <div class="col-xs-8 col-md-6" style="background:#ccc; height:100%">
+                <div class="panel panel-default" style="margin:0 -15px; height:100%">
+                  <div class="panel-heading">Panel heading<br>and stuff<br>and stuff<br>and stuff<br>and stuff</div>
+                  <div class="panel-body" style="overflow-y:auto; height: inherit; padding-bottom:100px;">
+              <img id="zoom" class="img-responsive" ng-model="book" src="../book/{{ selected }}.jpg" style="margin-bottom:100px;"/>
+                </div>
+                </div>
+                </div>
+                <div class="col-xs-4 col-md-3" style="overflow-y:auto; background:#eee; height:100%;">
+                    <ul class="list-group">
+                      <li class="list-group-item">{{n}}Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+            <a class="btn btn-primary">Save changes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--   END edit Dialogs   -->
+
+    </body>
+
+</html>

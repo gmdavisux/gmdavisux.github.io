@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="Kodak Alaris STAR Scanner">
+        <title>STAR Scanner</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../css/star.css">
+        <style>
+            body{padding-top:70px;}
+            .titlebar{height: 70px; border-bottom: 1px solid #ccc;}
+            .titlebar .navbar-text{float: none; text-align: center;}
+            .doc{
+                position: relative;
+                overflow-y: scroll;
+                background-color:#ccc;
+                border-width: 0 1px;
+                height: 100%;
+                overflow-y: scroll;
+            }
+            div.big{
+                background-color: #252525;
+                color:#fff;
+                margin: 0 -15px;
+                padding:1em;
+                width: inherit;
+                position: fixed;
+            }
+            .big-img{
+            }
+        </style>
+    </head>
+
+    <body ng-app="scanApp" ng-init="title='Untitled'">
+            <div class="container-fluid nav navbar-default navbar-fixed-top titlebar">
+                <div class="row">
+                    <div class="col-md-3 hidden-sm hidden-xs">&nbsp;</div>
+                    <div class="col-md-6 col-sm-8 col-xs-6 ">
+                        <h3 class="navbar-text">{{ title }}</h3>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6 ">
+                        <a onclick="history.back()" class="btn btn-link navbar-btn navbar-right" data-toggle="tooltip" data-placement="bottom" title="close">&nbsp;<i  md-36">close</i></a>
+                    </div>
+                </div>
+            </div>
+    <div class="section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3 hidden-sm hidden-xs">
+            <ul class="list-group sm-img">
+              <li class="list-group-item text-center" ng-repeat-start="n in ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010']"><a href="#p{{ n }}" ><img class="img-responsive" src="../book/book_Page_{{ n }}.jpg" /></a>
+                </li>
+                <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+                </li>
+
+            </ul>
+
+          </div>
+          <div class="col-md-6 col-sm-8 col-xs-6 text-center doc">
+              <div class="row big">
+                  <div class="col-md-12">
+                  <form class="form-inline">
+                      <div class="form-group">
+                          <label for="exampleInputName2">Page</label>
+                          <input type="number" class="form-control" id="page" placeholder="1"> <span>of 4</span>
+                      </div>
+                  </form>
+                </div>
+              </div>
+              <div class="big-img" ng-repeat="n in ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010']" id="p{{ n }}" >
+              <img class="img-responsive" src="../book/book_Page_{{ n }}.jpg" />
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-6">
+<ul class="list-group">
+  <li class="list-group-item form-group">
+          <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" ng-model="title" placeholder="Title">
+    </li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Author</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Author Name">
+</li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Chapter</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Chapter">
+</li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Category</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Category">
+</li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Date</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Date">
+</li>
+</ul>
+            </div>
+      </div>
+    </div>
+        <script>
+            $(function () {
+                            $('[data-toggle="tooltip"]').tooltip()
+                              })
+
+                            var app = angular.module('scanApp', []);
+                              app.controller('customersCtrl', function($scope, $http) {
+                                $http.get("data.txt")
+                                .success(function(response) {$scope.names = response.records;});
+                            });
+        </script>
+    </body>
+
+</html>

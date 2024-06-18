@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="Kodak Alaris STAR Scanner">
+        <title>STAR Scanner</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style>
+            body{background-color:rgb(250, 249, 247)}
+            body, html{ height:100%;}
+            a {color:red;}
+            .navbar{background-color:#fff;}
+            .navbar-default .navbar-nav>li>a {
+              color: red;
+            }
+            body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+              font-family:  "Helvetica Neue Light", "HelveticaNeue-Light","Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+              font-weight: 300;
+            }
+              .ka_list .ul{clear:both; overflow-y:auto;padding:0;}
+              .ka_list .li{display:block; width:16%; float:left; padding:4px;min-height:40px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+              .ka_list .li .l{display:block; font-size:smaller; text-transform: uppercase; color:#ccc;}
+              .ka_box{float:left; width:100px; height:100px; background-color:#eee; border:1px solid #ccc;background-size:auto;}
+              .ka_list .li.img{width:110px;}
+            .ka_list .list-group-item{margin-left: 1em; margin-right: 1em;}
+              .list-group-item{border-left:transparent; border-right:transparent;border-radius:0;border-color:rgb(217,217,215);background-color:transparent;}
+              .list-group-item:last-child, .list-group-item:first-child, .btn-lg{border-radius:0;}
+              .ka_list .li.name{white-space: normal;height:100px;}
+              .name h2{font-size:20px; padding-top:4px;}
+              .name h2 small{display:block;color:#ccc;}
+
+            .left-sidebar .navbar{background-color:#444;}
+            .left-sidebar .navbar-default .navbar-nav > li > a {color:#ccc; border-left:4px solid #444;}
+            .left-sidebar .navbar-default .navbar-nav > .active > a {color:rgb(254,171,8); background-color:rgb(55,55,55); border-color:rgb(254,171,8);}
+            .left-sidebar .container {
+              width: auto;
+            }
+            .left-sidebar .navbar-nav > li {
+              float: none;
+            }
+            .left-sidebar .navbar-header {
+              float: none;
+            }
+            .left-sidebar .navbar-nav > li {float:none;}
+            .left-sidebar .navbar ul{width:100%;}
+            .left-sidebar .navbar .container{padding:0}
+            .left-sidebar .container-fluid{padding:0; margin:0 -15px;}
+            .left-sidebar nav{height:100%;}
+            .activities a, .activities li small{
+              visibility:hidden;
+            }
+            .activities li:hover{background-color: rgba(0,0,0,.01);}
+            .activities li:hover a, .activities li:hover small{
+              visibility:visible;
+              -webkit-transition:all linear 0.5s;
+              transition:all linear 0.5s;
+            }
+            .activities .h2::before{content:"\f111"; margin-right:.5em; font-family:fontawesome;}
+            .activities .h2.c1::before, .btn.c1{color:blueviolet;}
+            .activities .h2.c2::before, .btn.c2{color:chartreuse;}
+            .activities .h2.c3::before, .btn.c3{color:cornflowerblue;}
+            .activities .h2.c4::before, .btn.c4{color:crimson;}
+            .activities .h2.c5::before, .btn.c5{color:darkorchid;}
+            .activities .h2.c6::before, .btn.c6{color:darkorange;}
+            .activities .h2.c7::before, .btn.c7{color:forestgreen;}
+            .activities .h2.c8::before, .btn.c8{color:deeppink;}
+            .activities .h2.c9::before, .btn.c9{color:deepskyblue;}
+            .activities .h2.c10::before, .btn.c10{color:fuchsia;}
+            li.list-group-item{background-color:transparent; min-height:200px; border-width:0; border-bottom-width:1px; border-color:rgb(217,217,215); position:relative;}
+            li.list-group-item div{margin-top:50px;}
+            li.list-group-item .h2 small{display:block; color:#ccc; margin-top:6px;}
+            div.workspace{overflow-x:scrollbar; padding-top:122px;}
+            .list-group-item:last-child, .list-group-item:first-child, .btn-lg{border-radius:0;}
+            .list-group-item:first-child{border-top-width:0;}
+            .btn-default {
+              color: #000;
+              background-color: #ffffff;
+              border-color: #ccc;
+            }
+            .btn-primary {
+              color: #ff0000;
+              background-color: #ffffff;
+              border-color: #ccc;
+            }
+            .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+              color: #ffffff;
+              background-color: #f00;
+              border-color: #f00;
+            }
+            .submenu .row{border-top:1px solid #ccc; background-color:rgb(250,249,247)}
+            div.dropdown.no-border{display:inline-block;padding:8px 1em 8px 0;}
+            div.dropdown.no-border .btn{background-color:transparent; color:#f00; border:none;padding: 4px 8px 6px;}
+            label{font-weight:normal;}
+            .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+              color: #fff;
+              background-color: #f00;
+            }
+            .navbar-fixed-top.col-xs-offset-2 .fa{color:#f00;}
+            .navbar-brand {
+              font-size:24px;
+                padding:25px 15px;
+                height:70px;
+            }
+            .navbar-nav > li > a{padding:25px 15px;}
+            .navbar-right form{padding:12px;width:33%;}
+            .form-inline .form-control#search{border-radius: 50px;width:400px;}
+            #search{background-color:rgb(250, 249, 247);}
+            #search:hover, #search:focus{background-color:#fff;}
+            .form-control::-webkit-input-placeholder {
+               font-family: FontAwesome ;
+                color:#ccc;
+            }
+            .form-control:-moz-placeholder {
+               font-family: FontAwesome ;
+                color:#ccc;
+            }
+            .form-control::-moz-placeholder {
+               font-family: FontAwesome ;
+                color:#ccc;
+            }
+            .form-control:-ms-input-placeholder {
+               font-family: FontAwesome ;
+                color:#ccc;
+            }
+            .material-icons{vertical-align: middle;}
+            div.cntrl{display:inline-block;padding:8px 4px; border-left: 1px solid #ccc;}
+            div.dropdown.no-border .pad{padding-left:1em;}
+            .btn.active{color:#fff; background-color:red;}
+            .btn-xs {
+              padding: 1px;
+                border-radius: 0;
+            }
+            .ka_list input[type=checkbox] {
+                margin: 6px;
+            }
+        </style>
+    </head>
+
+    <body ng-app="scanApp" ng-init="contentSrc='incl/pending.html'; navbarSrc='incl/inboxnav.html'">
+        <!-- ng-init="contentSrc='incl/scan.html'; navbarSrc='incl/actnav.html'"-->
+        <div class="section">
+            <div class="container">
+                <div class="row left-sidebar">
+                    <nav class="navbar navbar-default navbar-fixed-top col-xs-2">
+                        <!-- We use the fluid option here to avoid overriding the fixed width
+                        of a normal container within the narrow content columns. -->
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-6">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li ng-class="{ active: contentSrc == 'incl/pending.html'}">
+                                        <a href="#" ng-click="contentSrc='incl/pending.html'"><i class="material-icons">inbox</i> Pending</a>
+                                    </li>
+                                    <li ng-class="{ active: contentSrc == 'incl/archive.html'}">
+                                        <a href="" ng-click="contentSrc='incl/archive.html'"><i class="material-icons">history</i> Archive</a>
+                                    </li>
+                                    <li ng-class="{ active: contentSrc == 'incl/activities.html'}">
+                                        <a href="#" ng-click="contentSrc='incl/activities.html'"><i class="material-icons">list</i> Activities</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- right-side content below -->
+
+        <div class="" ng-include="contentSrc">
+        </div>
+        <script>
+            var app = angular.module('scanApp', []);
+                                              app.controller('customersCtrl', function($scope, $http) {
+                                                $http.get("incl/data.txt")
+                                                .success(function(response) {$scope.names = response.records;});
+                                              });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,179 @@
+<div class="row" style="border-bottom:1px solid #ccc; height:initial;">
+    <div class="col-xs-12" style="background:#fff; padding:1em;">
+            <span class="h3" style="margin-top:6px; display:inline-block;">Status</span>
+    </div>
+                    <div class="col-sm-8 text-left form-inline">
+                        <div class="dropdown"  style="display:inline-block">
+                            <label>View</label>
+                            <button class="btn btn-link dropdown-toggle" type="button"
+                            id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">all items
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">all items</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">assigned</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">unassigned</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown" style="display:inline-block">
+                            <label>Sorted by</label>
+                            <button class="btn btn-link dropdown-toggle" type="button"
+                            id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">most recent
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">most recent</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">activity</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 text-right  form-inline">
+
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-xs active" data-toggle="tooltip" data-placement="bottom"
+                            title="View as list">
+                                <input type="radio" name="options" id="option2" autocomplete="off" checked> <i class="fa fa-bars"></i>
+                            </label>
+                            <label class="btn btn-xs" data-toggle="tooltip" data-placement="bottom"
+                            title="View as grid">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> <i class="fa fa-th"></i>
+                            </label>
+                        </div>
+                        <div class="cntrl " style="display:inline-block"><input class="pad" type="checkbox" ng-model="checked" ></div>
+
+                    </div>
+
+</div>
+
+<div class="row">
+    <div class="workspace">
+        <div class="col-xs-12">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"><i class="fa fa-fw fa-search"></i>search</button>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>Created</th>
+                        <th>Activity name</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr class="collapse" id="collapseUsers">
+                        <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                        <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                        <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2015-12-16 03:53:36	</td>
+                        <td>Contracts</td>
+                        <td>Held</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 02:22:29	</td>
+                        <td>Travel Expenses</td>
+                        <td>Error</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 01:14:23	</td>
+                        <td>Crunch</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-12-16 03:53:36	</td>
+                        <td>Contracts</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 02:22:29	</td>
+                        <td>Travel Expenses</td>
+                        <td>Error</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 01:14:23	</td>
+                        <td>Crunch</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-12-16 03:53:36	</td>
+                        <td>Contracts</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 02:22:29	</td>
+                        <td>Travel Expenses</td>
+                        <td>Held</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 01:14:23	</td>
+                        <td>Crunch</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-12-16 03:53:36	</td>
+                        <td>Contracts</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 02:22:29	</td>
+                        <td>Travel Expenses</td>
+                        <td>Error</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 01:14:23	</td>
+                        <td>Crunch</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-12-16 03:53:36	</td>
+                        <td>Contracts</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 02:22:29	</td>
+                        <td>Travel Expenses</td>
+                        <td>Error</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2015-11-16 01:14:23	</td>
+                        <td>Crunch</td>
+                        <td>Complete</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../css/KodakAlaris_IM_bootstrap.css" >
+        <link rel="stylesheet" href="../css/KodakAlaris_IM_extensions.css">
+        <link rel="stylesheet" href="../css/star.css">
+    <style>
+      html, body {height:100%;}
+      .fill .modal-dialog{
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+      .fill .modal-content{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: 100%;
+      }
+      .fill .modal-body{
+        position: fixed;
+        padding: 15px;
+        bottom: 0;
+        top: 57px;
+        overflow: hidden;
+        width: inherit;
+        margin-bottom: 65px;
+      }
+      .fill .modal-footer{
+        position: absolute;
+        width: inherit;
+        bottom: 0;
+      }
+    </style>
+       <script>
+        var app = angular.module('pageApp', []);
+          app.controller('imgCtrl', function($scope) {
+    $scope.pages=['001', '002', '003', '004', '005', '006', '007', '008', '009', '010'];
+            $scope.selected = '001';
+            $scope.selectPage = function (page) {
+                $scope.selected = pages[page];
+            };
+//            $scope.page = '001';
+        });
+        </script>
+  </head>
+    <body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <a class="btn btn-primary" data-toggle="modal" data-target="#fill">Fill modal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fill modal fade" id="fill">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title">3 Pages</h4>
+          </div>
+          <div class="modal-body" style="padding:0;">
+            <div class="row" style="margin:0; margin-right:2px; height:100%;" ng-app="" ng-init="selected='001'">
+                <div class="col-xs-1 col-sm-2 col-md-3" style="overflow-y:auto; background:#eee; height:100%;">
+            <ul class="list-group sm-img">
+<!-- item and split button -->
+            <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="../book/book_Page_001.jpg"  ng-click="selected='001'" />
+            </li>
+            <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+            </li>
+<!-- /item and split button -->
+<!-- item and split button -->
+            <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="../book/book_Page_002.jpg"  ng-click="selected='002'" />
+            </li>
+            <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+            </li>
+<!-- /item and split button -->
+<!-- item and split button -->
+            <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="../book/book_Page_003.jpg"  ng-click="selected='003'" />
+            </li>
+            <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+            </li>
+<!-- /item and split button -->
+            </ul>
+                </div>
+                <div class="col-xs-8 col-md-6" style="background:#ccc; height:100%">
+                <div class="panel panel-default" style="margin:0 -15px; height:100%">
+                  <div class="panel-heading">Panel heading<br>and stuff<br>and stuff<br>and stuff<br>and stuff</div>
+                  <div class="panel-body" style="overflow-y:auto; height: inherit; padding-bottom:100px;">
+              <img id="zoom" class="img-responsive" ng-model="book" src="../book/book_Page_{{ selected }}.jpg" style="margin-bottom:100px;"/>
+                </div>
+                </div>
+                </div>
+                <div class="col-xs-4 col-md-3" style="overflow-y:auto; background:#eee; height:100%;">
+                    <ul class="list-group">
+                      <li class="list-group-item">{{n}}Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+            <a class="btn btn-primary">Save changes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        $(window).load(function(){
+            $('#fill').modal('show');
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+
+
+</body></html>

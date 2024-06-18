@@ -1,0 +1,51 @@
+@model SlimKIA.WebRole.Models.SlimScan.JobTileModel
+@using SlimResources
+
+@{
+    string retrieveBackUrl = string.Empty;
+
+    if (Model.Action == "held") { retrieveBackUrl = Url.Action("HeldDocuments", "Home", new { @id = @Model.JobDefinitionId }); }
+
+    else if ((Model.Action == "scan") || (Model.Action == "import")) { retrieveBackUrl = Url.Action("JobTileBack", "Home", new { @jobdefinitionid = @Model.JobDefinitionId, @target = @Model.Action }); }
+
+
+}
+<li class="list-group-item">
+    <div data-action="@Model.Action" data-retrievebackurl="@retrieveBackUrl" data-jobdefinitionname="@Model.JobName" data-jobdefinitionid="@Model.JobDefinitionId" class=" row">
+        <div class=" col-sm-8">
+            <span class="jobglyph" style="padding:1em; border-radius:100px; color: #fff; background-color: @Model.BottomShadeColor">@Html.Raw(@Model.Glyph)</span>
+            <h2 style="display:inline-block;" class="jobname">@Model.JobName</h2>
+
+                <div class="numheld">@Html.Raw(@Model.NumberOfHeldJobs) @Strings.Hold</div>
+
+            <div class="jobshadow" style="background-color: @Model.BottomShadeColor"></div>
+        </div>
+        <div class="back slim-white">
+        </div>
+    </div>
+    @if (Model.Action != "held")
+    {
+        <div class="btn-group dropdown jobdefbuttonnumber" data-jobdefinitionid="@Model.JobDefinitionId">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @{
+        var btnText = (Model.ButtonNumber != null) ? Model.ButtonNumber.ToString() : "";
+                }
+                <span class="buttonnumber" data-jobdefinitionid="@Model.JobDefinitionId">@btnText</span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu jobdefbuttonnumberdropdown" data-jobdefinitionid="@Model.JobDefinitionId" role="menu">
+                @for (int i = 1; i <= 9; i++)
+                {
+                    <li><a class="buttonnumberselection" data-jobdefinitionid="@Model.JobDefinitionId" data-buttonnumber="@i" href="#">@i</a></li>
+                }
+                <li role="separator" class="divider"></li>
+                <li><a class="buttonnumberselection" data-jobdefinitionid="@Model.JobDefinitionId" data-buttonnumber="0" href="#">None</a></li>
+            </ul>
+        </div>
+    }
+</li>
+
+
+
+<script>
+    setToolTips();
+</script>

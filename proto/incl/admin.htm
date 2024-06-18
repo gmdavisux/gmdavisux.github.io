@@ -1,0 +1,290 @@
+    <script>
+      $(document).ready(function(){
+        $("#submit").click(function(){
+          $("#activate").collapse('hide');
+          $("#isActive").removeClass('text-danger').addClass('text-success').text('Activated');
+          $('#release').removeClass('disabled');
+          $('#serial').addClass('in');
+            $('#serialNum').text($('#entry').val());
+        });
+        $("#confirm").click(function(){
+          $("#activate").collapse('show');
+          $("#isActive").removeClass('text-success').addClass('text-danger').text('Not Activated');
+          $('#release').addClass('disabled');
+          $('#serial').removeClass('in');
+        });
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+      });
+    </script>
+<div class="row" style="height:initial;">
+    <div class="col-xs-12" style="background:#fff; padding:1em;">
+        <span class="h3" style="margin-top:6px; display:inline-block;">Admin</span>
+    </div>
+</div>
+<div class="row" style="overflow-y:auto; height:100%; padding-bottom:106px;">
+    <div class="col-xs-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Users</a></li>
+            <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">Groups</a></li>
+            <li role="presentation"><a href="#providers" aria-controls="providers" role="tab" data-toggle="tab">Providers</a></li>
+            <li role="presentation"><a href="#license" aria-controls="license" role="tab" data-toggle="tab">License</a></li>
+        </ul>
+
+    </div>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="users">
+            <div class="col-xs-12">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-link"><i class="fa fa-fw fa-plus"></i>add</button>
+                    <button type="button" class="btn btn-link reveal collapsed" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"><i class="fa fa-fw fa-search"></i>search</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ID&nbsp;&nbsp;&nbsp;</th>
+                            <th>First</th>
+                            <th>Last</th>
+                            <th>Display Name</th>
+                            <th>Email</th>
+                            <th>Groups</th>
+                            <th>Status</th>
+                            <th style="width:112px">Actions</th>
+                        </tr>
+                        <tr class="collapse" id="collapseUsers">
+                            <th></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5</td>
+                            <td>Robert</td>
+                            <td>Bennett</td>
+                            <td>Robert Bennett</td>
+                            <td>robert.bennett@kodak.com</td>
+                            <td>SlimDevelopers,Alaris Administrators,</td>
+                            <td>Active</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Mike</td>
+                            <td>Caito</td>
+                            <td>Mike Caito</td>
+                            <td>mcaito@inmotioninc.com</td>
+                            <td>SlimDevelopers,Alaris Administrators,</td>
+                            <td>Active</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Gary</td>
+                            <td>Davis</td>
+                            <td>Gary Davis</td>
+                            <td>gary.davis@gmail.com</td>
+                            <td>SlimDevelopers,Alaris Administrators,</td>
+                            <td>Active</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12">
+                <button type="button" class="btn btn-link"><i class="fa fa-fw fa-plus"></i>add</button>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="groups">
+            <div class="col-xs-12">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-link"><i class="fa fa-fw fa-plus"></i>add</button>
+                    <button type="button" class="btn btn-link reveal collapsed" data-toggle="collapse" data-target="#collapseGroups" aria-expanded="false" aria-controls="collapseGroups"><i class="fa fa-fw fa-search"></i>search</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ID&nbsp;&nbsp;&nbsp;</th>
+                            <th>Name</th>
+                            <th>Members</th>
+                            <th>Activity definition</th>
+                            <th style="width:112px">Actions</th>
+                        </tr>
+                        <tr class="collapse" id="collapseGroups">
+                            <th></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox">&nbsp;1</label>
+                            </td>
+                            <td>Clerical</td>
+                            <td>Mary, Joe, Bill, Marge</td>
+                            <td></td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <button  type="button" class="btn btn-link"><i class="fa fa-fw fa-trash"></i></button>
+                                    <button type="button" class="btn btn-link"><i class="fa fa-fw fa-pencil"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox">&nbsp;2</label>
+                            </td>
+                            <td>Admins</td>
+                            <td>Sam, Steve, Wilma</td>
+                            <td></td>
+                            <td>
+                                <button  type="button" class="btn btn-link"><i class="fa fa-fw fa-trash"></i></button>
+                                <button type="button" class="btn btn-link"><i class="fa fa-fw fa-pencil"></i></button>                                    </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12">
+                <button type="button" class="btn btn-link"><i class="fa fa-fw fa-plus"></i>add</button>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="providers">
+            <div class="col-xs-12">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-link"><i class="fa fa-fw fa-plus"></i>add</button>
+                    <button type="button" class="btn btn-link reveal collapsed" data-toggle="collapse" data-target="#collapseProviders" aria-expanded="false" aria-controls="collapseProviders"><i class="fa fa-fw fa-search"></i>search</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ID&nbsp;&nbsp;&nbsp;</th>
+                            <th>Name</th>
+                            <th>Provider</th>
+                            <th>Access expires</th>
+                            <th style="width:112px">Actions</th>
+                        </tr>
+                        <tr class="collapse" id="collapseProviders">
+                            <th></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th><div class="input-group"><input class="form-control" type="text"> <span class="input-group-addon"><i class="fa fa-fw fa-times"></i></span></div></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox">&nbsp;1</label>
+                            </td>
+                            <td>km-di-wh1xlfk1OneDrive</td>
+                            <td>OneDrive</td>
+                            <td>2015-12-15 11:09:05</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <button  type="button" class="btn btn-link"><i class="fa fa-fw fa-trash"></i></button>
+                                    <button type="button" class="btn btn-link"><i class="fa fa-fw fa-pencil"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox">&nbsp;2</label>
+                            </td>
+                            <td>km-di-wh1xlfk1GoogleDrive</td>
+                            <td>GoogleDrive</td>
+                            <td>2015-12-15 11:09:05</td>
+                            <td>
+                                <button  type="button" class="btn btn-link"><i class="fa fa-fw fa-trash"></i></button>
+                                <button type="button" class="btn btn-link"><i class="fa fa-fw fa-pencil"></i></button>                                    </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12">
+                <button type="button" class="btn btn-link"><i class="fa fa-fw fa-plus"></i>add</button>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="license">
+            <div class="col-xs-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>License:
+                    <span class="text-danger" id="isActive">Not Activated</span>
+                  </th>
+                  <th>
+                    <button class="btn btn-default disabled" id="release" data-toggle="modal" data-target="#releaseModal">Release license</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="collapse in" id="activate">
+                  <td colspan="4">
+                      <label class="inline">To activate, enter your serial number or license key. <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Where do I get this?" data-content="A serial number may be included with your scanner. Or you can get a license key by contacting customer service at someone@kodakalaris.com or 1-800-123-4567."><span class="fa fa-question-circle"></span></a></label>
+                    <div class="form-group">
+                      <input id="entry" type="text" class="form-control" placeholder="serial number or license key">
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-success" type="button" id="submit">Submit</button>
+                    </div>
+                  </td>
+                </tr>
+                 <tr id="serial" class="collapse">
+                  <td>Serial number:</td>
+                  <td class="col-md-8" id="serialNum">01234567890</td>
+                </tr>
+
+                <tr>
+                  <td class="col-md-4">Hardware ID:</td>
+                  <td class="col-md-8">41E46ECF0CEFA3D143B797B73B6C387C2929</td>
+                </tr>
+                <tr>
+                  <td class="col-md-4">Installed Options:
+                    <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Installed Options" data-content="Contact your reseller to add optional features."><span class="fa fa-question-circle"></span></a></td>
+                  <td class="col-md-8">
+                    <p>OCR upgrade - enabled <span class="fa fa-check text-success"></span></p>
+                    <p><span style="opacity:.4;">Additional users - none</span></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $(".dropdown-menu li a").click(function(){
+        if($(this).text() == 'None'){
+            $(this).parents(".dropdown").find('.btn').html('&nbsp; <span class="caret"></span>');
+        }else{
+            $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+            $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+        }
+    });
+
+    $( '.table-hover tr' ).click(function() {
+        location.href = $(this).attr('data-target');
+    });
+</script>

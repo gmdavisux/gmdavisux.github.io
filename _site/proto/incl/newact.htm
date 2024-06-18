@@ -1,0 +1,1125 @@
+<script>
+    function getVal(objNode) {
+        return objNode.val();
+    }
+    function getValIcon() {
+        var t = $(this).val();
+        var i = $(this).$("span");
+        return(i+t);
+    }
+    function prependList(clickTarget, listTarget, htmlStr, lblText){
+       clickTarget.unbind().click(function(){
+        if (typeof lblText !== 'undefined') {var lbl = getVal(lblText); } else {
+            var lbl = $("a",this).html();
+//            console.log($("a",this).html());
+//            var lbl = (i+t);
+        }
+          listTarget.prepend(htmlStr.replace("%1%", lbl));
+        });
+    }
+
+
+$(document).ready(function(){
+
+    $(".saveModal").click(function(){
+        var mode = ($(this).parents(".modal-content").find(".modal-body"));
+        var form = mode.querySelectorAll("form")[0];
+        var total = 0;
+        for (var i = 0; i < form.length; i++) {
+            console.log( form[i] );
+            total += parseInt( form[i].value );
+            console.log("M:"+total);
+        }
+})
+    $("[data-target='#addEmail']").click(function(){
+        var line = "<li style=\"display:none\" class=\"list-group-item adv\"><i class=\"pull-right fa fa-fw fa-trash text-muted\"></i><span class=\"fa-stack\"><i class=\"fa fa-circle fa-stack-2x\"></i><i class=\"fa fa-envelope-o fa-stack-1x fa-inverse\"></i></span> Email <a href=\"#\" class=\"dest\"><i class=\"pull-right fa fa-fw fa-pencil\"></i></a></li>";
+        $(line).prependTo("ul.svcs")
+    })
+
+    $(".modalSave").click(function(){
+      var form = $(this).parents(".modal-content").find(".form-group *");
+        var list = $(this).attr("data-list");
+      var txt = "";
+      for (var i = 0; i < form.length; i++) {
+          var ele = form.eq(i);
+          var chi = ele.children().eq(0);
+          if  (ele.is("label") && chi.is(":checkbox") && chi.is(":checked")) {txt += ele.text()+", "}
+          else if (ele.is("label") && chi.is(":radio") && chi.is(":checked")) {txt += $(ele).text()+", "}
+          else if  (ele.is("label") && !(chi.is(":radio")||chi.is(":checkbox"))) {txt += ele.text()+": "}
+          else if (ele.is("input[type='email']")) {txt += $(ele).val()+", "}
+          else if (ele.is("input:password")) {txt += "••••, "}
+          else if (ele.is("input:text")) {txt += $(ele).val()+", "}
+          else if (ele.is("input:file")) {txt += $(ele).val()+", "}
+          else if (ele.is("select")){ txt += ele.children(":selected").text()+", "}
+          else if (ele.is("div[contenteditable]")){ txt += ele.text()+", "}
+      }
+        txt = txt.slice(0,txt.length-2);
+        var pen = "<i class=\"pull-right fa fa-fw fa-pencil\"></i>";
+        $( ".dest:first", list ).text(txt).append(pen);
+//        $( ".dest:first", list )
+        $( "li", list ).css("display", "block");
+    });
+
+
+        $(function() {
+            var barcodeTags = ["Airline 2 of 5", "Barcode 32", "CODABAR", "Code 128", "Code 2 of 5", "Code 3 of 9", "Code 39 (no stop start)", "Code 39 Extended", "Code 39 HIBC", "Code 93", "Data Matrix", "EAN 13", "EAN 8", "Interleaved of 2 of 5", "MSI", "MSIPH", "PDF417", "Planet (US Post Office Code)", "PostNet", "UCC Code 128", "UPC-A", "UPC-E"];
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+            $( "#bctype" )
+              // don't navigate away from the field on tab when selecting an item
+              .bind( "keydown", function( event ) {
+                if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).autocomplete( "instance" ).menu.active ) {
+                  event.preventDefault();
+                }
+              })
+              .autocomplete({
+                autoFocus: true,
+                minLength: 0,
+                source: function( request, response ) {
+                  // delegate back to autocomplete, but extract the last term
+                  response( $.ui.autocomplete.filter(
+                    barcodeTags, extractLast( request.term ) ) );
+                },
+                focus: function() {
+                  // prevent value inserted on focus
+                  return false;
+                },
+                select: function( event, ui ) {
+                  var terms = split( this.value );
+                  // remove the current input
+                  terms.pop();
+                  // add the selected item
+                  terms.push( ui.item.value );
+                  // add placeholder to get the comma-and-space at the end
+                  terms.push( "" );
+                  this.value = terms.join( ", " );
+                  return false;
+                }
+              }).focus(function() {
+                $(this).autocomplete("search", $(this).val());
+            });
+          });
+
+      $(function() {
+        $( ".sort" ).sortable({
+          revert: true
+        });
+        $( ".drag li" ).draggable({
+          connectToSortable: ".sort", cursor: "move", helper:"clone", revert:"invalid"
+        });
+      });
+      $(".drag li").attr("contenteditable", "false");
+
+        prependList($(".docTypes li.add"), $(".inclDocType"), "<li class=\"list-group-item\"><i class=\"pull-right fa fa-fw fa-trash text-primary\" ></i><a href=\"#docType\" data-toggle=\"modal\" data-target=\"#docType\"><span class=\"h3\">%1%</span><i class=\"pull-right fa fa-fw fa-pencil\"></i></a></li>");
+
+        $(".docTypes li.new").click(function(){
+            prependList($("#docType .add"), $(".inclDocType"), "<li class=\"list-group-item\"><i class=\"pull-right fa fa-fw fa-trash text-primary\" ></i><a href=\"#docType\" data-toggle=\"modal\" data-target=\"#docType\"><span class=\"h3\">%1%</span><i class=\"pull-right fa fa-fw fa-pencil\"></i></a></li>", $("#typeName"));
+        });
+
+        $(".svcs").on('click', '.fa-trash', function(){
+              $(this).parent().remove();
+          });
+          $(".inclDocType").on('click', '.fa-trash', function(){
+              $(this).parent().remove();
+          });
+          $("tr").on('click', '.fa-trash', function(){
+              $(this).parentsUntil("tbody").remove();
+          });
+          $('#acticon li').click(function(){
+              var icon=$(this).text().trim();
+//              icon=icon.trim();
+              $('#activityicon').removeClass().addClass('fa fa-'+icon+' fa-stack-1x fa-inverse');
+          });
+          $('#actcolor li').click(function(){
+              var color=$(this).text().trim();
+              $('#activitycolor').css('color', color);
+          });
+      });
+</script>
+<div class="row" style="border-bottom:1px solid #ccc; height:initial;">
+    <div class="col-xs-12 text-center" style="background:#fff; padding:1em;">
+            <span class="h3" style="margin-top:6px; display:inline-block;">Edit Activity</span>                            <a href="index.html"  class="btn btn-link pull-right" data-toggle="tooltip" data-placement="left" title="Close without saving"><i class="fa fa-times"></i></a>
+    </div>
+</div>
+
+        <div class="row workspace" ng-controller="editCtrl">
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+              <ul class="list-group adv">
+                  <li class="list-group-item">
+                      <div>
+                        <div class="dropdown" style="display:inline-block">
+                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="true">Icon <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id=acticon aria-labelledby="dropdownMenu0">
+                                <li role="presentation">
+                                  <a data-icon="bank" role="menuitem" href="#"><span class="fa fa-fw fa-bank"></span>bank </a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="cloud" role="menuitem" href="#"><span class="fa fa-fw fa-cloud"></span>cloud</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="camera" role="menuitem" href="#"><span class="fa fa-fw fa-camera"></span>camera</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="cubes" role="menuitem" href="#"><span class="fa fa-fw fa-cubes"></span>cubes</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="coffee" role="menuitem" href="#"><span class="fa fa-fw fa-coffee"></span>coffee</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="plane" role="menuitem" href="#"><span class="fa fa-fw fa-plane"></span>airplane</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="money" role="menuitem" href="#"><span class="fa fa-fw fa-money"></span>money</a>
+                                <li role="presentation">
+                                  <a data-icon="rocket" role="menuitem" href="#"><span class="fa fa-fw fa-rocket"></span>rocket</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="suitcase" role="menuitem" href="#"><span class="fa fa-fw fa-suitcase"></span>briefcase</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="umbrella" role="menuitem" href="#"><span class="fa fa-fw fa-umbrella"></span>umbrella</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="tree" role="menuitem" href="#"><span class="fa fa-fw fa-tree"></span>tree</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-icon="thumbs-up" role="menuitem" href="#"><span class="fa fa-fw fa-thumbs-up"></span>thumbs-up</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="dropdown" style="display:inline-block">
+                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="true">Color
+<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="actcolor" aria-labelledby="dropdownMenu0">
+                                <li role="presentation">
+                                  <a data-color="black" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:black"></span>Black </a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="red" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:red"></span>Red </a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="orange" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:orange"></span>Orange </a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="gold" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:gold"></span>Gold</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="green" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:green"></span>Green</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="dodgerblue" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:dodgerblue"></span>Blue</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="violet" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:violet"></span>Violet</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="brown" role="menuitem" href="#"><span style="color:brown" class="fa fa-fw fa-circle"></span>Brown</a>
+                                <li role="presentation">
+                                  <a data-color="skyblue" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:skyblue"></span>Light blue</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="GoldenRod" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:GoldenRod"></span>Yellow</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="LightSeaGreen" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:LightSeaGreen"></span>Teal</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="Magenta" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:Magenta"></span>Magenta</a>
+                                </li>
+                                <li role="presentation">
+                                  <a data-color="Tan" role="menuitem" href="#"><span class="fa fa-fw fa-circle" style="color:Tan"></span>Tan</a>
+                                </li>
+                            </ul>
+                        </div>
+                      </div>
+                                <span class="fa-stack fa-lg">
+                                  <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:lightblue"></i>
+                                  <i id="activityicon" class="fa fa-plane fa-stack-1x fa-inverse" ></i>
+                                </span>
+                    <input type="text" class="form-control-inline input-lg input-un" id="activityName" placeholder="Name" value="Travel Expenses">
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+            <h4>Input sources</h4>
+              <ul class="list-group adv">
+                  <li class="list-group-item adv">
+              Allow: <a href="#" data-toggle="modal" data-target="#inputSources">Scanning, File import, Email, Mobile app<i class="pull-right fa fa-fw fa-pencil"></i></a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+            <h4>Included document types</h4>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+            <ul class="list-group adv inclDocType">
+              <li class="list-group-item">
+                <i class="pull-right fa fa-fw fa-trash text-primary" ></i>
+                <a class="" href="#docType" data-toggle="modal" data-target="#docType"><span class="h3">Invoice</span>
+                        <i class="pull-right fa fa-fw fa-pencil"></i>
+                    </a>
+              </li>
+              <li class="list-group-item">
+                <div class="dropdown">
+                  <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="true">
+                    <span class="fa fa-plus fa-fw"></span>Add a document type...
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu docTypes" aria-labelledby="dropdownMenu0">
+                    <li role="presentation" class="new">
+                      <a role="menuitem" href="#" data-toggle="modal" data-target="#docType">Create new...
+                                    <i class="fa fa-plus fa-fw pull-right"></i></a>
+                    </li>
+                    <li role="presentation" class="add">
+                      <a role="menuitem" data-target="#">Contract</a>
+                    </li>
+                    <li role="presentation" class="add">
+                      <a role="menuitem" data-target="#">Credit Card</a>
+                    </li>
+                    <li role="presentation" class="add">
+                      <a role="menuitem" data-target="#">ID card</a>
+                    </li>
+                    <li role="presentation" class="add">
+                      <a role="menuitem" data-target="#">Invoice</a>
+                    </li>
+                    <li role="presentation" class="add">
+                      <a role="menuitem" data-target="#">Photo</a>
+                    </li>
+                    <li role="presentation" class="add">
+                      <a role="menuitem" data-target="#">Receipt</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+            <h4>Advanced</h4>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+            <ul class="list-group adv">
+              <li class="list-group-item adv">
+                <label>Automation:</label>
+                <a href="#" data-toggle="modal" data-target="#myModal2">Auto-correct rotation, Remove holes, Auto-straighten, Start new document: After final page<i class="pull-right fa fa-fw fa-pencil"></i></a>
+              </li>
+              <li class="list-group-item adv">
+                <label>Barcodes:</label>
+                <a href="#" data-toggle="modal" data-target="#barcodeModal">Don't detect barcodes<i class="pull-right fa fa-fw fa-pencil"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+              <h4>Send to</h4>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+              <ul class="list-group svcs">
+                  <li class="list-group-item adv">
+                      <i class="pull-right fa fa-fw fa-trash text-muted" ></i>
+                      <span class="h5">
+                          <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-dropbox fa-stack-1x fa-inverse"></i>
+                            </span>
+Dropbox</span> <a href="#" class="dest">some/folder/location<i class="pull-right fa fa-fw fa-pencil"></i></a>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-plus fa-fw"></span>
+                        Add a service
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu addService" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                         OneDrive</a></li>
+                        <li><a href="#">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-archive fa-stack-1x fa-inverse"></i>
+                            </span>
+                         Box</a></li>
+                        <li><a href="#">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-dropbox fa-stack-1x fa-inverse"></i>
+                            </span>
+                         Dropbox</a></li>
+                        <li><a href="#">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-google fa-stack-1x fa-inverse"></i>
+                            </span>
+                         Google Drive</a></li>
+                        <li><a href="#" >
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-folder-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                         Folder</a></li>
+                        <li ><a href="#" type="button" data-toggle="modal" data-target="#addEmail">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                         Email</a></li>
+                      </ul>
+                    </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+              <h4>Format</h4>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+              <ul class="list-group adv">
+                  <li class="list-group-item adv">
+                      <label>File naming:</label> <a href="#" data-toggle="modal" data-target="#filenamingModal">Julian (YYDDD)<i class="pull-right fa fa-fw fa-pencil"></i></a>
+                  </li>
+                  <li class="list-group-item adv">
+                      <label>File format:</label> <a href="#" data-toggle="modal" data-target="#fileformatModal">PDF/A, Draft<i class="pull-right fa fa-fw fa-pencil"></i></a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 text-center">
+            <a href="activities.html" class="btn btn-lg btn-default btn-next">Save</a>
+          </div>
+        </div>
+<!-- Modal add email -->
+<div class="modal fade" id="addEmail">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">
+              <i class="fa fa-fw fa-envelope-o"></i>Email</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group feedback">
+                <label class="control-label" for="toEmail1">To</label>
+                <input class="form-control" id="toEmail1" placeholder="Enter email" name="Email" type="email">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="replyEmail1">Reply to</label>
+                <input class="form-control" id="replyEmail1" placeholder="Enter email" type="email">
+              </div>
+              <div class="row">
+                <div class="form-group col-xs-12">
+                  <label class="control-label" for="exampleInputEmail1">Subject </label>
+                  <div class="form-control sort drag" id="editSubject" contenteditable="true"></div>
+                    <p class="muted">(Type and/or drag any of the items below to build your text.)</p>
+              </div>
+              <div class="col-xs-6">
+                <label class="control-label" for="exampleInputEmail1">Date/Time</label>
+                <ul class="date drag" id="dateDrag">
+                  <li>Day (DD)</li>
+                  <li>Month (MM)</li>
+                  <li>Year (YY)</li>
+                  <li>(DDMMYY)</li>
+                  <li>(MMDDYY)</li>
+                  <li>Year (YYYY)</li>
+                  <li>Julian (YYDDD)</li>
+                  <li>Time (12hr)</li>
+                  <li>Time (24hr)</li>
+                  <li>AM/PM</li>
+                  <li>am/pm</li>
+                </ul>
+              </div>
+              <div class="col-xs-6">
+                <label class="control-label" for="exampleInputEmail1">Index items</label>
+                <ul class="index drag" id="indexDrag">
+                  <li>Company name</li>
+                  <li>Effective date</li>
+                  <li>Agreement type</li>
+                </ul>
+              </div>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+          <a class="btn btn-primary modalSave" data-list=".svcs" data-dismiss="modal">Save</a>
+        </div>
+      </div>
+    </div>
+    </div>
+<!-- Modal input sources -->
+    <div class="modal fade" id="inputSources" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Input sources</h4>
+          </div>
+          <div class="modal-body">
+            <form class="row">
+              <div class="col-md-12">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Allow scanning</label>
+                </div>
+                <div class="col-sm-offset-1">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="notProfile" checked>If scanner profile is not found, use general settings</label>
+                  </div>
+                <div class="form-inline">
+                  <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="false">200 - 300 dpi
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">below 200 dpi</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">200 - 300 dpi</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">above 300 dpi</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle btn-link" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="false">Black &amp; White
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Black &amp; White</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Grayscale</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Color</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="false">One sided (front)
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">One sided (front)</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">One sided (back)</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">One sided (front &amp; back)</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                    <div class="radio">
+                    <label>
+                      <input type="radio" name="notProfile">If scanner profile is not found, display TWAIN</label>
+                  </div>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Allow file import</label>
+                </div>
+                <div class="col-sm-offset-1">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="pass" id="optionsRadios1" value="option1" checked>Process image files (pass-through non-image files)</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="pass" id="optionsRadios2" value="option2">Pass-thru all files</label>
+                  </div>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Allow submission via email</label>
+                </div>
+                <div class="col-sm-offset-1">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="InputEmailName" placeholder="name" value="" style="text-align:right;">
+                    <div class="input-group-addon">@km-di-wh1xlfk1.kodakalaris.net</div>
+                  </div>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Allow mobile app (KODAK Info Activate Mobile)</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" data-list="svcs" class="btn btn-primary saveModal">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+<!--
+    <div class="modal fade" id="doctype" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Edit: Invoice</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <label>Fields</label>
+                <ul class="list-group ">
+                  <li class="list-group-item row" style="font-weight:bold;">
+                    <div class="col-md-8">Customize your invoice settings</div>
+                    <div class="col-md-4 text-right">
+                      <label>Select all
+                        <input type="checkbox">
+                      </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item row">
+                    <div class="col-md-8">Select a document type</div>
+                    <div class="col-md-4 text-right">
+                      <label>Required
+                        <input type="checkbox">
+                      </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item row">
+                    <div class="col-md-8">Customize your invoice settings</div>
+                    <div class="col-md-4 text-right">
+                      <label>Required
+                        <input type="checkbox">
+                      </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item row">
+                    <div class="col-md-8">Company name</div>
+                    <div class="col-md-4 text-right">
+                      <label>Required
+                        <input type="checkbox">
+                      </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item row">
+                    <div class="col-md-8">Total Amount - GBP</div>
+                    <div class="col-md-4 text-right  text-muted">
+                      <a data-toggle="collapse" href="#collapseEdit" role="button">Edit</a> 
+                      <label>Required
+                        <i class="material-icons md-24">check</i>
+                      </label>
+                    </div>
+                    <div class="col-md-12 collapse" id="collapseEdit">
+                      <div class="well">Toggle area where the controls for name, type and other parameters will
+                        live</div>
+                    </div>
+                  </li>
+                  <li class="list-group-item row">
+                    <div class="col-md-8">Due Date</div>
+                    <div class="col-md-4 text-right">
+                      <label>Required
+                        <input type="checkbox">
+                      </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item row">
+                    <div class="col-md-12">
+                      <a data-toggle="collapse" href="#collapseAdd"><span class="material-icons md-18">add</span> Add another field</a>
+                      <div class="collapse" id="collapseAdd">
+                        <div class="well">
+                          <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                              <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="Label">
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="dropdown">
+                                  <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-expanded="true">Text
+                                    <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu0">
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Currency</a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Date</a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Number</a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Name / Surname</a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Telephone</a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Telephone</a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Text <span class="fa fa-check fa-fw pull-right"></span></a>
+                                    </li>
+                                    <li role="presentation">
+                                      <a role="menuitem" data-target="#">Time</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-offset-2 col-sm-10 text-right">
+                                <button type="" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-default">Add</button>
+                                <button type="submit" class="btn btn-default">Add</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="add btn btn-primary" data-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+-->
+    <!--modal2-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel" contenteditable="true">Automation settings</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Auto-correct rotation based on text</label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Remove holes</label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Auto-straighten</label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Remove speckles</label>
+                </div>
+                <div class="col-sm-offset-1">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Lone pixels</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Majority rule</label>
+                  </div>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" checked="">Simplify color &amp; grayscale images to Black and white</label>
+                </div>
+                <div class="col-sm-offset-1">
+                  <label for="cont">Contrast:</label>
+                  <input type="text" id="cont" readonly="" style="border:0; font-weight:bold;" value="0">
+                  <div id="contrast"></div>
+                </div>
+                <label>Blank pages</label>
+                <div class="col-sm-offset-1">
+                  <label for="percent">Threshold:</label>
+                  <input type="text" id="percent" readonly="" style="border:0; font-weight:bold;" value="5">
+                  <div id="threshold"></div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" checked="">Delete blank pages</label>
+                  </div>
+                </div>
+                <label>Start new document</label>
+                <div class="col-sm-offset-1">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">After final page scanned</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">After blank pages</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">After each</label>
+                    <input id="startnew" name="value">
+                    <label>pages</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary modalSave" data-dismiss="modal">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- barcodeModal -->
+<div class="modal fade" id="barcodeModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title">Bar Codes</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12 form-group">
+                <label class="radio-inline">
+                  <input type="radio" name="enabled" id="yesBC" value="yes" checked="">Detect bar codes</label>
+                <label class="radio-inline">
+                  <input type="radio" name="enabled" id="noBC" value="no">Don't detect bar codes</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 form-group ui-front">
+                <label for="bctype">Types</label>
+                <input  type="text" class="form-control" id="bctype" placeholder="Add...">
+              </div>
+              <div class="col-xs-6 form-group">
+                <label for="side">Location</label>
+                <select class="form-control" id="side">
+                  <option>Front</option>
+                  <option>Back</option>
+                </select>
+              </div>
+              <div class="col-xs-6 form-group">
+                <label for="keep">Keep barcode with mask</label>
+                <textarea type="text" class="form-control" id="keep" rows="3" placeholder=""></textarea>
+              </div>
+              <div class="col-xs-6 form-group">
+                <label for="2d">2D bar code value delimiter</label>
+                <input type="text" class="form-control" id="2d" placeholder="">
+              </div>
+              <div class="col-xs-6 form-group">
+                <label for="checksum">
+                  <input type="checkbox" checked="">&nbsp;Verify Checksum</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+<!-- /.modal -->
+<!-- -->
+    <div class="modal fade" id="fileformatModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title">File format</h4>
+          </div>
+          <div class="modal-body">
+            <p>Stuff goes here</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- -->
+    <div class="modal fade" id="filenamingModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title">File naming</h4>
+          </div>
+          <div class="modal-body">
+            <p>Stuff goes here</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Doc type modal -->
+    <div class="modal fade" id="docType">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Document type</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label" for="typeName" contenteditable="true">Name</label>
+                    <input class="form-control" id="typeName" placeholder="name"
+                    type="email">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="indexDesc">Description</label>
+                    <input class="form-control" id="indexDesc" placeholder="description"
+                    type="text">
+                  </div>
+                  <table class="table table-condensed table-hover">
+                    <thead>
+                      <tr>
+                        <th>Index item</th>
+                        <th>Type</th>
+                        <th class="text-right">
+                          <label class="pull-right">Required
+                            <input type="checkbox" class="">
+                          </label>
+                        </th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Title</td>
+                        <td>text</td>
+                        <td class="text-right">
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </td>
+                        <td class="text-right"><i class="fa fa-trash text-right"></i></td>
+                      </tr>
+                      <tr>
+                        <td>Date</td>
+                        <td>date/time</td>
+                        <td class="text-right">
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                        </td>
+                        <td class="text-right"><i class="fa fa-trash"></i></td>
+                      </tr>
+                      <tr>
+                        <td>Amount</td>
+                        <td>currency</td>
+                        <td class="text-right">
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                        </td>
+                        <td class="text-right"><i class="fa fa-trash"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="col-md-6">
+                    <!-- Single button -->
+                    <div class="btn-group " id="indexType">
+                      <button type="button" class="btn btn-block btn-link dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-plus"></span> Add index item
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a data-toggle="modal" data-target="#indexItem" href="#indexItem">Create new...</a>
+                        </li>
+                        <li></li>
+                        <li>
+                          <a href="#">Title</a>
+                        </li>
+                        <li>
+                          <a href="#">Date</a>
+                        </li>
+                        <li>
+                          <a href="#">Amount</a>
+                        </li>
+                        <li>
+                          <a href="#">Submitter</a>
+                        </li>
+                        <li>
+                          <a href="#">Client</a>
+                        </li>
+                        <li>
+                          <a href="#">ID</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+            <a class="add btn btn-primary" data-dismiss="modal">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Index item modal -->
+    <div class="modal fade" id="indexItem">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Index item</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label" for="indexName" contenteditable="true">Name</label>
+                    <input class="form-control" id="indexName" placeholder="name"
+                    type="email">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="indexDesc">Description</label>
+                    <input class="form-control" id="indexDesc" placeholder="description"
+                    type="text">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="indexDefault">Default value</label>
+                    <input class="form-control" id="indexDefault" placeholder="value"
+                    type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Single button -->
+                  <label class="control-label" for="indexType">Type</label>
+                  <div class="btn-group btn-block" id="indexType">
+                    <button type="button" class="btn btn-block btn-default dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">text
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#">text</a>
+                      </li>
+                      <li>
+                        <a href="#">whole number</a>
+                      </li>
+                      <li>
+                        <a href="#">currency</a>
+                      </li>
+                      <li>
+                        <a href="#">date/time</a>
+                      </li>
+                      <li>
+                        <a href="#">checkbox</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <!-- Single button -->
+                  <label class="control-label" for="indexAssist">Field Assist</label>
+                  <div class="btn-group btn-block" id="indexAssist">
+                    <button type="button" class="btn btn-block btn-default dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">none
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#">None</a>
+                      </li>
+                      <li>
+                        <a href="#">Item level</a>
+                      </li>
+                      <li>
+                        <a href="#">Document type level</a>
+                      </li>
+                      <li>
+                        <a href="#">Activity level</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+            <a class="btn btn-primary">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+var queries = {};
+        $('#actcolor li a').click(function(){
+            datacolor=($(this).attr('data-color'));
+            document.getElementById("activitycolor").style.color = datacolor;
+        })
+        $('#acticon li a').click(function(){
+            dataicon=($(this).attr('data-icon'));
+            document.getElementById("activityicon").className = 'fa fa-stack-1x fa-inverse fa-' + dataicon;
+        })
+
+/*
+    $.each(document.location.search.substr(1).split('&'),function(c,q){
+    var i = q.split('=');
+    queries[i[0].toString()] = i[1].toString();
+*/
+  });
+        document.getElementById("activitycolor").style.color = queries.c;
+        document.getElementById("activityicon").className = 'fa fa-stack-1x fa-inverse fa-' + queries.i;
+        document.getElementById("activityName").value = decodeURIComponent(queries.n);
+        document.getElementById("InputEmailName").value = queries.n; //only if empty in final
+        if (queries.n) {
+            document.getElementById("pagetitle").innerHTML = "Edit activity";
+        }
+
+    </script>

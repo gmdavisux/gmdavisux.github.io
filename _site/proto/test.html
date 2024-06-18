@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <style>
+            body.star{ padding-top:65px;font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+          body.star{background-color:rgb(250, 249, 247);}  
+          .sidebar{height:100%;}
+          ul.logout{position:absolute; bottom:1em;}
+          .main{background-color:rgb(250, 249, 247); padding-top:2em;}
+          .row.activ{margin-top:4em;}
+          .btn-group-lg.activ > .btn {
+            text-align:left; 
+            border-radius:0; 
+            border:none; border-bottom:1px solid #ccc; 
+            background-color:transparent;
+          }
+          body.star .btn{border-radius:0; }
+           body.star .btn-lg, .btn-group-lg > .btn{border:none;}
+          body.star label{color:#ccc;}
+        </style>
+        <link rel="stylesheet" href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css">
+    </head>
+    
+    <body class="star" ng-app="">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right">
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar navbar-fixed-top navbar-inverse">
+                    <ul class="nav nav-sidebar">
+                        <li class="active">
+                            <a href="#">Dashboard <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Scanner</a>
+                        </li>
+                        <li>
+                            <a href="#">Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li>
+                            <a href="">Profile</a>
+                        </li>
+                        <li>
+                            <a href="">Settings</a>
+                        </li>
+                        <li>
+                            <a href="">Help</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-sidebar logout">
+                        <li>
+                            <a href="">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10 col-md-offset-2 col-sm-9 col-sm-offset-3 main text-center">
+                    <ng-include src="heads.html"></ng-include>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-default active">Scan</a>
+                                <a href="#" class="btn btn-default">Import</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row activ">
+                        <div class="col-md-offset-2 col-md-8">
+                            <form class="form-horizontal">
+                                <div class="form-group form-group-lg">
+                                    <label for="input3" class="col-sm-2 control-label">Scan to</label>
+                                    <div class="col-sm-8">
+                                        <div class="controls btn-group btn-group-lg  btn-block activ">
+                                            <a class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown"> DropBox <i class="fa fa-angle-down fa-fw pull-right text-danger"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#">DropBox</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">QuickBooks</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Accounting</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Expense report</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Scan</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

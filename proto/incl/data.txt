@@ -1,0 +1,107 @@
+{
+"records": [
+  {
+    "Name" : "Alfreds Futterkiste",
+    "City" : "Berlin",
+    "Country" : "Germany",
+    "Type" : "Receipt",
+    "Amount" : "4.50",
+    "Description" : "Exploratory trip to Germany for scoping the next project.", 
+    "PO Number" : "",
+    "Approval" : ""
+  },
+  {
+    "Name" : "Berglunds snabbköp",
+    "City" : "Luleå",
+    "Type" : "Invoice",
+    "Country" : "Sweden", 
+    "PO Number" : "",
+    "Approval" : ""
+  },
+  {
+    "Name" : "Centro comercial Moctezuma",
+    "City" : "México D.F.",
+    "Country" : "", 
+    "PO Number" : "",
+    "Approval" : ""
+  },
+  {
+    "Name" : "Ernst Handel",
+    "City" : "Graz",
+    "Country" : "Austria", 
+    "PO Number" : "",
+    "Type" : "Document",
+    "Approval" : ""
+  },
+  {
+    "Name" : "FISSA Fabrica Inter. Salchichas S.A.",
+    "City" : "Madrid",
+    "Country" : "Spain", 
+    "PO Number" : ""
+  },
+  {
+    "Name" : "Galería del gastrónomo",
+    "City" : "Barcelona",
+    "Type" : "Receipt",
+    "Country" : "Spain"
+  },
+  {
+    "Vendor" : "Island Trading",
+    "City" : "Cowes",
+    "Country" : "UK", 
+    "Type" : "Invoice",
+    "PO Number" : "",
+    "Approval" : ""
+  },
+  {
+    "Name" : "Königlich Essen",
+    "City" : "Brandenburg",
+    "Country" : "Germany"
+  },
+  {
+    "Name" : "Laughing Bacchus Wine Cellars",
+    "City" : "Vancouver",
+    "Country" : "Canada"
+  },
+  {
+    "Name" : "Magazzini Alimentari Riuniti",
+    "City" : "Bergamo",
+    "Country" : "Italy"
+  },
+  {
+    "Name" : "North/South",
+    "City" : "London",
+    "Country" : "UK"
+  },
+  {
+    "Name" : "Paris spécialités",
+    "City" : "Paris",
+    "Country" : "France"
+  },
+  {
+    "Name" : "Rattlesnake Canyon Grocery",
+    "City" : "Albuquerque",
+    "Country" : "USA"
+  },
+  {
+    "Name" : "Simons bistro",
+    "City" : "København",
+    "Country" : "Denmark"
+  },
+  {
+    "Name" : "The Big Cheese",
+    "City" : "Portland",
+    "Country" : "USA"
+  },
+  {
+    "Name" : "Vaffeljernet",
+    "City" : "Århus",
+    "Country" : "Denmark"
+  },
+  {
+    "Name" : "Wolski Zajazd",
+    "City" : "Warszawa",
+    "Country" : "Poland"
+  }
+]
+}

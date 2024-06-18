@@ -1,0 +1,442 @@
+<div class="row" style="border-bottom:1px solid #ccc; height:initial;">
+    <div class="col-xs-12" style="background:#fff; padding:1em;">
+<!--
+<div class="btn-group visible-xs-inline-block pull-left">
+  <button type="button" class="btn btn-link dropdown-toggle pull-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-caret-down fa-lg"></span>
+  </button>
+  <ul class="dropdown-menu navbar-inverse navbar-nav" style="color:#fff;">
+    <li ng-class="{ active: contentSrc == 'incl/activities.htm'}">
+                            <a href="" target="main" ng-click="contentSrc='incl/activities.htm'"><i class="fa fa-paper-plane-o fa-lg"></i> Activities</a></li>
+    <li ng-class="{ active: contentSrc == 'incl/archive.htm'}">
+                            <a href="" target="main" ng-click="contentSrc='incl/archive.htm'"><i class="fa fa-clock-o fa-lg"></i> Catalog</a></li>
+    <li ng-class="{ active: contentSrc == 'incl/activities.htm'}">
+                            <a href="" target="main" ng-click="contentSrc='incl/activities.htm'"><i class="fa fa-exclamation-circle fa-lg"></i> Status</a></li>
+    <li><a href="#"><i class="fa fa-wrench fa-lg"></i> Admin</a></li>
+  </ul>
+</div>
+-->
+            <span class="h3" style="margin-top:6px; display:inline-block;">
+                Activities
+        </span>
+        <a href="" ng-click="$parent.contentSrc='incl/newact.htm'" class="btn hidden-sm hidden-xs btn-link pull-right" data-toggle="tooltip" data-placement="left"
+                            title="Create new"><i class="fa fa-plus fa-lg"></i></a>
+    </div>
+    <div class="col-xs-12 hidden-xs">
+        <div class="center-block">
+            <div class="dropdown">
+                <label>Sorted:</label>
+                <button class="btn btn-link dropdown-toggle" type="button"
+                id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Alphabetically
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Alphabetically</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Last modified</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Most popular</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+                        <div class="row" style="overflow-y:auto; height:100%; padding-bottom:106px;">
+                            <div class="col-md-offset-1 col-md-10">
+                            <ul class="list-group list-120">
+                                <!-- 1 -->
+                              <li class="list-group-item">
+                                <div class="row">
+                                  <div class="col-sm-8 edit">
+                                      <span class="fa-stack pull-left">
+                                          <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:lightblue"></i>
+                                          <i id="activityicon" class="fa fa-plane fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      <a href="" ng-click="$parent.contentSrc='incl/newact.htm?'; $parent.n='Travel%20Expenses'; $parent.i='plane'; $parent.c='lightblue'" class="btn btn-lg btn-link pull-right xhover" type="button"><i class="fa fa-pencil"></i></a>
+                                    <p class="list-group-item-heading">Travel Expenses</p>
+                                    <p class="list-group-item-text xhover text-muted">Travel receipts and expense reports for someone</p>
+                                      <a href="#"  data-toggle="modal" data-target="#capture" class="touch-overlay">&nbsp;</a>
+                                  </div>
+                                  <div class="col-sm-4 actions xhover">
+                                    <div class="row">
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal" class="btn btn-block btn-lg btn-default">Import</button>
+                                      </div>
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal" class="btn btn-block btn-lg btn-primary">Scan</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-xs-12">
+                                        <div class="dropdown  pull-right">
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  <div class="row hidden-sm hidden-xs">
+                                    <div class="col-xs-12"><button class="btn btn-xs btn-link reveal collapsed" data-toggle="collapse" data-target="#pending1" aria-expanded="false" aria-controls="pending1">3 On Hold</button></div>
+                                  </div>
+                                <div class="collapse" id="pending1">
+                                  <div class="row">
+                                      <div class="col-sm-12">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <th>#</th>
+                                  <th>Pages</th>
+                                  <th>Created</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <td>1</td>
+                                  <td>1 page</td>
+                                  <td>2015-9-14 14:45</td>
+                                </tr>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <td>2</td>
+                                  <td>4 pages</td>
+                                  <td>2015-9-14 14:45</td>
+                                </tr>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <td>3</td>
+                                  <td>6 pages</td>
+                                  <td>2015-9-14 14:45</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                                      </div>
+                                </div>
+                                </div>
+ </li>
+                                <!-- 2 -->
+                              <li class="list-group-item">
+                                <div class="row">
+                                  <div class="col-sm-8 edit">
+                                    <span class="fa-stack pull-left" >
+                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:orange"></i>
+                                      <i id="activityicon" class="fa fa-cubes fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                      <a href="" ng-click="$parent.contentSrc='incl/newact.htm?$rootScope.n=Contracts&amp;$rootScope.i=cubes&amp;$rootScope.c=orange'" class="btn btn-lg btn-link pull-right xhover" type="button"><i class="fa fa-pencil"></i></a>
+                                    <p class="list-group-item-heading">Contracts</p>
+                                    <p class="list-group-item-text xhover text-muted">Contracts and agreements for legal</p>
+                                      <a href="#"  data-toggle="modal" data-target="#capture" class="touch-overlay">&nbsp;</a>
+                                  </div>
+                                  <div class="col-sm-4 actions xhover">
+                                    <div class="row">
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-default">Import</button>
+                                      </div>
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-primary">Scan</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-xs-12">
+                                        <div class="dropdown  pull-right">
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  <div class="row hidden-sm hidden-xs">
+                                    <div class="col-xs-12"><button class="btn btn-xs btn-link reveal collapsed" data-toggle="collapse" data-target="#pending2" aria-expanded="false" aria-controls="pending2">2 On Hold</button></div>
+                                  </div>
+                                <div class="collapse" id="pending2">
+                                  <div class="row">
+                                      <div class="col-sm-12">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <th>#</th>
+                                  <th>Pages</th>
+                                  <th>Created</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <td>1</td>
+                                  <td>3 pages</td>
+                                  <td>2015-9-14 14:45</td>
+                                </tr>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <td>2</td>
+                                  <td>1 page</td>
+                                  <td>2015-9-14 14:45</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                                      </div>
+                                </div>
+                                </div>
+ </li>
+                                <!-- 3 -->
+                              <li class="list-group-item">
+                                <div class="row">
+                                  <div class="col-sm-8 edit">
+                                                    <span class="fa-stack pull-left" >
+                                                      <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:red"></i>
+                                                      <i id="activityicon" class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                      <a href="" ng-click="$parent.contentSrc='incl/newact.htm?n=Kodak%20Alaris&amp;i=cubes&amp;c=red'" class="btn btn-lg btn-link pull-right xhover" type="button"><i class="fa fa-pencil"></i></a>
+                                    <p class="list-group-item-heading">Kodak Alaris</p>
+                                    <p class="list-group-item-text xhover text-muted">Documents and communications archive</p>
+                                      <a href="#"  data-toggle="modal" data-target="#capture" class="touch-overlay">&nbsp;</a>
+                                  </div>
+                                  <div class="col-sm-4 actions xhover">
+                                    <div class="row">
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-default">Import</button>
+                                      </div>
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-primary">Scan</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-xs-12">
+                                        <div class="dropdown  pull-right">
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  <div class="row hidden-sm hidden-xs">
+                                    <div class="col-xs-12"><button class="btn btn-xs btn-link disabled reveal collapsed" data-toggle="collapse" data-target="#pending3" aria-expanded="false" aria-controls="pending3">0 On Hold</button></div>
+                                  </div>
+
+ </li>
+                                <!-- 4 -->
+                              <li class="list-group-item">
+                                <div class="row">
+                                  <div class="col-sm-8 edit">
+                                      <span class="fa-stack pull-left">
+                                          <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:brown"></i>
+                                          <i id="activityicon" class="fa fa-coffee fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      <a href="" ng-click="$parent.contentSrc='incl/newact.htm?n=Crunch&amp;i=cubes&amp;c=brown'" class="btn btn-lg btn-link pull-right xhover" type="button"><i class="fa fa-pencil"></i></a>
+                                    <p class="list-group-item-heading">Crunch</p>
+                                    <p class="list-group-item-text xhover text-muted">Documents and client communications</p>
+                                      <a href="#"  data-toggle="modal" data-target="#capture" class="touch-overlay">&nbsp;</a>
+                                  </div>
+                                  <div class="col-sm-4 actions xhover">
+                                    <div class="row">
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-default">Import</button>
+                                      </div>
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-primary">Scan</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-xs-12">
+                                        <div class="dropdown  pull-right">
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  <div class="row hidden-sm hidden-xs">
+                                    <div class="col-xs-12"><button class="btn btn-xs btn-link disabled reveal collapsed" data-toggle="collapse" data-target="#pending4" aria-expanded="false" aria-controls="pending4">0 On Hold</button></div>
+                                  </div>
+
+ </li>
+                                <!-- 5-->
+                              <li class="list-group-item">
+                                <div class="row">
+                                  <div class="col-sm-8 edit">
+                                      <span class="fa-stack pull-left">
+                                          <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:green"></i>
+                                          <i id="activityicon" class="fa fa-money fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      <a href="" ng-click="$parent.contentSrc='incl/newact.htm?n=Campaign%20Contributions&amp;i=money&amp;c=green'" class="btn btn-lg btn-link pull-right xhover" type="button"><i class="fa fa-pencil"></i></a>
+                                    <p class="list-group-item-heading">Campaign Contributions</p>
+                                    <p class="list-group-item-text xhover text-muted">Investing in the future of corruption</p>
+                                      <a href="#"  data-toggle="modal" data-target="#capture" class="touch-overlay">&nbsp;</a>
+                                  </div>
+                                  <div class="col-sm-4 actions xhover">
+                                    <div class="row">
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-default">Import</button>
+                                      </div>
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-primary">Scan</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-xs-12">
+                                        <div class="dropdown  pull-right">
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  <div class="row hidden-sm hidden-xs">
+                                    <div class="col-xs-12"><button class="btn btn-xs btn-link disabled reveal collapsed" data-toggle="collapse" data-target="#pending5" aria-expanded="false" aria-controls="pending5">0 On Hold</button></div>
+                                  </div>
+</li>
+                                <!-- 6-->
+                              <li class="list-group-item">
+                                <div class="row">
+                                  <div class="col-sm-8 edit">
+                                      <span class="fa-stack pull-left">
+                                          <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:violet"></i>
+                                          <i id="activityicon" class="fa fa-rocket fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      <a href="" ng-click="$parent.contentSrc='incl/newact.htm?n=Violet%20Rocket&amp;i=cubes&amp;c=violet'" class="btn btn-lg btn-link pull-right xhover" type="button"><i class="fa fa-pencil"></i></a>
+                                    <p class="list-group-item-heading">Violet Rocket</p>
+                                    <p class="list-group-item-text xhover text-muted">The next big thing</p>
+                                      <a href="#"  data-toggle="modal" data-target="#capture" class="touch-overlay">&nbsp;</a>
+                                  </div>
+                                  <div class="col-sm-4 actions xhover">
+                                    <div class="row">
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-default">Import</button>
+                                      </div>
+                                      <div class="col-xs-6">
+                                        <button data-target="#editscan" data-toggle="modal"  class="btn btn-block btn-lg btn-primary">Scan</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-xs-12">
+                                        <div class="dropdown  pull-right">
+                                            <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">ScanMate i1180
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1180</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i1190</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a role="menuitem" tabindex="-1" href="#">ScanMate i2000</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  <div class="row hidden-sm hidden-xs">
+                                    <div class="col-xs-12"><button class="btn btn-xs btn-link reveal collapsed" data-toggle="collapse" data-target="#pending6" aria-expanded="false" aria-controls="pending6">1 On Hold</button></div>
+                                  </div>
+                                <div class="collapse" id="pending6">
+                                  <div class="row">
+                                      <div class="col-sm-12">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <th>#</th>
+                                  <th>User</th>
+                                  <th>Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr data-target="#editscan" data-toggle="modal">
+                                  <td>1</td>
+                                  <td>Mark</td>
+                                  <td>2015-9-14 14:45</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                                      </div>
+                                </div>
+                                </div>
+ </li>
+                            </ul>
+                          </div>
+                        </div>
+
+        <script>
+            $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+              })
+
+$(".dropdown-menu li a").click(function(){
+    if($(this).text() == 'None'){
+        $(this).parents(".dropdown").find('.btn').html('&nbsp; <span class="caret"></span>');
+    }else{
+      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+      $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+    }
+});
+
+            $( '.table-hover tr' ).click(function() {
+                location.href = $(this).attr('data-target');
+            });
+            </script>

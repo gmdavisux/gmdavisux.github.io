@@ -19,6 +19,19 @@
     max-width: 80% !important;
     height: auto !important;
   }
+  body{
+    padding-top: 0 !important; /* Adjust this value as needed for printing */
+  }
+  div.row, div.row div:first-child{
+    --webkit-page-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  h1, h2, h3{
+    --webkit-page-break-after: avoid;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
 }
 /* END media queries */
 body {
@@ -118,7 +131,6 @@ img.card-img-top {
 
 .img-fluid.border {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 1em;
 }
 
 #hero {

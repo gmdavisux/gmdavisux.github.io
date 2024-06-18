@@ -140,20 +140,20 @@ fetch('js/projects.json')
         projects.forEach(project => {
             if (project.src) {
                 // Create a new row for each project
-            const row = document.createElement('div');
-            row.className = 'row row-cols-1';
+                const row = document.createElement('div');
+                row.className = 'row row-cols-1';
 
-            // Create a new column for each project
-            const col = document.createElement('div');
-            col.className = 'col pb-3';
+                // Create a new column for each project
+                const col = document.createElement('div');
+                col.className = 'col pb-3';
 
-            // Create a new card for each project
-            const card = document.createElement('div');
-            card.className = 'card h-100';
-            card.dataset.bsTheme = 'light';
+                // Create a new card for each project
+                const card = document.createElement('div');
+                card.className = 'card h-100';
+                card.dataset.bsTheme = 'light';
 
-            // Create the card content
-            const cardContent = `
+                // Create the card content
+                const cardContent = `
         <a href="${project.url}">
           <img src="${project.src}" class="card-img-top" alt="${project.description}">
         </a>
@@ -164,17 +164,17 @@ fetch('js/projects.json')
         </div>
       `;
 
-            // Add the card content to the card
-            card.innerHTML = cardContent;
+                // Add the card content to the card
+                card.innerHTML = cardContent;
 
-            // Add the card to the column
-            col.appendChild(card);
+                // Add the card to the column
+                col.appendChild(card);
 
-            // Add the column to the row
-            row.appendChild(col);
+                // Add the column to the row
+                row.appendChild(col);
 
-            // Add the row to the bodyDiv
-            bodyDiv.appendChild(row);
+                // Add the row to the bodyDiv
+                bodyDiv.appendChild(row);
             }
         });
 
@@ -311,9 +311,13 @@ fetch('js/projects.json')
             // Load the special content
             try {
                 const response = await fetch(`pages/${contentFile}.html`);
-                const data = await response.text();
-                specialContent.innerHTML = data;
-
+                if (!response.ok) {
+                    // Redirect to 404.html if the fetch failed (e.g., file not found)
+                    window.location.href = '/404.html';
+                } else {
+                    const data = await response.text();
+                    specialContent.innerHTML = data;
+                }
                 // After the content has been loaded, replace the images and add a link to themselves
                 const images = specialContent.querySelectorAll('img');
                 const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
@@ -390,6 +394,15 @@ fetch('js/projects.json')
     // Call the loadmywork function when the page loads
     // window.addEventListener('load', loadmywork); // don't do this anymore
 })();
+
+// function to adjust padding for printing
+function adjustPaddingForPrint() {
+    const headerHeight = document.querySelector('header').offsetHeight;
+    // Set a custom property with the desired padding-top for printing
+    document.documentElement.style.setProperty('--print-padding-top', `${headerHeight}px`);
+}
+
+window.addEventListener('beforeprint', adjustPaddingForPrint);
 
 // add the phone number and email to the contact dropdown
 window.onload = function () {

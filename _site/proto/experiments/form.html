@@ -1,0 +1,258 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+      //      $(window).load(function(){
+      //          $('#indexItem').modal('show');
+      //      });
+    </script>
+  </head><body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#indexItem">Index item</button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#docType">Document type</button>
+          </div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Doc type modal -->
+    <div class="modal fade" id="docType">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Document type</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label" for="indexName" contenteditable="true">Name</label>
+                    <input class="form-control" id="indexName" placeholder="name" type="email">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="indexDesc">Description</label>
+                    <input class="form-control" id="indexDesc" placeholder="description" type="text">
+                  </div>
+                  <table class="table table-condensed table-hover">
+                    <thead>
+                      <tr>
+                        <th>Index item</th>
+                        <th>Type</th>
+                        <th>
+                          <label>Required</label>
+                          <label class="pull-right">
+                            <input type="checkbox" class="">
+                          </label>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Title</td>
+                        <td>text</td>
+                        <td>
+                          <div class=" pull-right">
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Date</td>
+                        <td>date/time</td>
+                        <td>
+                          <div class=" pull-right">
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Amount</td>
+                        <td>currency</td>
+                        <td>
+                          <div class=" pull-right">
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="collapse in">
+                        <td>
+                          <label>Name</label>
+                          <input type="text" class="form-control" placeholder="name">
+                          <label>Description</label>
+                          <input class="form-control" type="text" placeholder="description">
+                        </td>
+                        <td>
+                          <label>Default value</label>
+                          <input type="text" class="form-control" placeholder="value">
+                        </td>
+                        <td>
+                          <label>Type</label>
+                          <select class="form-control">
+                            <option>text</option>
+                            <option>date/time</option>
+                            <option>whole number</option>
+                            <option>currency</option>
+                            <option>checkbox</option>
+                          </select>
+                          <label>Field assist</label>
+                          <select class="form-control">
+                            <option>none</option>
+                            <option>item level</option>
+                            <option>document level</option>
+                            <option>activity level</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="col-md-6">
+                    <!-- Single button -->
+                    <div class="btn-group " id="indexType">
+                      <button type="button" class="btn btn-block btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-plus"></span>Add index item
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a data-toggle="modal" data-target="#indexItem" href="#indexItem">Create new...</a>
+                        </li>
+                        <li></li>
+                        <li>
+                          <a href="#">Title</a>
+                        </li>
+                        <li>
+                          <a href="#">Date</a>
+                        </li>
+                        <li>
+                          <a href="#">Amount</a>
+                        </li>
+                        <li>
+                          <a href="#">Submitter</a>
+                        </li>
+                        <li>
+                          <a href="#">Client</a>
+                        </li>
+                        <li>
+                          <a href="#">ID</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+            <a class="btn btn-primary">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Index item modal -->
+    <div class="modal fade" id="indexItem">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Index item</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label" for="indexName" contenteditable="true">Name</label>
+                    <input class="form-control" id="indexName" placeholder="name" type="email">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="indexDesc">Description</label>
+                    <input class="form-control" id="indexDesc" placeholder="description" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="indexDefault">Default value</label>
+                    <input class="form-control" id="indexDefault" placeholder="value" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Single button -->
+                  <label class="control-label" for="indexType">Type</label>
+                  <div class="btn-group btn-block" id="indexType">
+                    <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">text
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#">text</a>
+                      </li>
+                      <li>
+                        <a href="#">whole number</a>
+                      </li>
+                      <li>
+                        <a href="#">currency</a>
+                      </li>
+                      <li>
+                        <a href="#">date/time</a>
+                      </li>
+                      <li>
+                        <a href="#">checkbox</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <!-- Single button -->
+                  <label class="control-label" for="indexAssist">Field Assist</label>
+                  <div class="btn-group btn-block" id="indexAssist">
+                    <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">none
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#">None</a>
+                      </li>
+                      <li>
+                        <a href="#">Item level</a>
+                      </li>
+                      <li>
+                        <a href="#">Document type level</a>
+                      </li>
+                      <li>
+                        <a href="#">Activity level</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal">Close</a>
+            <a class="btn btn-primary">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>

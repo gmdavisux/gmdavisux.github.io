@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" manifest="apache.manifest"-->
+
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="IIX">
+        <title>Info Input Express</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <script type="text/javascript" src="js/jquery.min.js?=1"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js?=1"></script>
+        <script src="js/angular.min.js?=1"></script>
+        <link href="css/font-awesome.min.css?=1" rel="stylesheet" type="text/css">
+<!--        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+        <link rel="stylesheet" href="css/jquery-ui.min.css" >
+        <link rel="stylesheet" href="css/KodakAlaris_IM_bootstrap.css?=1" >
+        <link rel="stylesheet" href="css/KodakAlaris_IM_extensions.css?=1" >
+
+        <link href="images/Icon/Icon-60.png" rel="apple-touch-icon" />
+        <link href="images/Icon/Icon-76.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="images/Icon/Icon-76@2x.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="images/Icon/Icon-76@2x.png" rel="apple-touch-icon" sizes="152x152" />
+        <link href="images/Icon/Icon-60@3x.png" rel="apple-touch-icon" sizes="180x180" />
+        <link href="images/Icon/Icon-192.png" rel="icon" sizes="192x192" />
+        <link href="images/Icon/Icon-128.png" rel="icon" sizes="128x128" />
+
+        <script   src="https://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.min.js"   integrity="sha256-mFypf4R+nyQVTrc8dBd0DKddGB5AedThU73sLmLWdc0="   crossorigin="anonymous"></script>
+
+        <script>
+            window.scrollTo(0,1);
+        </script>
+        <style>
+            #search{
+                border-radius: 50px;
+                width: 400px;
+                font-family: 'FontAwesome';
+            }
+            a.btn div{color: #333;}
+            .fill .btn.disabled, .fill .btn[disabled]{border-color:transparent;}
+        </style>
+    </head>
+
+    <body class="left-tall-nav" ng-app="scanApp" ng-init="contentSrc='incl/activities.htm'">
+        <div class="container-fluid mid">
+            <div class="row">
+                <div class="col-sm-2 hidden-xs l-side navbar-inverse">
+
+                    <div class="scrl" id="navbar-main">
+                        <div class="navbar-brand" style="font-weight:bold;"><span class="visible-xs"></span><span class="hidden-xs">Kodak <br><span style="font-weight:100;">Info Input Express</span></span></div>
+                        <ul class="nav nav-pills dropdown nav-stacked navbar-inverse " role="tablist">
+                            <li ng-class="{ active: contentSrc == 'incl/activities.htm'}">
+                                <a href="" target="main" ng-click="contentSrc='incl/activities.htm'"><i class="fa fa-paper-plane fa-lg"></i> <span class="hidden-sm hidden-xs">Activities</span></a>
+                            </li>
+                            <li ng-class="{ active: contentSrc == 'incl/archive.htm'}">
+                                <a href="" target="main" ng-click="contentSrc='incl/archive.htm'"><i class="fa fa-clock-o fa-lg"></i> <span class="hidden-sm hidden-xs">Catalog</span></a>
+                            </li>
+                            <li ng-class="{ active: contentSrc == 'incl/status.htm'}">
+                                <a href="" target="main" ng-click="contentSrc='incl/status.htm'"><span class="fa fa-exclamation-circle pull-right" style="color:red;"></span><i class="fa fa-exclamation-circle fa-lg"></i> <span class="hidden-sm hidden-xs">Status</span></a>
+                            </li>
+                            <li ng-class="{ active: contentSrc == 'incl/admin.htm'}">
+                                <a href="" target="main" ng-click="contentSrc='incl/admin.htm'"><i class="fa fa-cog fa-lg"></i> <span class="hidden-sm hidden-xs">Admin</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i> <span class="hidden-sm hidden-xs">Joe Userman</span> <span class="caret"></span></a>
+                                <ul class="dropdown-menu navbar-inverse">
+                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="#"><i class="fa fa-info-circle"></i> About</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="font-size:.8em; font-weight:nromal; color:#666; position:relative; bottom:6em;"><span class="hidden-xs">Server <br></span>Version 2.0.1234</p>
+                </div>
+                <div class="col-sm-10 col-xs-12" style="height:100%;" ng-include="contentSrc">
+                </div>
+            </div>
+        </div>
+    </body>
+    <!--    Edit Dialogs    -->
+    <div class="fill modal fade" id="editscan">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default" aria-hidden="true">Import</button>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-primary">Scan</button>
+
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ScanMate i1180
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">ScanMate i1180</a></li>
+                                    <li><a href="#">ScanMate i1190</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-default" title="previous document" aria-hidden="true"><i class="fa fa-chevron-up"></i></button>
+                        <button type="button" class="btn btn-default disabled" aria-hidden="true" title="next document"><i class="fa fa-chevron-down"></i></button>
+                    </div>
+                    <h4 class="modal-title" style="line-height:2em;">
+                        <span class="fa-stack pull-left">
+                            <i id="activitycolor" class="fa fa-circle fa-stack-2x" style="color:lightblue"></i>
+                            <i id="activityicon" class="fa fa-plane fa-stack-1x fa-inverse"></i>
+                        </span><span class="">Travel Expenses</span></h4>
+                </div>
+                <div class="modal-body" style="padding:0;">
+                    <div class="row" style="margin:0; margin-right:2px; height:100%;" ng-app="" ng-init="selected='001'; zoom=100; rot = 0">
+                        <div class="hidden-xs col-sm-3 col-md-2" style="overflow-y:auto; background:#eee; height:100%;">
+                            <ul class="list-group sm-img" style="margin:0 -15px;">
+                                <!-- item and split button -->
+                                <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="book/001.jpg"  ng-click="selected='001'" />
+                                </li>
+                                <li class="list-group-item text-center split" ng-repeat-end>
+                                    <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                                        <i class="fa fa-times fa-inverse"></i>
+                                        </span></a>
+                                </li>
+                                <!-- /item and split button -->
+                                <!-- item and split button -->
+                                <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="book/002.jpg"  ng-click="selected='002'" />
+                                </li>
+                                <li class="list-group-item text-center split" ng-repeat-end>
+                                    <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                                        <i class="fa fa-times fa-inverse"></i>
+                                        </span></a>
+                                </li>
+                                <!-- /item and split button -->
+                                <!-- item and split button -->
+                                <li class="list-group-item text-center" ng-model="book"><img class="img-responsive" src="book/003.jpg"  ng-click="selected='003'" />
+                                </li>
+                                <li class="list-group-item text-center split" ng-repeat-end>
+                                    <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                                        <i class="fa fa-times fa-inverse"></i>
+                                        </span></a>
+                                </li>
+                                <!-- /item and split button -->
+                            </ul>
+                        </div>
+                        <div class="col-xs-8 col-sm-6 col-md-8" style="background:#ccc; height:100%">
+                            <div class="panel panel-default" style="margin:0 -15px; height:100%">
+                                <div class="panel-heading ctrl">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <button ng-click="zoom = zoom * 1.2" type="button" class="btn btn-link"><i class="fa fa-fw fa-search-plus"></i>zoom in</button></div>
+                                        <div class="btn-group" role="group">
+                                            <button  ng-click="zoom = 100" type="button" class="btn btn-link"><i class="fa fa-fw fa-arrows-alt"></i>Fit</button></div>
+                                        <div class="btn-group" role="group">
+                                            <button ng-click="zoom = zoom * .8" type="button" class="btn btn-link"><i class="fa fa-fw fa-search-minus"></i>zoom out</button></div>
+                                        <div class="btn-group" role="group">
+                                            <button ng-click="rot = rot + 90" type="button" class="btn btn-link"><i class="fa fa-fw fa-repeat"></i>rotate</button></div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-fw fa-trash"></i>delete</button></div>
+                                    </div>
+                                </div>
+                                <div class="panel-body" style="background-color:rgb(68,68,68); overflow-y:auto; height: inherit; padding-bottom:100px;">
+                                    <img id="zoom" class="img-responsive" ng-model="book" src="book/{{ selected }}.jpg" style="margin-bottom:100px; max-width:{{ zoom }}%; -webkit-transform: rotate({{rot}}deg);"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3 col-md-2" style="overflow-y:auto; background:#eee; height:100%;">
+                            <ul class="list-group">
+                                <li class="list-group-item form-group">    <label for="dropdownMenu1">Document type</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            Reminder invoice
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#">Document one</a></li>
+                                            <li><a href="#">Another Document</a></li>
+                                            <li><a href="#">Something else Document</a></li>
+                                        </ul>
+                                    </div></li>
+                                <li class="list-group-item form-group">    <label for="title">Title</label>
+                                    <input type="text" class="form-control input-un" id="title" placeholder="title" value="">
+                                </li>
+                                <li class="list-group-item form-group">    <label for="client">Client</label>
+                                    <input type="text" class="form-control input-un" id="client" placeholder="client name" value="">
+                                </li>
+                                <li class="list-group-item form-group">    <label for="purpose">Purpose</label>
+                                    <input type="text" class="form-control input-un" id="purpose" placeholder="purpose" value="">
+                                </li>
+                                <li class="list-group-item form-group">    <label for="deadline"> Due date</label>
+                                    <input type="date" class="form-control input-un" id="deadline" placeholder="01/01/2001" value="">
+                                </li>
+                                <li class="list-group-item form-group">    <label for="amount">Amount</label>
+                                    <input type="number" class="form-control input-un" id="amount" placeholder="0.00" value="">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-dismiss="modal">Discard</a>
+                    <a class="btn btn-default">Hold 2 Documents</a>
+                    <a class="btn btn-primary">Submit 2 Documents</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END fill modal -->
+
+    <div id="deleteModal"class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Delete this page?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Keep this page</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Delete this page</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--   END edit Dialogs   -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        var app = angular.module('scanApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+            $http.get("incl/data2.json")
+                .success(function(response) {$scope.names = response.records;});
+        });
+        app.controller('editCtrl', function($scope) {
+            $scope.color='lightblue';
+            $scope.name='Travel%20Expenses';
+            $scope.icon='plane';
+        });
+    </script>
+    <div class="modal fade" id="releaseModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Release license?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Release this license so it can be assigned to a different computer?&nbsp;
+                        <br>
+                        <br>This will immediately deactivate the software on this computer.</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-dismiss="modal">Keep</a>
+                    <a class="btn btn-primary" id="confirm" data-dismiss="modal">Release</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .modal.fade.fill .modal-dialog {
+            -webkit-transform: translate(25%, 0);
+            -ms-transform: translate(100%, 0);
+            -o-transform: translate(100%, 0);
+            transform: translate(100%, 0);
+        }
+        .modal.in.fill .modal-dialog {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+    </style>
+
+    <div class="modal fill fade" id="capture">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <div class="btn-group pull-left">
+                        <a class="btn btn-link" data-dismiss="modal"><i class=" fa fa-lg fa-close"></i>
+                        </a>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-link" id ="ck1" data-toggle="modal" data-target="#edges" data-dismiss="modal" class="disabled" disabled><i class=" fa fa-lg fa-check"></i>
+                        </a>
+                    </div>
+                    <h3 class="modal-title" id="captureLabel">Capture / import</h3>
+                </div>
+                <div class="modal-body" style="background-image:url('images/capture0.png'); background-repeat:no-repeat; background-size:cover;background-position:center top;background-origin:border-box;">
+                    &nbsp;
+                </div>
+                <div class="modal-footer" style="background-color:#fff; padding:15px 0 0;">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <a class="btn btn-link" class="disabled" disabled><i class=" fa fa-lg fa-trash"></i>
+                            <div>Delete</div>
+                        </a>
+                        <a class="btn btn-link" data-toggle="modal" data-target="#edges" data-dismiss="modal">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-th fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div>Photos</div>
+                        </a>
+                        <a class="btn btn-link" id="snap" data-toggle="modal" data-target="#edges" data-dismiss="modal">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div>Camera</div>
+                        </a>
+                        <a class="btn btn-link" class="disabled" disabled><i class=" fa fa-lg fa-plus"></i>
+                            <div>Page</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+
+
+-->
+    <div class="modal fill " id="edges">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+                    <div class="btn-group pull-left">
+                        <a class="btn btn-link" data-dismiss="modal"><i class=" fa fa-lg fa-close"></i>
+                        </a>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-link" data-toggle="modal" data-target="#submit" data-dismiss="modal"><i class=" fa fa-lg fa-check"></i>
+                        </a>
+                    </div>
+            <h3 class="modal-title" id="captureLabel">Define edges <small>(page <span id="pp">0</span>)</small></h3>
+          </div>
+          <div class="modal-body" style="background-image:url('images/capture1.png'); background-repeat:no-repeat; background-size:cover;background-position:center top;background-origin:border-box;">&nbsp;</div>
+          <div class="modal-footer" style="background-color:#fff; padding:15px 0 0;">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <a class="btn btn-link" id="del" data-dismiss="modal" data-toggle="modal" data-target="#capture"><i class=" fa fa-lg fa-trash"></i>
+                            <div>Delete</div>
+                        </a>
+                        <a class="btn btn-link" data-toggle="modal" data-target="#capture" data-dismiss="modal" class="disabled" disabled>
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-th fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div>Photos</div>
+                        </a>
+                        <a class="btn btn-link" data-toggle="modal" data-target="#capture" data-dismiss="modal" class="disabled" disabled>
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div>Camera</div>
+                        </a>
+                        <a class="btn btn-link" data-dismiss="modal" data-toggle="modal" data-target="#capture" ><i class=" fa fa-lg fa-plus"></i>
+                            <div>Page</div>
+                        </a>
+                    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fill fade" id="submit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" id="b" class="btn btn-link pull-left" aria-label="previous page">
+                        <span aria-hidden="true" class="fa fa-lg fa-chevron-left"></span>
+                    </button>
+                    <span class="h3 modal-title" id="captureLabel">Page <span id="pg">1</span> of <span id="tot">0</span></span>
+                    <button type="button" id="n" class="btn btn-link pull-right" aria-label="next page">
+                        <span aria-hidden="true" class="fa fa-lg fa-chevron-right"></span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background-color:#e7e3de;background-image:url('images/capture2.png');background-repeat:no-repeat; background-size:contain;background-position:center top;background-origin:border-box;">
+                    &nbsp;
+                </div>
+                <div class="modal-footer" style="background-color:#fff; padding:15px 0 0;">
+                    <div id="kbd" class="collapse in" style="text-align:left;">
+                        <div class="form-group text-nowrap" style="padding:0 15px;">
+                            <span class="text-left">
+                                <label id="label" class="h4" for="item1">Title</label>
+                            </span>
+                            <span class="pull-right">
+                                <span><span id="numberof">1</span> of  3 </span>
+                                <a href="#" class="btn btn-link" data-target="#kbd, #btns" data-toggle="collapse"><i class="fa fa-times"></i></a>
+                            </span>
+
+                            <div class="input-group">
+                              <input id="item1" type="text" class="form-control" disabled placeholder="">
+                              <div class="input-group-btn">
+                                <a href="#" class="btn btn-default"><i class="fa fa-chevron-left" id="back"></i></a>
+                            <a href="#" style="margin-left:0;" class="btn btn-default" data-target="#kbd, #btns" id="next"><i class="fa fa-chevron-right"></i></a>
+                              </div>
+                            </div>
+
+                        </div>
+                        <img src="images/keyboard.png" class="img-responsive"/>
+                    </div>
+                    <div class="collapse" id="btns">
+                        <div id="btns" class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <a class="btn btn-link" data-toggle="modal" data-target="#cancel" style="color:red">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                </span>
+                                <div>Cancel</div>
+                            </a>
+                            <a class="btn btn-link" data-toggle="modal" data-target="#meta" data-dismiss="modal">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-pause fa-stack-1x fa-inverse"></i>
+                                </span>
+                                <div>Hold</div>
+                            </a>
+                            <a class="btn btn-link" data-toggle="modal" data-target="#meta" data-dismiss="modal">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                                </span>
+                                <div>Submit</div>
+                            </a>
+                            <a class="btn btn-link" type="button" data-target="#kbd, #btns" data-toggle="collapse">
+                                <i class="fa fa-chevron-up fa-2x"></i>
+                                <div>Keypad</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cancel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Discard this document without saving?</p>
+                    <button id="yesCancel" class="btn btn-default" data-dismiss="modal" data-target="#submit">Yes</button>
+                    <button class="btn btn-default" data-dismiss="modal" data-target="#cancel">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#yesCancel').click(function(){
+            $('#submit').modal('hide');
+        });
+
+        $("#next").click(function(){
+            var n = $("#numberof");
+            var l = ["Zero", "Title", "Vendor", "PO Number", "Total"];
+            var c = Number(n.text());
+            if (c < 3){
+                n.text(++c);
+                $("#label").text(l[c]);
+            }else{
+                $("#next").attr("data-toggle", "collapse");
+            }
+
+        });
+        $("#back").click(function(){
+            var n = $("#numberof");
+            var l = ["Zero", "Title", "Vendor", "PO Number", "Total"];
+            var c = Number(n.text());
+            if (c > 1){
+                n.text(--c);
+                $("#label").text(l[c]);
+            }
+        });
+        $("#b").click(function(){
+            var n = $("#pg");
+            var c = Number(n.text());
+            var x = Number($("#tot").text())
+            if (c > 1){
+                n.text(--c);
+            }else{
+                n.text(x);
+            }
+        });
+        $("#n").click(function(){
+            var n = $("#pg");
+            var c = Number(n.text());
+            var x = Number($("#tot").text())
+            if (c < x){
+                n.text(++c);
+            }else{
+                n.text(1);
+            }
+        });
+
+        $("#snap").click(function(){
+            var n = $("#pp");
+            var n1 = $("#tot")
+            var c = Number(n.text());
+            n.text(++c);
+            n1.text(++c - 1);
+            $("#ck1").attr('disabled', false);
+        });
+        $("#del").click(function(){
+            var n = $("#pp");
+            var c = Number(n.text());
+            if (c > 1){
+                n.text(--c);
+            }
+        });
+
+    </script>
+</html>

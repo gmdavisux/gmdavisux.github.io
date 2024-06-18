@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="keywords" content="Scan">
+        <meta name="description" content="Kodak Alaris STAR Scanner">
+        <title>STAR Scanner</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../css/star.css">
+    </head>
+
+    <body ng-app="scanApp" ng-init="title='Untitled'">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <!-- navbarSrc -->
+            <div class="container-fluid">
+                <div class="navbar-header closeable">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>{{ title }}</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a onclick="history.back()" class="btn btn-link" data-toggle="tooltip" data-placement="bottom"
+                            title="close">&nbsp;<i class="fa fa-times"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- END navbarSrc -->
+        </div>
+    <div class="section">
+      <div class="container-fluid">
+        <div class="row editspace">
+          <div class="col-sm-3 left">
+            <ul class="list-group sm-img">
+              <li class="list-group-item text-center" ng-repeat-start="n in ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010']"><a href="#p{{ n }}" ><img class="img-responsive" src="../book/book_Page_{{ n }}.jpg" /></a>
+                </li>
+                <li class="list-group-item text-center split" ng-repeat-end>
+                <a class="btn" onClick="$(this).parent('li').toggleClass('in');"><span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-expand fa-rotate-135 fa-inverse"></i>
+                  <i class="fa fa-times fa-inverse"></i>
+                </span></a>
+                </li>
+
+            </ul>
+
+          </div>
+          <div class="col-sm-6 docview text-center">
+                  <form class="form-inline">
+                      <div class="form-group">
+                          <label for="exampleInputName2">Page</label>
+                          <input type="number" class="form-control" id="page" placeholder="1"> <span>of 4</span>
+                      </div>
+                  </form>
+
+              <div class="big-img" ng-repeat="n in ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010']" id="p{{ n }}" >
+              <img class="img-responsive" src="../book/book_Page_{{ n }}.jpg" />
+              </div>
+          </div>
+          <div class="col-sm-3 right">
+<ul class="list-group">
+  <li class="list-group-item form-group">
+          <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" ng-model="title" placeholder="Title">
+    </li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Author</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Author Name">
+</li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Chapter</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Chapter">
+</li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Category</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Category">
+</li>
+  <li class="list-group-item form-group">
+          <label for="meta1">Date</label>
+    <input type="text" class="form-control" id="meta1" placeholder="Date">
+</li>
+</ul>
+            </div>
+      </div>
+    </div>
+        <script>
+            $(function () {
+                            $('[data-toggle="tooltip"]').tooltip()
+                              })
+
+                            var app = angular.module('scanApp', []);
+                              app.controller('customersCtrl', function($scope, $http) {
+                                $http.get("data.txt")
+                                .success(function(response) {$scope.names = response.records;});
+                            });
+        </script>
+    </body>
+
+</html>
