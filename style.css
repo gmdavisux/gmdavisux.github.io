@@ -301,6 +301,8 @@ img.card-img-top {
 #close {
   right: 10px;
   top: 100px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #next {
