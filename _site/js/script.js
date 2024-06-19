@@ -231,6 +231,10 @@ fetch('js/projects.json')
             backButton.setAttribute('data-bs-placement', 'right');
         }
 
+        // Append the name to the title of the page
+        const titleElement = document.getElementsByTagName('title')[0]; // Get the first <title> element
+        titleElement.textContent += " – "+projects[currentIndex].name; // Change the title
+
         // Create the "Projects" button
         // Create the button
         const projectsButton = document.createElement('button');
@@ -349,6 +353,10 @@ fetch('js/projects.json')
                 document.getElementById('next').addEventListener('click', function () {
                     currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
                     document.getElementById('overlay-img').src = images[currentIndex].src;
+                });
+
+                document.getElementById('close').addEventListener('click', function () {
+                    document.getElementById('overlay').style.display = 'none';
                 });
 
                 // Close the overlay when clicking outside the image

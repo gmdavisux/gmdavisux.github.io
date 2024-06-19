@@ -282,19 +282,25 @@ img.card-img-top {
   max-height: 100%;
 }
 
-#prev, #next {
+#prev, #next, #close {
   position: absolute;
   top: 50%;
   z-index: 2;
   transform: translateY(-50%);
-  background: rgba(128,128,128,0.2);
+  background: rgba(0,0,0,0.5);
   border: none;
-  padding: 1em;
+  padding: 0.3em;
   cursor: pointer;
+  color:#fff;
+  font-size: xx-large;
 }
 
 #prev {
   left: 10px;
+}
+#close {
+  right: 10px;
+  top: 100px;
 }
 
 #next {
