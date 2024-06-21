@@ -233,7 +233,7 @@ fetch('js/projects.json')
 
         // Append the name to the title of the page
         const titleElement = document.getElementsByTagName('title')[0]; // Get the first <title> element
-        titleElement.textContent += " – "+projects[currentIndex].name; // Change the title
+        titleElement.textContent += " – " + projects[currentIndex].name; // Change the title
 
         // Create the "Projects" button
         // Create the button
@@ -323,48 +323,53 @@ fetch('js/projects.json')
                     specialContent.innerHTML = data;
                 }
                 // After the content has been loaded, replace the images and add a link to themselves
-                const images = specialContent.querySelectorAll('img');
-                const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
-                let currentIndex = 0;
+                // Check if the current page's query string does not include ?page=about or ?page=reco
+                if (!window.location.search.includes('?page=about') && !window.location.search.includes('?page=reco')) {
+                    // If the current page is neither about nor reco, select images from div.specialContent
+                    const images = specialContent.querySelectorAll('img');
+                    // Proceed with your code to handle the images as needed
+                    const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
+                    let currentIndex = 0;
 
-                for (let i = 0; i < images.length; i++) {
-                    const image = images[i];
-                    const currentSrc = image.src;
+                    for (let i = 0; i < images.length; i++) {
+                        const image = images[i];
+                        const currentSrc = image.src;
 
-                    // If the image src matches the regex, replace the src
-                    if (regex.test(currentSrc)) {
-                        const newSrc = currentSrc.replace(regex, 'images');
-                        image.src = newSrc;
+                        // If the image src matches the regex, replace the src
+                        if (regex.test(currentSrc)) {
+                            const newSrc = currentSrc.replace(regex, 'images');
+                            image.src = newSrc;
+                        }
+
+                        // Add a click event to open the overlay
+                        image.addEventListener('click', function () {
+                            currentIndex = i;
+                            document.getElementById('overlay-img').src = image.src;
+                            document.getElementById('overlay').style.display = 'flex';
+                        });
                     }
+                    // make the back and next buttons work
+                    document.getElementById('prev').addEventListener('click', function () {
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                        document.getElementById('overlay-img').src = images[currentIndex].src;
+                    });
 
-                    // Add a click event to open the overlay
-                    image.addEventListener('click', function () {
-                        currentIndex = i;
-                        document.getElementById('overlay-img').src = image.src;
-                        document.getElementById('overlay').style.display = 'flex';
+                    document.getElementById('next').addEventListener('click', function () {
+                        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                        document.getElementById('overlay-img').src = images[currentIndex].src;
+                    });
+
+                    document.getElementById('close').addEventListener('click', function () {
+                        document.getElementById('overlay').style.display = 'none';
+                    });
+
+                    // Close the overlay when clicking outside the image
+                    document.getElementById('overlay').addEventListener('click', function (e) {
+                        if (e.target.id === 'overlay') {
+                            this.style.display = 'none';
+                        }
                     });
                 }
-
-                document.getElementById('prev').addEventListener('click', function () {
-                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-                    document.getElementById('overlay-img').src = images[currentIndex].src;
-                });
-
-                document.getElementById('next').addEventListener('click', function () {
-                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                    document.getElementById('overlay-img').src = images[currentIndex].src;
-                });
-
-                document.getElementById('close').addEventListener('click', function () {
-                    document.getElementById('overlay').style.display = 'none';
-                });
-
-                // Close the overlay when clicking outside the image
-                document.getElementById('overlay').addEventListener('click', function (e) {
-                    if (e.target.id === 'overlay') {
-                        this.style.display = 'none';
-                    }
-                });
                 defaultContent.style.display = 'none';
                 specialContent.style.display = 'block';
                 heroContent.style.display = 'none';

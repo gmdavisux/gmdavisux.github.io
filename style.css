@@ -308,3 +308,17 @@ img.card-img-top {
 #next {
   right: 10px;
 }
+
+
+/* Override or reset styles for img if div.col-auto has .collapsed */
+div.col-auto:hover img{
+  filter: none !important;
+}
+/* Style for img inside div.col-auto that is not explicitly .collapsed */
+div.col-auto:not(.collapsed) img{
+  filter: none !important;
+}
+div.col-auto:not(.collapsed){
+  background-color: rgb(248, 249, 250)!important;
+}
+.collapsing {transition:none;}
