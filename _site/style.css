@@ -27,10 +27,15 @@
     page-break-inside: avoid;
     break-inside: avoid;
   }
-  h1, h2, h3{
+  h1, h2, h3, h4{
     --webkit-page-break-after: avoid;
     page-break-after: avoid;
     break-after: avoid;
+  }
+  /* no borders if printing */
+  div.col-auto:not(.collapsed){
+    border: none !important;
+    background-color: transparent !important;
   }
 }
 /* END media queries */

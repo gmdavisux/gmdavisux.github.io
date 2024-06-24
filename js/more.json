@@ -88,6 +88,12 @@
         "description": "Using color to communicate is not as easy as it may seem"
     },
     {
+        "name": "Filtering profiles",
+        "url": "?page=filtering",
+        "src": "images/filtering.png",
+        "description": "Automating the process of finding devices that need attention"
+    },
+    {
         "name": "About me",
         "url": "?page=about"
     },
