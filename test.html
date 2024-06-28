@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<script>
+    // ************ creating a link for next ************
+    // Assuming projects is an array of objects where each object has a 'url' property
+    const projects = [{url: 'project0'}, {url: 'project1'}, {url: 'project2'}]; // Example projects array
+    
+    // Retrieve the current query
+    const currentQuery = new URLSearchParams(window.location.search);
+
+    // ************ need check on where am i ************
+    const currentIndex = 1; // Example current index
+    
+    // The expression to get the next project's URL or loop back to the first
+    const nextPageUrl = projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].url;
+    
+    // Retrieve the current URL
+    const currentUrl = new URL(window.location.href);
+    
+    // Set or update the 'page' query parameter
+    currentUrl.searchParams.set('page', nextPageUrl);
+    
+    // Generate the new URL string
+    const newUrlString = currentUrl.toString();
+    
+    // newUrlString now contains the original URL with the 'page' query parameter updated to the next project's URL
+    console.log(newUrlString);
+    
+    // ************ creating a link for pages ************
+    // Set or update the 'page' query parameter
+    currentQuery.set('page', projects[1].url);
+        
+    // newUrlString now contains the original URL with the 'page' query parameter updated to the next project's URL
+    console.log('query', currentQuery.toString());
+    // console.log('next', newQuery);
+</script>
+
+</html>

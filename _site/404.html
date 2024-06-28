@@ -28,10 +28,11 @@
   gtag('config', 'G-X6Q4HXSVGD');
 </script>
 <style>
-  #navbarNav li.dropdown{
+  #navbarNav li.dropdown {
     display: none;
   }
 </style>
+
 <body class="bg-dark text-white" style="padding-top:100px;">
   <div class="container-fluid fixed-top header">
     <!-- bootstrap code to add full width header at the top of the page -->
@@ -97,6 +98,20 @@
     integrity="sha512-5vzl35V/cPSXliPbZtxHY0Q6cfYFd2Qld79+d7wLPbOxnKeCHH/LmlMD8aYl0ZN5VZPFM2FnKiAjoNJ2k3vrEg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
   <script src="js/404.js?v=3" type="text/javascript"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Assuming window.location.pathname is something like "/aaa/bbb"
+    const path = window.location.pathname;
+    const segments = path.split('/').filter(Boolean); // Removes any empty strings from the array
+
+    // Ensure there's at least one segment to work with
+    const firstDirectory = segments.length > 0 ? segments[0] : 'projects';
+    const jsonFile = firstDirectory + '.json';
+
+    console.log(path); // This should log something like "Requested: aaa.json"
+    console.log('Requested:', jsonFile); // This should log something like "Requested: aaa.json"
+});
+  </script>
 </body>
 
 </html>

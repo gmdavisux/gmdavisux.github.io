@@ -2,8 +2,8 @@
 fetch('js/projects.json')
     .then(response => response.json())
     .then(projects => {
-        // Get the current page from the URL query parameter
         const params = new URLSearchParams(window.location.search);
+        // Get the current page from the URL query parameter
         const pageParam = params.get('page');
         const currentPage = pageParam ? '?page=' + pageParam : './';
         // -- -- --  create the gallery of images -- -- -- //
@@ -152,15 +152,21 @@ fetch('js/projects.json')
                 card.className = 'card h-100';
                 card.dataset.bsTheme = 'light';
 
+                // Set or update the 'page' query parameter
+                params.set('page', project.url);
+
+                // Generate the new query string
+                const newQuery = params.toString();
+
                 // Create the card content
                 const cardContent = `
-        <a href="${project.url}">
+        <a href="${newQuery}">
           <img src="${project.src}" class="card-img-top" alt="${project.description}">
         </a>
         <div class="card-body">
           <h5 class="card-title">${project.name}</h5>
           <p class="card-text">${project.description}</p>
-          <a href="${project.url}" class="card-link">Learn more</a>
+          <a href="${newQuery}" class="card-link">Learn more</a>
         </div>
       `;
 
@@ -484,6 +490,20 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 // Start observing the document with the configured parameters
 observer.observe(document.body, { childList: true, subtree: true });
+
+// start of logic to load different content based on URL
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Assuming window.location.pathname is something like "/aaa/bbb"
+    const path = window.location.pathname;
+    const segments = path.split('/').filter(Boolean); // Removes any empty strings from the array
+
+    // Ensure there's at least one segment to work with
+    const firstDirectory = segments.length > 0 ? segments[0] : 'projects';
+    const jsonFile = firstDirectory + '.json';
+
+    console.log(path); // This should log something like "Requested: aaa.json"
+    console.log('Requested:', jsonFile); // This should log something like "Requested: aaa.json"
+});
 
 // images loading-time script (helped me to decide to not use CDN for images)
 /*
