@@ -1,104 +1,104 @@
 [
     {
         "name": "Home",
-        "url": "./"
+        "url": "?page=./"
     },
     {
         "name": "Replenishing Suppliers",
-        "url": "suppliers",
+        "url": "?page=suppliers",
         "src": "images/final-with-side-announcements.png.webp",
         "description": "Giving suppliers a landing-page they can use"
     },
     {
         "name": "Increasing Success",
-        "url": "success",
+        "url": "?page=success",
         "src": "images/screenshot-2024-02-23-at-12.56.10-pm.png",
         "description": "Improving profile completion by more than 50%"
     },
     {
         "name": "Best Laid Plans",
-        "url": "plans",
+        "url": "?page=plans",
         "src": "images/cc-billingplans-rules.png",
         "description": "Changing the app from a monitoring tool to a cash-flow machine"
     },
     {
         "name": "Story Telling",
-        "url": "story",
+        "url": "?page=story",
         "src": "images/bpc-clean2.png",
         "description": "Displaying resource trends at a glance and at scale"
     },
     {
         "name": "Peak Productivity",
-        "url": "peak",
+        "url": "?page=peak",
         "src": "images/marianas-home2.png",
         "description": "Reducing employee burnout and turnover"
     },
     {
         "name": "Design Rescue",
-        "url": "rescue",
+        "url": "?page=rescue",
         "src": "images/iix-current-crop.png",
         "description": "Turning an engineering prototype into a product with no time"
     },
     {
         "name": "Pocket-sizing a Flagship",
-        "url": "flagship",
+        "url": "?page=flagship",
         "src": "images/k1gob.png",
         "description": "Creating a pocket interface to this powerful tool"
     },
     {
         "name": "Managing Complexity",
-        "url": "complexity",
+        "url": "?page=complexity",
         "src": "images/complexity.webp",
         "description": "Organizing IT tasks for endpoint management"
     },
     {
         "name": "Enhanced Focus",
-        "url": "focus",
+        "url": "?page=focus",
         "src": "images/focus.png",
         "description": "Centered around the user&apos;s own images, rather than the user interface"
     },
     {
         "name": "Design Documentation",
-        "url": "style",
+        "url": "?page=style",
         "src": "images/style.png",
         "description": "Style guides ensure visual coherence across a product line"
     },
     {
         "name": "Adaptive Design",
-        "url": "adaptive",
+        "url": "?page=adaptive",
         "src": "images/adaptive.png",
         "description": "Adapting a strategic design to different display sizes and technologies"
     },
     {
         "name": "Visual Retro",
-        "url": "visual",
+        "url": "?page=visual",
         "src": "images/visual.png",
         "description": "My early work of creating icons, graphics, and animations for user interfaces"
     },
     {
         "name": "Login Convergence",
-        "url": "auth",
+        "url": "?page=auth",
         "src": "images/auth.png",
         "description": "Our design unified authorization, access, and accounting, is highly coherent and simple to use"
     },
     {
         "name": "Visualizing Sunlight",
-        "url": "sunlight",
+        "url": "?page=sunlight",
         "src": "images/sunlight.png",
         "description": "Using color to communicate is not as easy as it may seem"
     },
     {
         "name": "Filtering profiles",
-        "url": "filtering",
+        "url": "?page=filtering",
         "src": "images/filtering.png",
         "description": "Automating the process of finding devices that need attention"
     },
     {
         "name": "About me",
-        "url": "about"
+        "url": "?page=about"
     },
     {
         "name": "Recommendations",
-        "url": "reco"
+        "url": "?page=reco"
     }
 ]

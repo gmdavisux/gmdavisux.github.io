@@ -1,38 +1,44 @@
 <!doctype html>
 <html lang="en">
-<script>
-    // ************ creating a link for next ************
-    // Assuming projects is an array of objects where each object has a 'url' property
-    const projects = [{url: 'project0'}, {url: 'project1'}, {url: 'project2'}]; // Example projects array
-    
-    // Retrieve the current query
-    const currentQuery = new URLSearchParams(window.location.search);
 
-    // ************ need check on where am i ************
-    const currentIndex = 1; // Example current index
-    
-    // The expression to get the next project's URL or loop back to the first
-    const nextPageUrl = projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].url;
-    
-    // Retrieve the current URL
-    const currentUrl = new URL(window.location.href);
-    
-    // Set or update the 'page' query parameter
-    currentUrl.searchParams.set('page', nextPageUrl);
-    
-    // Generate the new URL string
-    const newUrlString = currentUrl.toString();
-    
-    // newUrlString now contains the original URL with the 'page' query parameter updated to the next project's URL
-    console.log(newUrlString);
-    
-    // ************ creating a link for pages ************
-    // Set or update the 'page' query parameter
-    currentQuery.set('page', projects[1].url);
-        
-    // newUrlString now contains the original URL with the 'page' query parameter updated to the next project's URL
-    console.log('query', currentQuery.toString());
-    // console.log('next', newQuery);
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <style>
+        body {
+            padding: 2em;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test</h1>
+</body>
+<script>
+    // Retrieve the current query
+    const params = new URLSearchParams(window.location.search);
+    console.log('query', params.toString());
+    fetch('js/projects.json')
+        .then(response => response.json())
+        .then(projects => {
+            projects.forEach(item => {
+                if (item.src !== undefined && item.src !== null) {
+                    // Your action to perform if item.src is defined
+                    console.log("Item has src:", item.src);
+                    // You can replace this with your actual logic
+                }
+                console.log('url', item.url);
+                const pageParam = params.get('page');  // Get the 'page' query value
+                // Check if item.url matches the page query (ignoring case)
+                if (item.url.toLowerCase() === pageParam?.toLowerCase()) {
+                    console.log("THIS Item matches page query:", item);
+                    // Replace this with your desired action
+                }
+                console.log('name', item.name);
+                console.log('description', item.description);
+            });
+        });
 </script>
 
 </html>
