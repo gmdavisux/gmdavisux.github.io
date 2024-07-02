@@ -135,6 +135,15 @@ fetch('js/projects.json')
 
         // Add the row to the div with id 'work'
         workDiv.appendChild(outerDiv);
+        function normalizeUrlValue(urlString) {
+            // Check if urlString is empty or null
+            if (!urlString) {
+                return urlString;  // Return empty string if no URL provided
+            }
+            // Assuming format is "?page=value" or just "value"
+            const parts = urlString.split('=');
+            return parts.length > 1 ? parts[1].toLowerCase() : urlString.toLowerCase();
+        }
 
         // Iterate over the data
         projects.forEach(project => {
@@ -153,20 +162,20 @@ fetch('js/projects.json')
                 card.dataset.bsTheme = 'light';
 
                 // Set or update the 'page' query parameter
-                params.set('page', project.url);
+                params.set('page', normalizeUrlValue(project.url));
 
                 // Generate the new query string
                 const newQuery = params.toString();
-
+console.log(newQuery);
                 // Create the card content
                 const cardContent = `
-        <a href="${newQuery}">
+        <a href="?${newQuery}">
           <img src="${project.src}" class="card-img-top" alt="${project.description}">
         </a>
         <div class="card-body">
           <h5 class="card-title">${project.name}</h5>
           <p class="card-text">${project.description}</p>
-          <a href="${newQuery}" class="card-link">Learn more</a>
+          <a href="?${newQuery}" class="card-link">Learn more</a>
         </div>
       `;
 

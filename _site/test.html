@@ -18,25 +18,80 @@
 <script>
     // Retrieve the current query
     const params = new URLSearchParams(window.location.search);
-    console.log('query', params.toString());
-    fetch('js/projects.json')
-        .then(response => response.json())
+    // get the specific values of the query to reuse them
+    const pageParam = params.get('page');  // Get the value of the 'page' parameter
+    let setParam = params.get('set') || 'projects';  // Use 'projects' if setParam is empty or undefined
+    // just checking
+    console.log('query:', params.toString(), 'set:', setParam, 'page:', pageParam);
+    // Construct the fetch URL with a fallback mechanism
+    const url = 'js/' + setParam + '.json';
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok && setParam !== 'projects') {
+                // Construct a new URL with both setParam and pageParam if file doesn't exist
+                const newUrl = new URL(window.location.href);
+                newUrl.searchParams.set('set', 'projects');  // Set projects as setParam
+                if (pageParam) {
+                    newUrl.searchParams.set('page', pageParam);  // Include existing pageParam
+                }
+                window.location.href = newUrl.toString();  // Reload with modified URL
+            }
+            return response.json();  // Continue if successful or reload triggered
+        })
         .then(projects => {
-            projects.forEach(item => {
+            projects.forEach((item, index) => {  // Wrap the loop body in parentheses
                 if (item.src !== undefined && item.src !== null) {
-                    // Your action to perform if item.src is defined
-                    console.log("Item has src:", item.src);
-                    // You can replace this with your actual logic
+                    // Your action to perform if item.src is defined (create the projects menu)
                 }
-                console.log('url', item.url);
-                const pageParam = params.get('page');  // Get the 'page' query value
-                // Check if item.url matches the page query (ignoring case)
-                if (item.url.toLowerCase() === pageParam?.toLowerCase()) {
-                    console.log("THIS Item matches page query:", item);
-                    // Replace this with your desired action
+                function normalizeUrlValue(urlString) {
+                    // Check if urlString is empty or null
+                    if (!urlString) {
+                        return urlString;  // Return empty string if no URL provided
+                    }
+                    // Assuming format is "?page=value" or just "value"
+                    const parts = urlString.split('=');
+                    return parts.length > 1 ? parts[1].toLowerCase() : urlString.toLowerCase();
                 }
-                console.log('name', item.name);
-                console.log('description', item.description);
+
+                // Normalize item.url within the loop (assuming it might not be normalized)
+                const pageValue = normalizeUrlValue(item.url); // the current iterative item.url e.g.'about'
+                console.log("pageValue:", pageValue); // Log the normalized pageValue
+                if (pageValue === pageParam) { // pageParam is the url query parameter - Check if the normalized pageValue matches the current pageParam
+                    console.log("current:", pageValue);
+
+                    // Access previous and next page items (considering edge cases with circular navigation)
+                    const previousPageItem = index === 0 ? projects[projects.length - 1] : projects[index - 1];
+                    const nextPageItem = index === projects.length - 1 ? projects[0] : projects[index + 1];
+                    console.log("previous:", previousPageItem, "next:", nextPageItem);
+                    // Use ternary statements for conditional logic
+                    const pagePrev = normalizeUrlValue(previousPageItem?.url) || projects[projects.length - 1].url;
+                    const pageNext = normalizeUrlValue(nextPageItem?.url) || projects[0].url;
+                    console.log("pagePrev:", pagePrev, "pageNext:", pageNext);
+
+                    // Reconstruct queries for previous and next pages using URLSearchParams
+                    const prevUrl = new URLSearchParams(); // new query parameters for pagePrev
+                    prevUrl.set('page', pagePrev); // Decrement page for previous
+
+                    const nextUrl = new URLSearchParams(); // new query parameters for pageNext
+                    nextUrl.set('page', pageNext); // Increment page for next
+
+                    // Ensure consistent set parameter (assuming it's present in pagePrev or pageNext)
+                    if (!prevUrl.has('set')) {
+                        prevUrl.set('set', setParam);
+                    }
+                    if (!nextUrl.has('set')) {
+                        nextUrl.set('set', setParam);
+                    }
+
+                    // Construct anchor tags with reconstructed queries
+                    const prevLink = `<a href="?${prevUrl.toString()}">Previous</a>`;
+                    const nextLink = `<a href="?${nextUrl.toString()}">Next</a>`;
+
+                    // Log or display the links (prevLink and nextLink)
+                    console.log("Previous Link:", prevLink);
+                    console.log("Next Link:", nextLink);
+                }
             });
         });
 </script>

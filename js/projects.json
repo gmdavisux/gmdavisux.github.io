@@ -81,7 +81,7 @@
     },
     {
         "name": "Recommendations",
-        "url": "?page=reco"
+        "url": "reco"
     }
 ]
 
