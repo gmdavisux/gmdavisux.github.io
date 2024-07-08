@@ -1,0 +1,92 @@
+<!-- grid -->
+<div class="col-md-6 col-lg-4 py-2 d-flex align-items-center justify-content-center">
+    <a href="?page=suppliers" class="image-container">
+        <img src="images/final-with-side-announcements.png.webp" class="img-fluid border">
+        <div class="image-overlay d-flex align-items-center justify-content-center">
+            <div class="overlay-content">
+                <h2>Replenishing Suppliers</h2>
+                <p>Giving suppliers a landing-page they can use</p>
+            </div>
+        </div>
+    </a>
+</div>
+
+<!-- column -->
+<div class="row row-cols-1">
+    <div class="col pb-3">
+        <div class="card h-100" data-bs-theme="light">
+            <a href="?page=suppliers">
+                <img src="images/final-with-side-announcements.png.webp" class="card-img-top"
+                    alt="Giving suppliers a landing-page they can use">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">Replenishing Suppliers</h5>
+                <p class="card-text">Giving suppliers a landing-page they can use</p>
+                <a href="?page=suppliers" class="card-link">Learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    fetch(url)
+        .then(response => {
+            if (!response.ok && setParam !== 'projects') {
+                // Construct a new URL with both setParam and pageParam if file doesn't exist
+                const newUrl = new URL(window.location.href);
+                newUrl.searchParams.set('set', 'projects');  // Set projects as setParam
+                if (pageParam) {
+                    newUrl.searchParams.set('page', pageParam);  // Include existing pageParam
+                }
+                window.location.href = newUrl.toString();  // Reload with modified URL
+            }
+            return response.json();
+        })
+        .then(projects => {
+            let gridHtml = ''; // Initialize empty string for grid HTML
+            let columnHtml = ''; // Initialize empty string for column HTML
+
+            projects.forEach((item, index) => {
+                if (item.src !== undefined && item.src !== null) {
+                    // Your action to perform if item.src is defined (create the projects menu)
+
+                    // Build HTML for both grid and column layouts (assuming logic uses item data)
+                    gridHtml += `
+          <div class="col-md-6 col-lg-4 py-2 d-flex align-items-center justify-content-center">
+              <a href="${item.url}" class="image-container">
+                  <img src="${item.img.src}" class="img-fluid border">
+                  <div class="image-overlay d-flex align-items-center justify-content-center">
+                      <div class="overlay-content">
+                          <h2>${item.name}</h2>
+                          <p>${item.description}</p>
+                      </div>
+                  </div>
+              </a>
+          </div>
+        `;
+
+                    columnHtml += `
+          <div class="row row-cols-1">
+              <div class="col pb-3">
+                  <div class="card h-100" data-bs-theme="light">
+                      <a href="${item.url}">
+                          <img src="${item.img.src}" class="card-img-top" alt="${item.description}">
+                      </a>
+                      <div class="card-body">
+                          <h5 class="card-title">${item.name}</h5>
+                          <p class="card-text">${item.description}</p>
+                          <a href="?page=suppliers" class="card-link">Learn more</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        `;
+                }
+
+                // ... rest of your logic inside the loop (e.g., page navigation)
+            });
+
+            // Use gridHtml and columnHtml for further processing or display
+        });
+
+</script>

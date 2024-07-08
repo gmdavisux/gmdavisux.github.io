@@ -4,6 +4,19 @@
 <head>
     <meta charset="utf-8">
     <title>Test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png?=v2">
+    <link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png?=v2">
+    <link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png?=v2">
+    <link rel="manifest" href="fav/site.webmanifest?=v2">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="style.css?=v3" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             padding: 2em;
@@ -14,17 +27,94 @@
 
 <body>
     <h1>Test</h1>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/"><i class="bi bi-house-door-fill"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="project" data-bs-toggle="offcanvas" href="#mywork" role="button"
+                aria-controls="mywork">My Work</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?page=about">About me</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?page=reco">Recommendations</a>
+        </li>
+    </ul>
+    <a class="nav-link" href="https://www.linkedin.com/in/garymdavis/">Linkedin</a>
+    <div id="features" class="container-fluid pt-3"></div>
+    <div data-bs-theme="dark" data-bs-scroll="true" class="offcanvas offcanvas-start" tabindex="-1" id="mywork"
+        aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasBottomLabel">My work</h3><button type="button" class="btn-close"
+                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div id="workmenu" class="offcanvas-body">
+            <!-- cards go here -->
+        </div>
+    </div>
+    <footer class="footer fixed-bottom bg-primary d-flex justify-content-between p-2 print-hide">
+        <a id="prev-btn" class="btn btn-sm btn-outline-light" href="reco" data-bs-toggle="tooltip" data-bs-placement="right"
+            data-bs-original-title="Recommendations">
+            <i class="bi bi-chevron-left"></i><span class="d-none d-md-inline">Back</span>
+        </a>
+        <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mywork"
+            aria-controls="mywork">My Work</button>
+        <a id="next-btn" class="btn btn-sm btn-outline-light" href="?page=suppliers" data-bs-toggle="tooltip"
+            data-bs-placement="right" data-bs-original-title="Replenishing Suppliers">
+            <span class="d-none d-md-inline">Next</span><i class="bi bi-chevron-right"></i>
+        </a>
+    </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.20/fetch.min.js"
+    integrity="sha512-5vzl35V/cPSXliPbZtxHY0Q6cfYFd2Qld79+d7wLPbOxnKeCHH/LmlMD8aYl0ZN5VZPFM2FnKiAjoNJ2k3vrEg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
 <script>
     // Retrieve the current query
     const params = new URLSearchParams(window.location.search);
     // get the specific values of the query to reuse them
-    const pageParam = params.get('page');  // Get the value of the 'page' parameter
+    const pageParam = params.get('page') || '';  // Set pageParam to empty string if 'page' is missing
     let setParam = params.get('set') || 'projects';  // Use 'projects' if setParam is empty or undefined
-    // just checking
-    console.log('query:', params.toString(), 'set:', setParam, 'page:', pageParam);
+
     // Construct the fetch URL with a fallback mechanism
     const url = 'js/' + setParam + '.json';
+
+    // Normalize the URL value becasue old files may include the full query string
+    function normalizeUrlValue(urlString) {
+        // Check if urlString is empty or null
+        if (!urlString) {
+            return urlString;  // Return empty string if no URL provided
+        }
+        // Assuming format is "?page=value" or just "value"
+        const parts = urlString.split('=');
+        return parts.length > 1 ? parts[1].toLowerCase() : urlString.toLowerCase();
+    }
+
+    // Create a function to generate the page URL using the current set param and the page param
+    function createPageUrl(itemUrl, pageParam, setParam) {
+        const urlSearchParams = new URLSearchParams();
+
+        // Always add the page parameter if itemUrl is provided
+        if (itemUrl) {
+            // Handle the special case for home
+            if (itemUrl === "./") {
+                // Don't add a page parameter for home
+            } else {
+                urlSearchParams.set('page', itemUrl);
+            }
+        }
+
+        // Always add the set parameter
+        if (setParam) {
+            urlSearchParams.set('set', setParam);
+        }
+
+        return urlSearchParams.toString();
+    }
 
     fetch(url)
         .then(response => {
@@ -40,60 +130,128 @@
             return response.json();  // Continue if successful or reload triggered
         })
         .then(projects => {
-            projects.forEach((item, index) => {  // Wrap the loop body in parentheses
-                if (item.src !== undefined && item.src !== null) {
-                    // Your action to perform if item.src is defined (create the projects menu)
-                }
-                function normalizeUrlValue(urlString) {
-                    // Check if urlString is empty or null
-                    if (!urlString) {
-                        return urlString;  // Return empty string if no URL provided
-                    }
-                    // Assuming format is "?page=value" or just "value"
-                    const parts = urlString.split('=');
-                    return parts.length > 1 ? parts[1].toLowerCase() : urlString.toLowerCase();
-                }
+            let gridHtml = ''; // Initialize empty string for grid HTML
+            let columnHtml = ''; // Initialize empty string for column HTML
+            gridHtml += '<div class="container py-4"><div class="row">';  // Add opening tags
 
+            projects.forEach((item, index) => {  // Wrap the loop body in parentheses
                 // Normalize item.url within the loop (assuming it might not be normalized)
                 const pageValue = normalizeUrlValue(item.url); // the current iterative item.url e.g.'about'
-                console.log("pageValue:", pageValue); // Log the normalized pageValue
-                if (pageValue === pageParam) { // pageParam is the url query parameter - Check if the normalized pageValue matches the current pageParam
-                    console.log("current:", pageValue);
+
+                const indexLink = createPageUrl(pageValue, pageParam, setParam);
+
+                if (pageValue === pageParam) {
 
                     // Access previous and next page items (considering edge cases with circular navigation)
                     const previousPageItem = index === 0 ? projects[projects.length - 1] : projects[index - 1];
                     const nextPageItem = index === projects.length - 1 ? projects[0] : projects[index + 1];
-                    console.log("previous:", previousPageItem, "next:", nextPageItem);
+
+                    // Get the names of the previous and next items for prev and next tooltips
+                    const prevName = previousPageItem.name;
+                    const nextName = nextPageItem.name;
+
                     // Use ternary statements for conditional logic
                     const pagePrev = normalizeUrlValue(previousPageItem?.url) || projects[projects.length - 1].url;
                     const pageNext = normalizeUrlValue(nextPageItem?.url) || projects[0].url;
-                    console.log("pagePrev:", pagePrev, "pageNext:", pageNext);
 
-                    // Reconstruct queries for previous and next pages using URLSearchParams
-                    const prevUrl = new URLSearchParams(); // new query parameters for pagePrev
-                    prevUrl.set('page', pagePrev); // Decrement page for previous
-
-                    const nextUrl = new URLSearchParams(); // new query parameters for pageNext
-                    nextUrl.set('page', pageNext); // Increment page for next
-
-                    // Ensure consistent set parameter (assuming it's present in pagePrev or pageNext)
-                    if (!prevUrl.has('set')) {
-                        prevUrl.set('set', setParam);
-                    }
-                    if (!nextUrl.has('set')) {
-                        nextUrl.set('set', setParam);
-                    }
-
-                    // Construct anchor tags with reconstructed queries
-                    const prevLink = `<a href="?${prevUrl.toString()}">Previous</a>`;
-                    const nextLink = `<a href="?${nextUrl.toString()}">Next</a>`;
+                    // Use the function to create URLs
+                    const prevBtn = document.getElementById('prev-btn');
+                    prevBtn.setAttribute('href', createPageUrl(pagePrev, pageParam, setParam));
+                    prevBtn.setAttribute('data-bs-original-title', prevName);
+                    const nextBtn = document.getElementById('next-btn');
+                    nextBtn.setAttribute('href', createPageUrl(pageNext, pageParam, setParam));
+                    nextBtn.setAttribute('data-bs-original-title', nextName);
 
                     // Log or display the links (prevLink and nextLink)
-                    console.log("Previous Link:", prevLink);
-                    console.log("Next Link:", nextLink);
                 }
+                // build grid and menu
+                if (item.src !== undefined && item.src !== null) {
+                    // Your action to perform if item.src is defined (create the projects menu)
+                    // Build HTML for both grid and column layouts (assuming logic uses item data)
+                    gridHtml += `
+                    <div class="col-md-6 col-lg-4 py-2 d-flex align-items-center justify-content-center">
+                        <a href="?${indexLink}" class="image-container">
+                            <img src="${item.src}" class="img-fluid border">
+                            <div class="image-overlay d-flex align-items-center justify-content-center">
+                                <div class="overlay-content">
+                                    <h2>${item.name}</h2>
+                                    <p>${item.description}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    `;
+
+                    columnHtml += `
+                    <div class="row row-cols-1">
+                        <div class="col pb-3">
+                            <div class="card h-100" data-bs-theme="light">
+                                <a href="?${indexLink}">
+                                    <img src="${item.src}" class="card-img-top" alt="${item.description}">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.name}</h5>
+                                    <p class="card-text">${item.description}</p>
+                                    <a href="?${indexLink}" class="card-link">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+
             });
+            gridHtml += '</div></div>';  // Add closing tags
+            // display the gridHtml in the features div
+            const featuresDiv = document.getElementById('features');
+            const menuDiv = document.getElementById('workmenu');
+            featuresDiv.innerHTML = gridHtml; // Set the innerHTML of the features div
+            menuDiv.innerHTML = columnHtml; // Set the innerHTML of the features div
         });
+    
+    // make sure all links have the set parameter
+    window.onload = function () {
+        // Iterate through all links on the page
+        const links = document.querySelectorAll('a[href]');
+        links.forEach(link => {
+            const originalHref = link.getAttribute('href');
+
+            // Skip external links
+            if (originalHref.startsWith('http') || originalHref.startsWith('//')) {
+                return;
+            }
+
+            // Skip any hashed links
+            if (originalHref.includes('#')) {
+                return;
+            }
+
+            // Parse the original URL
+            const url = new URL(originalHref, window.location.origin);
+
+            // Preserve existing query parameters
+            const searchParams = new URLSearchParams(url.search);
+
+            // Add the 'set' parameter only if it doesn't exist
+            if (!searchParams.has('set')) {
+                searchParams.set('set', setParam);
+            }
+
+            // Reconstruct the URL
+            if (searchParams.toString()) {
+                url.search = '?' + searchParams.toString();
+            }
+
+            // Set the modified href
+            if (originalHref === '/') {
+                // Special case for home link
+                link.setAttribute('href', url.pathname + (searchParams.toString() ? '?' + searchParams.toString() : ''));
+            } else {
+                link.setAttribute('href', url.pathname + url.search);
+            }
+        });
+    };
+
 </script>
 
 </html>
