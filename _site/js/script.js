@@ -309,22 +309,41 @@ window.addEventListener('scroll', function () {
 // add active to the current nav-item for color change
 function updateNavLinks() {
     const navLinks = document.querySelectorAll('.nav-link');
-    const currentUrl = window.location.href;
+    const currentUrl = new URL(window.location.href);
+    const currentPage = currentUrl.searchParams.get('page');
     const defaultLink = document.getElementById('project');
-
     let isActiveClassAdded = false;
 
     navLinks.forEach(link => {
-        if (link.href === currentUrl) {
+        // Remove any existing 'active' class
+        link.classList.remove('active');
+
+        const href = link.getAttribute('href');
+
+        // Handle different types of links
+        if (href === '/' && currentUrl.pathname === '/' && !currentPage) {
+            // Home page
             link.classList.add('active');
             isActiveClassAdded = true;
+        } else if (href.startsWith('?page=')) {
+            // Links with page parameter
+            const linkPage = new URLSearchParams(href.slice(1)).get('page');
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+                isActiveClassAdded = true;
+            }
+        } else if (href === '#mywork' && link.id === 'project') {
+            // Special case for "My Work" link
+            // This will be handled after the loop
         }
     });
 
-    if (!isActiveClassAdded) {
+    // Handle the default "My Work" link
+    if (!isActiveClassAdded && defaultLink) {
         defaultLink.classList.add('active');
     }
 }
+
 
 // add initialization for tooltips
 function initializeTooltips() {
