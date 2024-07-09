@@ -94,6 +94,12 @@
         "description": "Automating the process of finding devices that need attention"
     },
     {
+        "name": "Beyond Expectations",
+        "url": "beyond",
+        "src": "images/clientflow-clip.jpeg",
+        "description": "I started asking questions to discover the actual problem this was solving"
+    },
+    {
         "name": "About me",
         "url": "?page=about"
     },
