@@ -58,6 +58,24 @@
         "description": "Centered around the user&apos;s own images, rather than the user interface"
     },
     {
+        "name": "Design Documentation",
+        "url": "?page=style",
+        "src": "images/style.png",
+        "description": "Style guides ensure visual coherence across a product line"
+    },
+    {
+        "name": "Adaptive Design",
+        "url": "?page=adaptive",
+        "src": "images/adaptive.png",
+        "description": "Adapting a strategic design to different display sizes and technologies"
+    },
+    {
+        "name": "Visual Retro",
+        "url": "?page=visual",
+        "src": "images/visual.png",
+        "description": "My early work of creating icons, graphics, and animations for user interfaces"
+    },
+    {
         "name": "About me",
         "url": "?page=about"
     },
