@@ -107,7 +107,9 @@ function processProjects(projects, pageParam, setParam) {
         }
 
         if (item.src !== undefined && item.src !== null) {
-            gridHtml += generateGridItemHtml(item, indexLink);
+            if (!pageParam) { // This checks if pageParam is undefined, null, or an empty string
+                gridHtml += generateGridItemHtml(item, indexLink);
+            }
             columnHtml += generateColumnItemHtml(item, indexLink);
         }
     });
