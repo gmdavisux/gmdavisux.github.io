@@ -100,6 +100,18 @@
         "description": "I started asking questions to discover the actual problem this was solving"
     },
     {
+        "name": "As Little Design as Possible",
+        "url": "scan",
+        "src": "images/scan.png",
+        "description": "minimizing user configuration between networked scanners and computers"
+    },
+    {
+        "name": "Handling Constraints",
+        "url": "driver",
+        "src": "images/driver.png",
+        "description": "patented and designed to be unobtrusive"
+    },
+    {
         "name": "About me",
         "url": "?page=about"
     },

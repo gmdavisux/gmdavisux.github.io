@@ -173,11 +173,13 @@ fetch(url)
                     const data = await response.text();
                     specialContent.innerHTML = data;
                 }
-                // After the content has been loaded, replace the images and add a link to themselves
+                // ----------- After the content has been loaded, replace the images and add a link to themselves
                 // Check if the current page's query string does not include ?page=about or ?page=reco
                 if (!window.location.search.includes('?page=about') && !window.location.search.includes('?page=reco')) {
                     // If the current page is neither about nor reco, select images from div.specialContent
                     const images = specialContent.querySelectorAll('img');
+                    const header = document.querySelector('.header');
+                    const footer = document.querySelector('.footer');
                     // Proceed with your code to handle the images as needed
                     const regex = /^https:\/\/usersimple\.files\.wordpress\.com\/\d+\/\d+/;
                     let currentIndex = 0;
@@ -197,6 +199,8 @@ fetch(url)
                             currentIndex = i;
                             document.getElementById('overlay-img').src = image.src;
                             document.getElementById('overlay').style.display = 'flex';
+                            header.classList.add('hide-header');
+                            footer.classList.add('hide-footer');                
                         });
                     }
                     // make the back and next buttons work
@@ -211,16 +215,23 @@ fetch(url)
                     });
 
                     document.getElementById('close').addEventListener('click', function () {
-                        document.getElementById('overlay').style.display = 'none';
+                        closeOverlay();
                     });
 
                     // Close the overlay when clicking outside the image
                     document.getElementById('overlay').addEventListener('click', function (e) {
                         if (e.target.id === 'overlay') {
-                            this.style.display = 'none';
+                            closeOverlay();
                         }
                     });
+                    function closeOverlay() {
+                        document.getElementById('overlay').style.display = 'none';
+                        header.classList.remove('hide-header');
+                        footer.classList.remove('hide-footer');
+                    }                
                 }
+
+                // -------------------- //
                 defaultContent.style.display = 'none';
                 specialContent.style.display = 'block';
                 heroContent.style.display = 'none';

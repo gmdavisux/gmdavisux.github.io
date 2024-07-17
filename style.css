@@ -93,6 +93,16 @@ h1, h2, h3, h4, h5 {
   background-repeat: no-repeat;
   background-color: dodgerblue;
   background-blend-mode: multiply;
+  transition: transform 0.3s ease-in-out;
+}
+.hide-header {
+  transform: translateY(-100%);
+}
+.footer {
+  transition: transform 0.3s ease-in-out;
+}
+.hide-footer {
+  transform: translateY(100%);
 }
 
 .brand-color {
@@ -305,7 +315,7 @@ img.card-img-top {
 }
 #close {
   right: 10px;
-  top: 100px;
+  top: 50px;
   padding-top: 0;
   padding-bottom: 0;
 }
