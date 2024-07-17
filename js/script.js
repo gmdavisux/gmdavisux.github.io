@@ -205,13 +205,21 @@ fetch(url)
                     }
                     // make the back and next buttons work
                     document.getElementById('prev').addEventListener('click', function () {
-                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-                        document.getElementById('overlay-img').src = images[currentIndex].src;
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            document.getElementById('overlay-img').src = images[currentIndex].src;
+                        } else {
+                            closeOverlay();
+                        }
                     });
-
+                    
                     document.getElementById('next').addEventListener('click', function () {
-                        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                        document.getElementById('overlay-img').src = images[currentIndex].src;
+                        if (currentIndex < images.length - 1) {
+                            currentIndex++;
+                            document.getElementById('overlay-img').src = images[currentIndex].src;
+                        } else {
+                            closeOverlay();
+                        }
                     });
 
                     document.getElementById('close').addEventListener('click', function () {
