@@ -48,6 +48,12 @@ function updateNavigationButtons(currentIndex, projects, pageParam, setParam) {
 
     updateButton('prev-btn', projects[prevIndex], pageParam, setParam);
     updateButton('next-btn', projects[nextIndex], pageParam, setParam);
+    
+    // Update the current page HTML title
+    const currentProject = projects[currentIndex];
+    if (currentProject && currentProject.name) {
+        document.title = currentProject.name;
+    }
 }
 
 function updateButton(buttonId, item, pageParam, setParam) {
