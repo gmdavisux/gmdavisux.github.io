@@ -112,6 +112,12 @@
         "description": "patented and designed to be unobtrusive"
     },
     {
+        "name": "Simplified Install",
+        "url": "simplify",
+        "src": "images/ka-install.png",
+        "description": "From 57 screens to 8 or steps less"
+    },
+    {
         "name": "About me",
         "url": "?page=about"
     },
