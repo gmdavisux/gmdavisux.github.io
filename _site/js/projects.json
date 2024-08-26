@@ -46,10 +46,10 @@
         "description": "Creating a pocket interface to this powerful tool"
     },
     {
-        "name": "Managing Complexity",
-        "url": "?page=complexity",
-        "src": "images/complexity.webp",
-        "description": "Organizing IT tasks for endpoint management"
+        "name": "Simplified Install",
+        "url": "simplify",
+        "src": "images/ka-install.png",
+        "description": "From 57 screens to 8 steps or less"
     },
     {
         "name": "Enhanced Focus",
