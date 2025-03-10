@@ -298,25 +298,33 @@ function updateContactInfo() {
     var liElements = document.querySelectorAll('.dropdown-menu .dropdown-item');
     var email = ['&#103;&#97;&#114;&#121;&#46;&#100;&#97;&#118;&#105;&#115;', '&#64;', '&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'];
     var phone = ['&#53;&#56;&#53;', '&#45;', '&#51;&#48;&#49;', '&#45;', '&#48;&#52;&#54;&#55;'];
-
+    
     function decodeHtml(html) {
         var txt = document.createElement("textarea");
         txt.innerHTML = html;
         return txt.value;
     }
-
-    // Keep the obfuscated version in the HTML
-    liElements[0].innerHTML = phone.join('');
-    liElements[1].innerHTML = email.join('');
-
-    // Set up click event listeners to use the decoded version
-    liElements[0].addEventListener('click', function(e) {
-        e.preventDefault();
+    
+    // Get the actual <a> elements inside the list items
+    var phoneLink = liElements[0].querySelector('a');
+    var emailLink = liElements[1].querySelector('a');
+    
+    // Keep the obfuscated version in the text content
+    phoneLink.innerHTML = phone.join('');
+    emailLink.innerHTML = email.join('');
+    
+    // Add the proper href attributes with protocols
+    phoneLink.href = 'tel:' + decodeHtml(phone.join(''));
+    emailLink.href = 'mailto:' + decodeHtml(email.join(''));
+    
+    // If you still want click handlers (optional now that href is properly set)
+    phoneLink.addEventListener('click', function(e) {
+        // No need for preventDefault since href is now properly set
         window.location.href = 'tel:' + decodeHtml(phone.join(''));
     });
-
-    liElements[1].addEventListener('click', function(e) {
-        e.preventDefault();
+    
+    emailLink.addEventListener('click', function(e) {
+        // No need for preventDefault since href is now properly set
         window.location.href = 'mailto:' + decodeHtml(email.join(''));
     });
 }
