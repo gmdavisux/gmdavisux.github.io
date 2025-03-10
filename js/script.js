@@ -300,23 +300,39 @@ function updateContactInfo() {
     var phone = ['&#53;&#56;&#53;', '&#45;', '&#51;&#48;&#49;', '&#45;', '&#48;&#52;&#54;&#55;'];
     
     function decodeHtml(html) {
-        var txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
+      var txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
     }
     
-    // Get the actual <a> elements inside the list items
-    var phoneLink = liElements[0];
-    var emailLink = liElements[1];
+    // Keep the obfuscated version in the HTML
+    liElements[0].innerHTML = phone.join('');
+    liElements[1].innerHTML = email.join('');
     
-    // Set the obfuscated version as the content
-    phoneLink.innerHTML = phone.join('');
-    emailLink.innerHTML = email.join('');
+    // Instead of setting href directly (which would be visible on hover),
+    // just set the click handlers
+    liElements[0].addEventListener('click', function(e) {
+      e.preventDefault();
+      // Create and click a temporary link
+      var tempLink = document.createElement('a');
+      tempLink.href = 'tel:' + decodeHtml(phone.join(''));
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+    });
     
-    // Set the proper href attributes with protocols
-    phoneLink.href = 'tel:' + decodeHtml(phone.join(''));
-    emailLink.href = 'mailto:' + decodeHtml(email.join(''));
-}
+    liElements[1].addEventListener('click', function(e) {
+      e.preventDefault();
+      // Create and click a temporary link
+      var tempLink = document.createElement('a');
+      tempLink.href = 'mailto:' + decodeHtml(email.join(''));
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+    });
+  }
 
 //   hide the hero portion of the navbar when scrolling
 window.addEventListener('scroll', function () {
