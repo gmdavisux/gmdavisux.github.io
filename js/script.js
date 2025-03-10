@@ -306,27 +306,16 @@ function updateContactInfo() {
     }
     
     // Get the actual <a> elements inside the list items
-    var phoneLink = liElements[0].querySelector('a');
-    var emailLink = liElements[1].querySelector('a');
+    var phoneLink = liElements[0];
+    var emailLink = liElements[1];
     
-    // Keep the obfuscated version in the text content
+    // Set the obfuscated version as the content
     phoneLink.innerHTML = phone.join('');
     emailLink.innerHTML = email.join('');
     
-    // Add the proper href attributes with protocols
+    // Set the proper href attributes with protocols
     phoneLink.href = 'tel:' + decodeHtml(phone.join(''));
     emailLink.href = 'mailto:' + decodeHtml(email.join(''));
-    
-    // If you still want click handlers (optional now that href is properly set)
-    phoneLink.addEventListener('click', function(e) {
-        // No need for preventDefault since href is now properly set
-        window.location.href = 'tel:' + decodeHtml(phone.join(''));
-    });
-    
-    emailLink.addEventListener('click', function(e) {
-        // No need for preventDefault since href is now properly set
-        window.location.href = 'mailto:' + decodeHtml(email.join(''));
-    });
 }
 
 //   hide the hero portion of the navbar when scrolling
