@@ -38,7 +38,7 @@
 </style>
 
 <body>
-  <div role="header" class="container-fluid fixed-top header print-hide">
+  <header class="container-fluid fixed-top header print-hide">
     <!-- bootstrap code to add full width header at the top of the page -->
     <nav class="navbar navbar-dark navbar-expand-md">
       <div class="container">
@@ -89,14 +89,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
   <!-- // add a container with a row and two columns -->
-  <div id="defaultContent" role="main">
+  <main id="defaultContent">
     <!-- code within default content should only appear on the home page -->
     <div id="features" class="container-fluid pt-3">
     </div> <!-- // container-fluid -->
     <!-- work will appear here -->
-  </div> <!-- end defaultContent -->
+  </main> <!-- end defaultContent -->
   <div id="specialContent" style="display: none;">
     <h1>Special Content</h1>
     <p>I'm a Rochester, NY based designer who loves to use design to make people's work lives easier and more
@@ -104,7 +104,7 @@
     <p>Principal UX designer formerly at Coupa, CloudCheckr/NetApp, Eagleview, Kodak, Dell, Xerox</p>
   </div>
 
-  <div id="contentContainer"></div>
+  <div role="main" id="contentContainer"></div>
 
   <!-- load carousel -->
   <div class="pb-5" id="work"></div>
