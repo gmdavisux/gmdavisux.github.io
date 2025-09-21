@@ -261,25 +261,12 @@ img.card-img-top {
     border-top-right-radius: 0 !important;
   }
 
-  .image-container .overlay-content {
-    top: auto;
-    bottom: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px; /* adjust as needed */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 
   .image-container .overlay-content h2 {
     margin: 0;
     font-size: small;
   }
 
-  .image-container .overlay-content p {
-    display: none;
-  }
 }
 /* ********* new styles for image overlay caousel */
 #overlay {
