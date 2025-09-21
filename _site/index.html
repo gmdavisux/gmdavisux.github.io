@@ -36,11 +36,11 @@
 </style>
 
 <body>
-  <div role="header" class="container-fluid fixed-top header print-hide">
+  <header class="container-fluid fixed-top header print-hide">
     <!-- bootstrap code to add full width header at the top of the page -->
     <nav class="navbar navbar-dark navbar-expand-md">
       <div class="container">
-        <span class="navbar-brand" href="/">gary m davis</span>
+        <span class="navbar-brand">gary m davis</span>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -87,14 +87,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
   <!-- // add a container with a row and two columns -->
-  <div role="main" id="defaultContent">
+  <main id="defaultContent">
     <!-- code within default content should only appear on the home page -->
     <div id="features" class="container-fluid pt-3">
     </div> <!-- // container-fluid -->
     <!-- work will appear here -->
-  </div> <!-- end defaultContent -->
+  </main> <!-- end defaultContent -->
   <div id="specialContent" style="display: none;">
     <h1>Special Content</h1>
     <p>I'm a Rochester, NY based designer who loves to use design to make people's work lives easier and more
@@ -102,7 +102,7 @@
     <p>Principal UX designer formerly at Coupa, CloudCheckr/NetApp, Eagleview, Kodak, Dell, Xerox</p>
   </div>
 
-  <div id="contentContainer"></div>
+  <div role="main" id="contentContainer"></div>
 
   <!-- load carousel -->
   <div class="pb-5" id="work"></div>
@@ -119,7 +119,7 @@
       <h3 class="offcanvas-title" id="offcanvasBottomLabel">My work</h3><button type="button" class="btn-close"
           data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div id="workmenu" class="offcanvas-body">
+  <div id="workmenu" role="navigation" class="offcanvas-body">
       <!-- cards go here -->
   </div>
 </div>

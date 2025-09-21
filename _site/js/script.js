@@ -71,7 +71,6 @@ function generateGridItemHtml(item, indexLink) {
             <img src="${item.src}" class="img-fluid border">
             <div class="image-overlay d-flex align-items-center justify-content-center">
                 <div class="overlay-content">
-                    <h2>${item.name}</h2>
                     <p>${item.description}</p>
                 </div>
             </div>
@@ -298,28 +297,41 @@ function updateContactInfo() {
     var liElements = document.querySelectorAll('.dropdown-menu .dropdown-item');
     var email = ['&#103;&#97;&#114;&#121;&#46;&#100;&#97;&#118;&#105;&#115;', '&#64;', '&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'];
     var phone = ['&#53;&#56;&#53;', '&#45;', '&#51;&#48;&#49;', '&#45;', '&#48;&#52;&#54;&#55;'];
-
+    
     function decodeHtml(html) {
-        var txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
+      var txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
     }
-
+    
     // Keep the obfuscated version in the HTML
     liElements[0].innerHTML = phone.join('');
     liElements[1].innerHTML = email.join('');
-
-    // Set up click event listeners to use the decoded version
+    
+    // Instead of setting href directly (which would be visible on hover),
+    // just set the click handlers
     liElements[0].addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'tel:' + decodeHtml(phone.join(''));
+      e.preventDefault();
+      // Create and click a temporary link
+      var tempLink = document.createElement('a');
+      tempLink.href = 'tel:' + decodeHtml(phone.join(''));
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
     });
-
+    
     liElements[1].addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'mailto:' + decodeHtml(email.join(''));
+      e.preventDefault();
+      // Create and click a temporary link
+      var tempLink = document.createElement('a');
+      tempLink.href = 'mailto:' + decodeHtml(email.join(''));
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
     });
-}
+  }
 
 //   hide the hero portion of the navbar when scrolling
 window.addEventListener('scroll', function () {

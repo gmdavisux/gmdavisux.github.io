@@ -71,7 +71,6 @@ function generateGridItemHtml(item, indexLink) {
             <img src="${item.src}" class="img-fluid border">
             <div class="image-overlay d-flex align-items-center justify-content-center">
                 <div class="overlay-content">
-                    <h2>${item.name}</h2>
                     <p>${item.description}</p>
                 </div>
             </div>
