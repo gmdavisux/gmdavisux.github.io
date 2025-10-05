@@ -40,10 +40,10 @@
         "description": "Turning an engineering prototype into a product with no time"
     },
     {
-        "name": "Pocket-sizing a Flagship",
-        "url": "?page=flagship",
-        "src": "images/k1gob.png",
-        "description": "Creating a pocket interface to this powerful tool"
+        "name": "Visualizing Sunlight",
+        "url": "?page=sunlight",
+        "src": "images/sunlight.png",
+        "description": "Using color to communicate is not as easy as it may seem"
     },
     {
         "name": "Simplified Install",
