@@ -28,6 +28,12 @@
         "description": "Displaying resource trends at a glance and at scale"
     },
     {
+        "name": "Visualizing Sunlight",
+        "url": "?page=sunlight",
+        "src": "images/sunlight.png",
+        "description": "Choosing the right color is critical to success"
+    },
+    {
         "name": "Peak Productivity",
         "url": "?page=peak",
         "src": "images/marianas-home2.png",
@@ -38,12 +44,6 @@
         "url": "?page=rescue",
         "src": "images/iix-current-crop.png",
         "description": "Turning an engineering prototype into a product with no time"
-    },
-    {
-        "name": "Visualizing Sunlight",
-        "url": "?page=sunlight",
-        "src": "images/sunlight.png",
-        "description": "Choosing the right color is critical to success"
     },
     {
         "name": "Simplified Install",
