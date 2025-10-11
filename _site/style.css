@@ -260,6 +260,8 @@ img.card-img-top {
   .image-overlay.rounded {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+    max-width: 50%;
+    max-height: 50%;
   }
 
 
