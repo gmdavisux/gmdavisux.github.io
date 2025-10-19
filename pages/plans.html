@@ -1,113 +1,102 @@
-<!-- bootstrap container div with one row and one column -->
 <div class="container py-5">
-
   <div class="row">
     <div class="col-lg-12">
       <h1>Best Laid Plans</h1>
       <p class="small">CloudCheckr/NetApp | Lead Design | 2021</p>
-      <p>One of the most pressing problem in using cloud computing services is the proper allocation of costs to those
-        that are responsible for resource usage. A single resource may be shared across departments or customers.
-        Questions arise about who should pay for setup costs or receive discounts when these are charged.</p>
-      <p>CloudCheckr&rsquo;s Billing Plans/Billing Settings enables cloud service providers to create their own
-        showback or chargeback scheme, independent of cloud providers&rsquo; discounts and tiers. This functionality
-        allows companies to allocate costs based on usage, enabling service providers to control margin. The new
-        design changed the app from a monitoring tool into a cash-flow machine. </p>
+      <p>A key challenge in cloud computing is allocating costs to responsible parties, especially when resources are shared across departments or customers. As the lead designer, I collaborated with a PM, dev team, and a UX designer I mentored to redefine CloudCheckr&lsquo;s Billing Plans/Billing Settings. Our goals were to improve cost allocation, scale to multiple accounts, enable reuse of chargeback schemas, and enhance ease of use. This redesign transformed the app from a monitoring tool into a flexible billing solution, exciting early customers and influencing AWS&lsquo;s &lsquo;AWS Billing Conductor&lsquo; a year later.</p>
     </div> <!-- // col -->
   </div> <!-- // row -->
 
   <div class="row pt-4">
     <div class="col-sm-12">
-      <h2 class="">New Design</h2>
-      <p>Our approach was to provide a concise summary of the settings on each screen, reducing the need for further
-        navigation. This ensures that a powerful concept remains easy to understand and utilize.</p>
+      <h2>New Design</h2>
+      <p>I led the design to provide a concise summary of settings on each screen, reducing navigation needs and ensuring usability. My workflow definition, refined with team input, drove this approach.</p>
     </div> <!-- // col -->
     <div class="col-sm-4">
-      <img src="images/cc-billingplans.png?w=2045" alt="" class="img-fluid border">
-      <!-- <img src="https://usersimple.files.wordpress.com/2023/07/cc-billingplans.png?w=2045" alt="" class="img-fluid border"  > -->
-      <p class="">The new design listed sets of charges (called plans) rather than individual items. The billing plans
-        page prominently displays the details of each plan, ensuring clarity at the highest level.</p>
+      <img src="images/cc-billingplans.png?w=2045" alt="Billing plans overview" class="img-fluid border">
+      <p>The new design lists sets of charges (plans) rather than individual items, ensuring clarity at the top level.</p>
     </div> <!-- // col -->
     <div class="col-sm-4">
-      <img src="images/cc-billingplans-edit.png?w=2048" alt="" class="img-fluid border">
-      <!-- <img src="https://usersimple.files.wordpress.com/2023/07/cc-billingplans-edit.png?w=2048" alt="" class="img-fluid border"  > -->
-      <p class="">Within each billing plan, users can effortlessly edit or rearrange rules. The details of each rule
-        are clearly visible at this level.</p>
+      <img src="images/cc-billingplans-edit.png?w=2048" alt="Editing billing plans" class="img-fluid border">
+      <p>Within each plan, users can edit or rearrange rules, with details clearly visible.</p>
     </div> <!-- // col -->
-
     <div class="col-sm-4">
-      <img loading="lazy" src="images/cc-billingplans-rules.webp?w=2048" alt="" class="img-fluid border">
-      <p class="">Users can assign accounts, exceptions, objectives, and conditions to each rule.</p>
+      <img loading="lazy" src="images/cc-billingplans-rules.webp?w=2048" alt="Billing plan rules" class="img-fluid border">
+      <p>Users can assign accounts, exceptions, objectives, and conditions to each rule.</p>
     </div> <!-- // col -->
   </div> <!-- // row -->
 
   <div class="row pt-4">
     <div class="col-lg-12">
-      <h3>Legacy Design</h3>
+      <h2>Legacy Design</h2>
     </div> <!-- // col -->
     <div class="col-lg-4">
-      <img src="images/old-design.png?w=764" alt="" class="img-fluid border">
+      <img src="images/old-design.png?w=764" alt="Legacy billing design" class="img-fluid border">
     </div> <!-- // col -->
-    <div class="col-lg-4">
-      <p>Despite its complexity, the old design allowed only simple charges to be added, one account at a time and did
-        not scale well to managing multiple accounts. </p>
-    </div> <!-- // col -->
-  </div> <!-- // row -->
-
-  <div class="row pt-4">
-    <div class="col-lg-12">
-      <h2 class="">Research</h2>
-      <p>User interviews and feature analysis revealed that the legacy design did not offer enough flexibility. Most
-        customers were not able to achieve their desired charge-back schemes using the simple tools we gave them. We
-        found that they needed not just one set of rules but multiple rule-sets to apply to different types of
-        customers. Additionally, they needed to be able to make exceptions based individually negotiated contracts.
-      </p>
-      <h2>Progressive disclosure</h2>
-      <p>Instead of just creating one default set of rules for all accounts, users needed the ability to:</p>
+    <div class="col-lg-8">
+      <p>The legacy design was limited, allowing only simple charges per account and struggling to scale.</p>
       <ul>
-        <li>Create billing rules to transform specific charges via markup, discounts, fees charges and credits, etc.
-          Each with an expiration date</li>
-        <li>Allow the creation of collections of these rules that can be assigned to more than one customer</li>
-        <li>Allowing ordering and re-ordering of the plans and the rules within each plan so they execute in a
-          specific sequence.</li>
-        <li>Allow some customers or accounts to be excepted from each rule while remaining in the same plan. </li>
-        <li>And many more detailed complexities</li>
+        <li>Supported one account at a time, with no multi-account management.</li>
+        <li>Lacked flexibility for complex chargeback schemes.</li>
+      </ul>
+    </div> <!-- // col -->
+  </div> <!-- // row -->
+
+  <div class="row pt-4">
+    <div class="col-lg-12">
+      <h2>Research</h2>
+      <p>I led research through customer interviews and help-desk expert discussions, uncovering:</p>
+      <ul>
+        <li>The legacy design lacked flexibility for diverse chargeback needs.</li>
+        <li>Customers required multiple rule-sets for different account types.</li>
+        <li>Exceptions based on negotiated contracts were essential.</li>
+      </ul>
+    </div> <!-- // col -->
+  </div> <!-- // row -->
+
+  <div class="row pt-4">
+    <div class="col-lg-12">
+      <h2>Progressive Disclosure</h2>
+      <p>To meet user needs, I designed a system allowing:</p>
+      <ul>
+        <li>Creation of billing rules for charges, discounts, fees, and credits with expiration dates.</li>
+        <li>Grouping rules for assignment to multiple accounts.</li>
+        <li>Reordering plans and rules for sequential execution.</li>
+        <li>Exempting specific accounts from rules within the same plan.</li>
+        <li>Support for additional complex scenarios.</li>
       </ul>
     </div> <!-- // col -->
   </div> <!-- // row -->
 
   <div class="row pt-4">
     <div class="col-lg-6">
-      <h2 class="">Exceptions</h2>
-      <p>Each rule allowed exceptions per account Family, and account number within families. This allowed fine
-        control over which discounts and charges would be applied.</p>
-      <img loading="lazy" src="images/image-8.png" alt="" class="img-fluid border">
+      <h2>Exceptions</h2>
+      <p>Each rule supports exceptions by account family and number, offering fine-tuned control.</p>
+      <img loading="lazy" src="images/image-8.png" alt="Exceptions interface" class="img-fluid border">
     </div>
-
     <div class="col-lg-6">
-      <img loading="lazy" src="images/image-6.png" alt="" class="img-fluid border">
+      <img loading="lazy" src="images/image-6.png" alt="Account families list" class="img-fluid border">
     </div> <!-- // col -->
   </div> <!-- // row -->
 
   <div class="row pt-4">
     <div class="col-lg-12">
-      <h2 class="">Billing Settings</h2>
-      <p>In addition to the plans and rules, We needed to allow the unbundling of costs, enabling different customers
-        or departments to be billed based on their individual usage rather than relying on a single payer.</p>
+      <h2>Billing Settings</h2>
+      <p>I ensured unbundling of costs, allowing billing based on individual usage rather than a single payer.</p>
     </div> <!-- // col -->
     <div class="col-lg-6">
-      <img loading="lazy" src="images/cc-billingsettings-top.png?w=2046" alt="" class="img-fluid border">
-      <p class="">Once again, we have chosen to provide a concise summary of the details for each setting.</p>
+      <img loading="lazy" src="images/cc-billingsettings-top.png?w=2046" alt="Billing settings overview" class="img-fluid border">
+      <p>A concise summary of each setting simplifies decision-making.</p>
     </div> <!-- // col -->
     <div class="col-lg-6">
-      <img loading="lazy" src="images/cc-billingsettings-drawer.png?w=2046" alt="" class="img-fluid border">
-      <p class="">Each setting provides the ability to make discrete decisions for specific situations. </p>
+      <img loading="lazy" src="images/cc-billingsettings-drawer.png?w=2046" alt="Billing settings details" class="img-fluid border">
+      <p>Each setting enables discrete decisions for specific situations.</p>
     </div> <!-- // col -->
   </div> <!-- // row -->
+
   <div class="row">
     <div class="col-md-12">
-      <p><em>Note: This design may have influenced Amazons's "AWS Billing Conductor" feature in Amazon Web Services
-          (released in late 2023), though Amazon's version didn't look like this it included many of the concepts of
-          billing plans (AWS called billing groups) and rules.</em></p>
+      <p><em>Note: This design may have influenced Amazon&lsquo;s &lsquo;AWS Billing Conductor&lsquo; feature in Amazon Web Services (released in late 2023), though Amazon&lsquo;s version differed, it included many of our billing plans and rules concepts.</em></p>
     </div>
-  </div>
+  </div> <!-- // row -->
 </div> <!-- // container -->
