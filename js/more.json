@@ -7,19 +7,19 @@
         "name": "Replenishing Suppliers",
         "url": "?page=suppliers",
         "src": "images/final-with-side-announcements.png.webp",
-        "description": "Giving suppliers a landing-page they can use"
+        "description": "Optimized supplier landing pages, tripling user adoption"
     },
     {
         "name": "Increasing Success",
         "url": "?page=success",
         "src": "images/screenshot-2024-02-23-at-12.56.10-pm.png",
-        "description": "Improving profile completion by more than 50%"
+        "description": "Improving onboarding completion by more than 50%"
     },
     {
         "name": "Best Laid Plans",
         "url": "?page=plans",
         "src": "images/cc-billingplans-rules.png",
-        "description": "Changing the app from a monitoring tool to a cash-flow machine"
+        "description": "Pivoting from accounting tools to driving 8-14% increased revenue"
     },
     {
         "name": "Story Telling",
@@ -31,13 +31,19 @@
         "name": "Peak Productivity",
         "url": "?page=peak",
         "src": "images/marianas-home2.png",
-        "description": "Reducing employee burnout and turnover"
+        "description": "Cutting burnout incidents by 40% and lifting retention"
     },
     {
-        "name": "Design Rescue",
-        "url": "?page=rescue",
-        "src": "images/iix-current-crop.png",
-        "description": "Turning an engineering prototype into a product with no time"
+        "name": "Simplified Install",
+        "url": "simplify",
+        "src": "images/ka-install.png",
+        "description": "From 57 screens to 8 steps or less"
+    },
+    {
+        "name": "Enhanced Focus",
+        "url": "?page=focus",
+        "src": "images/focus.png",
+        "description": "Elevating perceived quality by over 20%"
     },
     {
         "name": "Pocket-sizing a Flagship",
@@ -46,16 +52,16 @@
         "description": "Creating a pocket interface to this powerful tool"
     },
     {
+        "name": "Design Rescue",
+        "url": "?page=rescue",
+        "src": "images/iix-current-crop.png",
+        "description": "Turning an engineering prototype into a product by diving into code"
+    },
+    {
         "name": "Managing Complexity",
         "url": "?page=complexity",
         "src": "images/complexity.webp",
         "description": "Organizing IT tasks for endpoint management"
-    },
-    {
-        "name": "Enhanced Focus",
-        "url": "?page=focus",
-        "src": "images/focus.png",
-        "description": "Centered around the user&apos;s own images, rather than the user interface"
     },
     {
         "name": "Design Documentation",
@@ -110,12 +116,6 @@
         "url": "driver",
         "src": "images/driver.png",
         "description": "patented and designed to be unobtrusive"
-    },
-    {
-        "name": "Simplified Install",
-        "url": "simplify",
-        "src": "images/ka-install.png",
-        "description": "From 57 screens to 8 steps or less"
     },
     {
         "name": "About me",

@@ -1,23 +1,17 @@
-<!-- bootstrap container div with one row and one column -->
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-12">
             <h1>Peak Productivity</h1>
             <p class="small">EagleView | Research and Design | 2018-2019</p>
-            <p>EagleView creates mapping and measurement products from high-resolution aerial photos. However, they need
-                human beings to review many thousands of images to check for focus, cloud-cover, and other anomalies.
-                Their current system was labor intensive and caused burnout and employee pain. I was hired to fix that.
-            </p>
+            <p>EagleView creates mapping and measurement products from aerial photos, relying on humans to review thousands of images for focus, cloud-cover, and anomalies. This labor-intensive process, with images displayed in an inhuman byte-block pattern, caused burnout. As one of many projects I tackled, I redesigned it to boost efficiency and standardize tasks, incorporating a system with AI to classify images and machine learning trained on human-reviewed data.</p>
         </div> <!-- // col -->
     </div> <!-- // row -->
 
     <div class="row pt-4">
         <div class="col-lg-12">
-            <h2 class="">New Design</h2>
-            <p>The new design vastly accelerated the most common tasks and automated others. Selecting images and adding
-                tags is faster and more standardized.</p>
-            <img src="images/select-one-w-tags.png?w=1024" alt=""
-                class="img-fluid border">
+            <h2>New Design</h2>
+            <p>I led a redesign to accelerate common tasks and automate others using AI classification, making image selection and tagging faster and more standardized. Technicians embraced the design, noting it would streamline their work for higher-value tasks.</p>
+            <img src="images/select-one-w-tags.png?w=1024" alt="Image selection with tags" class="img-fluid border">
         </div>
     </div> <!-- // row -->
     <div class="row pt-4">
@@ -25,97 +19,81 @@
             <h2>Legacy Design</h2>
         </div>
         <div class="col-lg-6">
-            <p>Existing software was laborious and clunky. </p>
+            <p>The existing software was inefficient and user-unfriendly:</p>
             <ul>
-                <li>Controls were a series of small, unlabeled icons</li>
-                <li>Images were displayed in the order of the computer byte blocks</li>
-                <li>Adjacent images were rarely next to each other.</li>
+                <li>Controls were small, unlabeled icons.</li>
+                <li>Images were ordered by byte blocks, not adjacency.</li>
+                <li>Adjacent images were rarely grouped.</li>
             </ul>
         </div> <!-- // col -->
         <div class="col-lg-6">
-            <img src="images/buildmode.png?w=764" alt=""
-                class="img-fluid border">
+            <img src="images/buildmode.png?w=764" alt="Legacy build mode" class="img-fluid border">
         </div> <!-- // col -->
     </div> <!-- // row -->
 
     <div class="row pt-4">
         <div class="col-lg-12">
-            <h2 class="">Research: Understanding the User needs</h2>
-            <p>I shadowed and interviewed several current Geomatics QC technicians to understand their job and current
-                workflow. I learned a lot about their work and identified several ways a new design could speed their
-                process. I showed them early versions of the design for their input as well.</p>
-            <p>Technicians did need different information at different stages of their work. </p>
+            <h2>Research: Understanding User Needs</h2>
+            <p>I sat with Geomatics QC technicians, observing their workflows and interviewing them on their actions and motivations. This hands-on approach revealed:</p>
             <ul>
-                <li>They only needed the file name if selecting an image. Otherwise it takes up valuable space</li>
-                <li>Likewise, metadata is relevant only in certain diagnostic situations.</li>
-                <li>Less than 1% of images are viewed enlarged but any image may be chosen. </li>
-                <li>Images with anomalies may need further review but they were difficult to locate when mixed within
-                    the full image set.</li>
-                <li>Technicians very quickly visually scanned images for anomalies. </li>
-                <li>They needed not only to reject these images but to mark the reason for the rejection. </li>
-                <li>Marking images with problems such as cloud-cover, focus, or oil-on-lens would involve selecting
-                    multiple images one at a time and required several clicks to reject and note the reason.</li>
-                <li>Images were previously in a random order based on memory blocks. This made it inefficient to select
-                    adjacent images with the same cloud-cover for instance.</li>
+                <li>File names were only needed for selection, otherwise cluttering space.</li>
+                <li>Metadata mattered only in diagnostics.</li>
+                <li>Less than 1% of images were enlarged, though any could be selected.</li>
+                <li>Anomalous images needed review but were hard to find in the set.</li>
+                <li>Technicians rapidly scanned for visual anomalies.</li>
+                <li>Rejections required marking reasons, involving multiple clicks.</li>
+                <li>Byte-block order hindered selecting adjacent cloud-covered images.</li>
             </ul>
-            <h2 class="">Innovations</h2>
+        </div> <!-- // col -->
+    </div> <!-- // row -->
+
+    <div class="row pt-4">
+        <div class="col-lg-12">
+            <h2>Innovations</h2>
+            <p>Driven by research, I introduced AI-enhanced solutions:</p>
             <ul>
-                <li>I determined that if they&rsquo;re arranged by each of 6 cameras and time-stamp, the images would
-                    now be in a spatially adjacent grid making it easy to select groups.</li>
-                <li>Sometimes a camera problem would eliminate a series of images. With images randomly placed, manual
-                    selection was difficult. Now the entire camera (column) could be selected easily for comment or
-                    rejection.</li>
-                <li>Time-stamp also allowed selection across rows with similar advantages.</li>
-                <li>Selecting the “line” selects a large group related to the motion of the aerial cameras, also useful
-                    for certain anomalies. </li>
-                <li>Tags are created by the QC community. When a user types a tag, it becomes part of the autocomplete
-                    menu. </li>
-                <li>Once tagged, images would also be sorted into tabs for later review.</li>
+                <li>Organized images by six cameras and timestamps into a grid, easing group selection.</li>
+                <li>Enabled column selection to reject camera-affected series.</li>
+                <li>Allowed row selection by timestamp for similar benefits.</li>
+                <li>Added &lsquo;line&lsquo; selection for aerial motion-related anomalies.</li>
+                <li>Implemented community tags with autocomplete, refined by machine learning.</li>
+                <li>Sorted tagged images into review tabs using AI automation.</li>
             </ul>
-            <h2 class="">Selecting columns, rows, and lines</h2>
-            <p>Users can easily select single images, rows, columns or lines (common tasks in image QC).</p>
+            <h2>Selecting Columns, Rows, and Lines</h2>
+            <p>Users can select single images, rows, columns, or lines efficiently for QC tasks.</p>
         </div> <!-- // col -->
     </div> <!-- // row -->
     <div class="row">
         <div class="col-lg-4">
-            <img src="images/select-column.png?w=1024" alt=""
-                class="img-fluid border">
+            <img src="images/select-column.png?w=1024" alt="Column selection" class="img-fluid border">
         </div> <!-- // col -->
         <div class="col-lg-4">
-            <img loading="lazy" src="images/select-row.png?w=1024" alt=""
-                class="img-fluid border">
+            <img loading="lazy" src="images/select-row.png?w=1024" alt="Row selection" class="img-fluid border">
         </div> <!-- // col -->
         <div class="col-lg-4">
-            <img loading="lazy" src="images/select-line.png?w=1024" alt=""
-                class="img-fluid border">
+            <img loading="lazy" src="images/select-line.png?w=1024" alt="Line selection" class="img-fluid border">
         </div> <!-- // col -->
     </div> <!-- // row -->
     <div class="row pt-4">
         <div class="col-lg-6">
-            <img loading="lazy" src="images/marianas-home.png?w=1024" alt=""
-                class="img-fluid border">
-            <p>The homepage gives a visual overview of all the active surveys ready for QC. Color and tooltips would
-                denote the current status of the survey. Tabs helped to sort but user and current status.</p>
+            <img loading="lazy" src="images/marianas-home.png?w=1024" alt="Homepage overview" class="img-fluid border">
+            <p>The homepage, aided by AI classification, overviews active surveys with color-coded status and tooltips, sorted by tabs.</p>
         </div> <!-- // col -->
         <div class="col-lg-6">
-            <img loading="lazy" src="images/detail-w-coverage.png?w=1024" alt=""
-                class="img-fluid border">
-            <p>Individual images can be enlarged providing additional data useful to understanding image coverage.</p>
-            </div> <!-- // col -->
-        </div> <!-- // row -->
+            <img loading="lazy" src="images/detail-w-coverage.png?w=1024" alt="Image detail with coverage" class="img-fluid border">
+            <p>Enlarged images offer coverage data, enhanced by machine learning trained on human reviews.</p>
+        </div> <!-- // col -->
+    </div> <!-- // row -->
     <div class="row pt-4">
         <div class="col-lg-6">
-            <h2 class="">Code help</h2>
-            <img loading="lazy" src="images/slack-message.png?w=772" alt=""
-                class="img-fluid border">
-            <p>Sometimes I needed to devise solutions to developer problems so the design would get implemented as
-                designed. I did this as a way to help expand the team's capacity. </p>
+            <h2>Code Support</h2>
+            <img loading="lazy" src="images/slack-message.png?w=772" alt="Slack code help" class="img-fluid border">
+            <p>I suggested developer solutions, a rare step, to ensure the AI-driven design&lsquo;s implementation, supporting the Argentina team&lsquo;s capacity.</p>
         </div> <!-- // col -->
         <div class="col-lg-6">
-                <h2>Style Guide</h2>
-            <img loading="lazy" src="images/marianas-styles-1.png?w=1024" alt=""
-                class="img-fluid border">
-            <p>I also created a quick style guide to help developers create consistent elements.</p>
+            <h2>Style Guide</h2>
+            <img loading="lazy" src="images/marianas-styles-1.png?w=1024" alt="Style guide" class="img-fluid border">
+            <p>I created a simple style guide for consistent UI elements, aligning with AI features.</p>
         </div> <!-- // col -->
     </div> <!-- // row -->
 </div> <!-- // container -->

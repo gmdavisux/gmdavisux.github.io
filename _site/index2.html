@@ -25,57 +25,64 @@
 </script>
 
 <body>
-  <div class="container-fluid fixed-top header">
-    <!-- bootstrap code to add full width header at the top of the page -->
-    <nav class="navbar navbar-dark navbar-expand-md">
-      <div class="container">
-        <a class="navbar-brand" href="./">gary m davis</a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="./"><i class="bi bi-house-door-fill"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="project" data-bs-toggle="offcanvas" href="#mywork" role="button"
-                aria-controls="mywork">My Work</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="?page=about">About me</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="?page=resume">Resume</a>
-            </li> -->
-          </ul>
-          <ul class="navbar-nav ms-auto my-3 my-md-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle btn btn-sm btn-light text-primary bg-light" href="#"
-                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Contact me
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" id="contact" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item text-primary"></a></li>
-                <li><a class="dropdown-item text-primary"></a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+<header class="container-fluid fixed-top header print-hide">
+  <nav class="navbar navbar-dark navbar-expand-md">
+    <div class="container">
+      <span class="navbar-brand">gary m davis</span>
+      <a class="nav-link active d-block d-md-none" aria-current="page" aria-label="Home" href="/?set=projects"><i class="bi bi-house-door-fill"></i></a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" aria-label="Home" href="/"><i class="bi bi-house-door-fill"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="project" data-bs-toggle="offcanvas" href="#mywork" role="button"
+              aria-controls="mywork">My Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=about">About me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=reco">Recommendations</a>
+          </li>
+        </ul>
+        <!-- Right-aligned links for larger screens -->
+        <ul class="navbar-nav ms-auto d-none d-md-flex align-items-center">
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="mailto:contact[at]example[dot]com"><i class="bi bi-envelope-fill me-1"></i>contact[at]example[dot]com</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="tel:+1-555-555-5555"><i class="bi bi-telephone-fill me-1"></i>+1-555-555-5555</a>
+          </li>
+        </ul>
+        <!-- Dropdown for smaller screens -->
+        <ul class="navbar-nav ms-auto d-md-none">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle btn btn-sm" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-chat-right-dots-fill"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" id="contact" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item text-primary" href="mailto:contact[at]example[dot]com"><i class="bi bi-envelope-fill me-1"></i>contact[at]example[dot]com</a></li>
+              <li><a class="dropdown-item text-primary" href="tel:+1-555-555-5555"><i class="bi bi-telephone-fill me-1"></i>+1-555-555-5555</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-    </nav>
-    <!-- // full width container with headline, subhead and a background image -->
-    <div class="container" id="hero">
-      <div class="row py-4">
-        <div class="col">
-          <!-- <h1>Gary M Davis</h1> -->
-          <p class="fs-3">Portfolio of human-centered problem-solving and design.
-          </p>
-        </div>
+    </div>
+  </nav>
+  <div class="container" id="hero">
+    <div class="row py-4">
+      <div class="col">
+        <p class="fs-3"><span style="color:yellow">Over 20 years</span> of Creating Better Outcomes for B2B/SaaS</p>
       </div>
     </div>
   </div>
+</header>
   <!-- // add a container with a row and two columns -->
   <div id="defaultContent">
     <!-- code within default content should only appear on the home page -->

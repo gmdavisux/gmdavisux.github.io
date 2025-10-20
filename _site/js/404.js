@@ -15,7 +15,7 @@ fetch('js/more.json')
 
       const a = document.createElement('a');
       a.setAttribute('data-bs-theme', 'dark');
-      a.href = '/' + item.url;
+      a.href = '/' + item.url + "&set=more";
       a.textContent = item.name;
 
       col.appendChild(a);
