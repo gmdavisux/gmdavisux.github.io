@@ -51,7 +51,13 @@
         "src": "images/k1gob.png",
         "description": "Creating a pocket interface to this powerful tool"
     },
-    {
+     {
+        "name": "Visualizing Sunlight",
+        "url": "?page=sunlight",
+        "src": "images/sunlight.png",
+        "description": "Choosing the right color is critical to success"
+    },
+   {
         "name": "About me",
         "url": "?page=about"
     },
