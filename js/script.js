@@ -84,10 +84,10 @@ function generateGridItemHtml0(item, indexLink) {
 }
 function generateGridItemHtml(item, indexLink) {
     return `
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-3">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-5">
         <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100" data-bs-theme="light">
             <a href="?${indexLink}">
-                <img src="${item.src}" class="card-img-top" style="margin: 0; padding: 0;">
+                <img src="${item.src}" alt="${item.alt || ''}" class="card-img-top" style="margin: 0; padding: 0;">
             </a>
             <div class="card-body">
                 <p class="card-title fs-6">${item.name}</p>
@@ -103,7 +103,7 @@ function generateColumnItemHtml(item, indexLink) {
     <div class="col-12 pb-3">
         <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100">
             <a href="?${indexLink}">
-                <img src="${item.src}" class="card-img-top">
+                <img src="${item.src}" alt="${item.alt || ''}" class="card-img-top">
             </a>
             <div class="card-body">
                 <p class="card-title fs-5">${item.name}</p>

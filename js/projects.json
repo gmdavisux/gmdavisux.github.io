@@ -7,54 +7,63 @@
         "name": "Replenishing Suppliers",
         "url": "?page=suppliers",
         "src": "images/final-with-side-announcements.png.webp",
+        "alt": "UI Showing Supplier Landing Page",
         "description": "Optimized supplier landing pages, tripling user adoption"
     },
     {
         "name": "Increasing Success",
         "url": "?page=success",
         "src": "images/screenshot-2024-02-23-at-12.56.10-pm.png",
+        "alt": "UI Showing Email Forwarding",
         "description": "Improving onboarding completion by more than 50%"
     },
     {
         "name": "Best Laid Plans",
         "url": "?page=plans",
         "src": "images/cc-billingplans-rules.png",
+        "alt": "UI Showing Billing Plans screen",
         "description": "Pivoting from accounting tools to driving 8-14% increased revenue"
     },
     {
         "name": "Story Telling",
         "url": "?page=story",
         "src": "images/bpc-clean2.png",
+        "alt": "Data Visualization of Resource Trends",
         "description": "Displaying resource trends at a glance and at scale"
     },
     {
         "name": "Peak Productivity",
         "url": "?page=peak",
         "src": "images/marianas-home2.png",
+        "alt": "UI Showing a Map as a Data Visualization",
         "description": "Cutting burnout incidents by 40% and lifting retention"
     },
     {
         "name": "Simplified Install",
         "url": "simplify",
         "src": "images/ka-install.png",
+        "alt": "Installation workflow sketch",
         "description": "From 57 screens to 8 steps or less"
     },
     {
         "name": "Enhanced Focus",
         "url": "?page=focus",
         "src": "images/focus.png",
+        "alt": "A photo kiosk emphasizing the users images",
         "description": "Elevating perceived quality by over 20%"
     },
     {
         "name": "Pocket-sizing a Flagship",
         "url": "?page=flagship",
         "src": "images/k1gob.png",
+        "alt": "K1Go Mobile Interface",
         "description": "Creating a pocket interface to this powerful tool"
     },
     {
         "name": "Visualizing Sunlight",
         "url": "?page=sunlight",
         "src": "images/sunlight.png",
+        "alt": "Arial view of sunlight visualization on buildings",
         "description": "Choosing the right color is critical to success"
     },
     {
