@@ -64,51 +64,37 @@ function updateButton(buttonId, item, pageParam, setParam) {
 }
 
 // HTML Generation Functions
-function generateGridItemHtml0(item, indexLink) {
+function generateGridItemHtml(item, indexLink) {
     return `
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-4">
-        <div class="d-flex flex-column shadow-sm rounded py-3 bg-light-subtle border border-light-subtle" style="padding: 1rem; margin: 0.5rem; height: 100%;">
-            <div class="mb-3 ps-0" style="padding-left: 0;">
+    <div class="col-12 col-md-6 col-lg-6">
+        <div class="row mb-4 align-items-center">
+            <div class="col-12 col-md-4">
                 <a href="?${indexLink}">
                     <img src="${item.src}" class="img-fluid border">
                 </a>
             </div>
-            <div class="flex-grow-1">
-                <p>${item.name}</p>
-                <p class="fs-4">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
+            <div class="col-12 col-md-8 ps-md-4">
+                <h2>${item.name}</h2>
+                <p>${item.description}</p>
             </div>
         </div>
     </div>
     `;
 }
-function generateGridItemHtml(item, indexLink) {
-    return `
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-3">
-        <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100" data-bs-theme="light">
-            <a href="?${indexLink}">
-                <img src="${item.src}" class="card-img-top" style="margin: 0; padding: 0;">
-            </a>
-            <div class="card-body">
-                <p class="card-title fs-6">${item.name}</p>
-                <p class="card-text fs-5">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
-            </div>
-        </div>
-    </div>
-    `;
-}
+
 function generateColumnItemHtml(item, indexLink) {
     return `
-    <div class="col-12 pb-3">
-        <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100">
-            <a href="?${indexLink}">
-                <img src="${item.src}" class="card-img-top">
-            </a>
-            <div class="card-body">
-                <p class="card-title fs-5">${item.name}</p>
-                <p class="card-text fs-4">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
+    <div class="row row-cols-1">
+        <div class="col pb-3">
+            <div class="card h-100" data-bs-theme="light">
+                <a href="?${indexLink}">
+                    <img src="${item.src}" class="card-img-top" alt="${item.description}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">${item.name}</h5>
+                    <p class="card-text">${item.description}</p>
+                    <a href="?${indexLink}" class="card-link">Learn more</a>
+                </div>
             </div>
         </div>
     </div>

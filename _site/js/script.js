@@ -64,34 +64,51 @@ function updateButton(buttonId, item, pageParam, setParam) {
 }
 
 // HTML Generation Functions
-function generateGridItemHtml(item, indexLink) {
+function generateGridItemHtml0(item, indexLink) {
     return `
-    <div class="col-md-6 col-lg-4 py-2 d-flex align-items-center justify-content-center">
-        <a href="?${indexLink}" class="image-container">
-            <img src="${item.src}" class="img-fluid border">
-            <div class="image-overlay d-flex align-items-center justify-content-center">
-                <div class="overlay-content">
-                    <p>${item.description}</p>
-                </div>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-4">
+        <div class="d-flex flex-column shadow-sm rounded py-3 bg-light-subtle border border-light-subtle" style="padding: 1rem; margin: 0.5rem; height: 100%;">
+            <div class="mb-3 ps-0" style="padding-left: 0;">
+                <a href="?${indexLink}">
+                    <img src="${item.src}" class="img-fluid border">
+                </a>
             </div>
-        </a>
+            <div class="flex-grow-1">
+                <p>${item.name}</p>
+                <p class="fs-4">${item.description}</p>
+                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
+            </div>
+        </div>
     </div>
     `;
 }
-
+function generateGridItemHtml(item, indexLink) {
+    return `
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-3">
+        <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100" data-bs-theme="light">
+            <a href="?${indexLink}">
+                <img src="${item.src}" class="card-img-top" style="margin: 0; padding: 0;">
+            </a>
+            <div class="card-body">
+                <p class="card-title fs-6">${item.name}</p>
+                <p class="card-text fs-5">${item.description}</p>
+                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
+            </div>
+        </div>
+    </div>
+    `;
+}
 function generateColumnItemHtml(item, indexLink) {
     return `
-    <div class="row row-cols-1">
-        <div class="col pb-3">
-            <div class="card h-100" data-bs-theme="light">
-                <a href="?${indexLink}">
-                    <img src="${item.src}" class="card-img-top" alt="${item.description}">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title">${item.name}</h5>
-                    <p class="card-text">${item.description}</p>
-                    <a href="?${indexLink}" class="card-link">Learn more</a>
-                </div>
+    <div class="col-12 pb-3">
+        <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100">
+            <a href="?${indexLink}">
+                <img src="${item.src}" class="card-img-top">
+            </a>
+            <div class="card-body">
+                <p class="card-title fs-5">${item.name}</p>
+                <p class="card-text fs-4">${item.description}</p>
+                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
             </div>
         </div>
     </div>
