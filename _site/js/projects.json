@@ -57,14 +57,14 @@
         "url": "?page=flagship",
         "src": "images/k1gob.png",
         "alt": "K1Go Mobile Interface",
-        "description": "Creating a pocket interface to this powerful tool"
+        "description": "Creating a mobile interface to this powerful tool"
     },
     {
         "name": "Visualizing Sunlight",
         "url": "?page=sunlight",
         "src": "images/sunlight.png",
         "alt": "Arial view of sunlight visualization on buildings",
-        "description": "Choosing the right color is critical to success"
+        "description": "Refined solar visuals for faster insights"
     },
     {
         "name": "About me",
