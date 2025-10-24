@@ -91,7 +91,7 @@ function generateGridItemHtml(item, indexLink) {
             </a>
             <div class="card-body">
                 <p class="card-title fs-6">${item.name}</p>
-                <p class="card-text fs-5">${item.description}</p>
+                <p class="card-text fs-3">${item.description}</p>
                 <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
             </div>
         </div>
@@ -106,7 +106,7 @@ function generateColumnItemHtml(item, indexLink) {
                 <img src="${item.src}" alt="${item.alt || ''}" class="card-img-top">
             </a>
             <div class="card-body">
-                <p class="card-title fs-5">${item.name}</p>
+                <p class="card-title fs-6">${item.name}</p>
                 <p class="card-text fs-4">${item.description}</p>
                 <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
             </div>
