@@ -135,7 +135,7 @@ body {
 /* initially, may be changed by javascript */
 /* add box shadow below img.card-img-top */
 img.card-img-top {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2); */
 }
 
 #logos .img-fluid {

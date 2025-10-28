@@ -6,28 +6,28 @@
     {
         "name": "Replenishing Suppliers",
         "url": "?page=suppliers",
-        "src": "images/final-with-side-announcements.png.webp",
+        "src": "images/coupa_landing_hero.png",
         "alt": "UI Showing Supplier Landing Page",
         "description": "Optimized supplier landing pages, tripling user adoption"
     },
     {
         "name": "Increasing Success",
         "url": "?page=success",
-        "src": "images/screenshot-2024-02-23-at-12.56.10-pm.png",
+        "src": "images/CoupaHero1.png",
         "alt": "UI Showing Email Forwarding",
         "description": "Improving onboarding completion by more than 50%"
     },
     {
         "name": "Best Laid Plans",
         "url": "?page=plans",
-        "src": "images/cc-billingplans-rules.png",
+        "src": "images/ccBilling_hero.png",
         "alt": "UI Showing Billing Plans screen",
         "description": "Pivoting from accounting tools to driving 8-14% increased revenue"
     },
     {
         "name": "Story Telling",
         "url": "?page=story",
-        "src": "images/bpc-clean2.png",
+        "src": "images/cc-bpc-hero.png",
         "alt": "Data Visualization of Resource Trends",
         "description": "Displaying resource trends at a glance and at scale"
     },
@@ -48,7 +48,7 @@
     {
         "name": "Enhanced Focus",
         "url": "?page=focus",
-        "src": "images/focus.png",
+        "src": "images/kiosk-hero.png",
         "alt": "A photo kiosk emphasizing the users images",
         "description": "Elevating perceived quality by over 20%"
     },
