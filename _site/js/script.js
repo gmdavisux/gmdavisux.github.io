@@ -87,7 +87,7 @@ function generateGridItemHtml(item, indexLink) {
     <div class="col-12 col-md-6 col-lg-4 col-xl-4 p-1">
         <div class="card border-light h-100" data-bs-theme="light" style="background-color:rgba(240, 239, 234, 1);">
             <a href="?${indexLink}">
-                <div class="ratio ratio-1x1" style="max-width:430px">
+                <div class="ratio ratio-1x1">
                     <img src="${item.src}" 
                          alt="${item.alt || ''}" 
                          class="object-fit-contain img-fluid">
