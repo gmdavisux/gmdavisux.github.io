@@ -1,47 +1,154 @@
-<div id="content" class="container py-4">
-    <div class="row">
-        <div class="col-12">
-            <h1 id="PortageUXdesign-EditinganExistingProfile">Filtering Profiles</h1>
-            <p>IT administrators need a way to automate finding and updating machines on their network. 
-                Filtering the machines by location, conditions (such as idleness, time of day or operating system) is important. Actions to be performed may include mapping a drive, installign a print-driver or installing software updates. </p>
-            <img class="img-fluid border" src="images/filtering/proto3.jpg">
-            <p>Upon first visiting an existing profile, the accordion sections are collapsed.</p>
-            <h2 id="PortageUXdesign-Conditions(ValidationLogic)">Conditions (Validation Logic)</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-27-14.png">
-            <p>The conditions section may contain one or more inherited profiles. more can be added. Hovering over
-                profile boxes will reveal additional control to delete or reorder a linked profile.</p>
-            <h2 id="PortageUXdesign-EditConditions">Edit Conditions</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-27-36.png">
-            <p>“After selecting “Add or Edit Conditions” button, a “Add new rule” button appears with “Save” and
-                “Cancel” below.</p>
-            <h2 id="PortageUXdesign-AddingRules">Adding Rules</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-28-26.png">
-            <p>After adding the first rule via a pop-up window TBD. The area on the left is a drag-handle which will
-                allow the user to re-order the items in the list.</p>
-            <h2 id="PortageUXdesign-AdditionalRules">Additional Rules</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-28-49.png">
-            <p>After adding additional rules, a “And/or” control appears on all but the last rule. The “Group”
-                button appears between each item.</p>
-            <p>&nbsp;</p>
-            <h2 id="PortageUXdesign-GroupingRules">Grouping Rules</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-29-14.png">
-            <p>After grouping some items, they appear inside a group with additional controls for adding to the group
-                and ungrouping.</p>
-            <h2 id="PortageUXdesign-NestedGroups">Nested Groups</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-29-42.png">
-            <p>Multiple levels of groups are possible.</p>
-            <h2 id="PortageUXdesign-Hoveroveritem">Hover over item</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-30-49.png">
-            <p>Handles and icons appear on hover</p>
-            <h2 id="PortageUXdesign-Hoverovergroup">Hover over group</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-31-13.png">
-            <h2 id="PortageUXdesign-AfterSaving">After Saving</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-31-41.png">
-            <p>After saving, the Validation logic is displayed as readable text.&nbsp;</p>
-            <h2 id="PortageUXdesign-EditingActions">Editing Actions</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-33-2.png">
-            <h2 id="PortageUXdesign-Hoveringanaction">Hovering an action</h2>
-            <img class="img-fluid border" src="images/filtering/image2013-5-28 12-33-49.png">
-        </div> <!-- // col -->
-    </div> <!-- // row -->
-</div> <!-- // container -->
+<div id="content" class="container py-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Filtering Profiles</h1>
+      <p class="small">Dell/KACE | Lead Design, Planning, Research | 2015</p>
+      <p>
+        IT administrators needed a way to <strong>automate discovery and management of machines at scale</strong> — 
+        finding devices by location, idle state, OS, or security group, then pushing patches, drivers, or scripts.
+      </p>
+
+      <p>
+        The goal: <strong>eliminate manual targeting</strong> and enable reliable, repeatable automation 
+        for compliance, security, and efficiency across thousands of endpoints.
+      </p>
+
+      <!-- Hero Image -->
+      <img src="images/filtering/proto3.jpg" alt="Filtering Profiles interface showing collapsed accordion on first load" class="img-fluid border mb-5">
+
+
+      <!-- The Challenge -->
+      <div class="row mb-5">
+        <div class="col-lg-6">
+          <h2>The Challenge</h2>
+          <p>
+            Admins needed to express <strong>complex, nested logic</strong> like:
+          </p>
+          <blockquote class="border-start border-primary border-3 ps-3 fst-italic text-muted">
+            “Battery present <strong>AND</strong> Security Group = Marketing <strong>AND</strong> (OS = Windows 7 <strong>OR</strong> (Time > 5 PM <strong>AND</strong> Idle))”
+          </blockquote>
+          <p>
+            Existing tools forced flat lists or required scripting. There was no visual way to build, 
+            group, or validate these rules — leading to errors, delays, and fragile automation.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Research & Discovery</h2>
+          <p>
+            Through <strong>interviews with internal IT and Security Ops</strong>, we uncovered:
+          </p>
+          <ul>
+            <li>Admins spent hours manually filtering devices in spreadsheets</li>
+            <li>Nested conditions were common but impossible to model visually</li>
+            <li>Rules needed to be reusable, editable, and auditable</li>
+          </ul>
+          <p>
+            Early concepts were walked through remotely. Feedback shaped drag-reordering, 
+            grouping, and hover-state controls.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Solution: Visual Rule Builder -->
+      <h2>Solution: A Visual Rule Builder</h2>
+      <p>
+        I designed an <strong>intuitive, hierarchical interface</strong> that lets admins:
+      </p>
+
+      <!-- 2-Column Image Grid -->
+      <div class="row g-4 mb-5">
+        <!-- Edit Conditions -->
+        <div class="col-md-6 col-lg-4">
+          <div class="text-center">
+            <img src="images/filtering/image2013-5-28 12-27-36.png" alt="Edit Conditions button reveals Add New Rule" class="img-fluid border mb-3">
+            <p class="small text-muted fw-medium">Edit Conditions</p>
+          </div>
+        </div>
+
+        <!-- Adding Rules -->
+        <div class="col-md-6 col-lg-4">
+          <div class="text-center">
+            <img src="images/filtering/image2013-5-28 12-28-26.png" alt="First rule added with drag handle" class="img-fluid border mb-3">
+            <p class="small text-muted fw-medium">Adding Rules</p>
+          </div>
+        </div>
+
+        <!-- AND/OR + Group -->
+        <div class="col-md-6 col-lg-4">
+          <div class="text-center">
+            <img src="images/filtering/image2013-5-28 12-28-49.png" alt="AND/OR controls and Group button appear" class="img-fluid border mb-3">
+            <p class="small text-muted fw-medium">AND/OR Logic</p>
+          </div>
+        </div>
+
+        <!-- Grouping -->
+        <div class="col-md-6 col-lg-4">
+          <div class="text-center">
+            <img src="images/filtering/image2013-5-28 12-29-14.png" alt="Rules grouped with add/ungroup controls" class="img-fluid border mb-3">
+            <p class="small text-muted fw-medium">Grouping Rules</p>
+          </div>
+        </div>
+
+        <!-- Nested Groups -->
+        <div class="col-md-6 col-lg-4">
+          <div class="text-center">
+            <img src="images/filtering/image2013-5-28 12-29-42.png" alt="Multiple nested groups supported" class="img-fluid border mb-3">
+            <p class="small text-muted fw-medium">Nested Groups</p>
+          </div>
+        </div>
+
+        <!-- Hover States -->
+        <div class="col-md-6 col-lg-4">
+          <div class="text-center">
+            <img src="images/filtering/image2013-5-28 12-30-49.png" alt="Hover reveals drag handles and delete" class="img-fluid border mb-3">
+            <p class="small text-muted fw-medium">Hover Controls</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-lg-6">
+          <h2>Key Interactions</h3>
+          <ul>
+            <li><strong>Drag to reorder</strong> with visible handles</li>
+            <li><strong>AND/OR toggles</strong> on all but last rule</li>
+            <li><strong>Group/Ungroup</strong> with nested visual hierarchy</li>
+            <li><strong>Hover affordances</strong> for delete and reorder</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <h2>After Save</h3>
+          <img src="images/filtering/image2013-5-28 12-31-41.png" alt="Saved logic shown as readable text" class="img-fluid border mb-3">
+          <p class="small text-muted">Validation logic displayed as natural language for audit and clarity.</p>
+        </div>
+      </div>
+
+      <!-- Actions Section -->
+      <h2>Extending to Actions</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <img src="images/filtering/image2013-5-28 12-33-2.png" alt="Actions section with inherited and local tasks" class="img-fluid rounded shadow-sm">
+          <p class="small text-muted mt-2">Editing Actions</p>
+        </div>
+        <div class="col-md-6">
+          <img src="images/filtering/image2013-5-28 12-33-49.png" alt="Hover reveals action controls" class="img-fluid rounded shadow-sm">
+          <p class="small text-muted mt-2">Hovering an Action</p>
+        </div>
+      </div>
+
+      <!-- Results & CTA -->
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2>Impact</h3>
+          <p>
+            This visual rule engine <strong>transformed how IT teams automate at scale</strong>. 
+            Complex targeting became intuitive, reusable, and auditable — 
+            reducing errors and enabling proactive compliance and patching.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
