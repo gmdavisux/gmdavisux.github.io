@@ -1,88 +1,65 @@
-<!-- bootstrap container div with one row and one column -->
 <div class="container py-5">
     <div class="row">
         <div class="col-12">
             <h1>Beyond Expectations</h1>
             <p class="small">Xerox | Design Lead | 2006</p>
-            <p>Originally I was asked to simply create graphics for a printer monitoring app. I started asking questions
-                to discover the actual problem this was solving.</p>
-            <h2>Problem</h2>
-            <p>I learned that it was difficult to get resellers interested in carrying Xerox products because of small
-                margins and no guarantee of future sales of lucrative supplies. The real problem was making it easy for
-                customers to order from resellers.</p>
-        </div> <!-- // col -->
-    </div> <!-- // row -->
-
-    <div class="row pt-4">
-        <div class="col-md-12">
-            <h2>Innovation</h2>
-            <p>I went beyond the original scope of the project and proposed an end-to-end system that not only notifies
-                the user when supplies are low but also directs the purchase to the original vendor.</p>
-            <p>This was all done using existing infrastructure in a novel way that required no configuration by the user
-                or vendor. When the software solution was announced in Europe, it generated enthusiastic interest from
-                vendors and promises to help drive third-party distribution of new products.</p>
-        </div> <!-- // col -->
-    </div> <!-- // row -->
+            <p>I was asked to design graphics for a printer status app. Instead, I asked questions—and uncovered a business-critical user problem.</p>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-md-12 col-lg-6">
-            <img src="images/clientflow.jpg" alt=""
-                class="img-fluid border">
-        </div> <!-- // col -->
-        <div class="col-md-12 col-lg-6">
-            <h2>Process Flow</h2>
-            <p>The "Order Supplies" link within the status monitor launches a background application that will open
-                a link to a Xerox URL in the user's browser.</p>
-            <p>Encoded in the URL query are the device serial number and other data.</p>
-            <p>The Xerox web server looks up the reseller based on the data in the URL and redirects the user to the
-                reseller&rsquo;s site.</p>
-            <p>To the user, the background app and redirection are invisible steps. From their view, they clicked
-                and ended up at the seller&rsquo;s site.</p>
+        <div class="col-lg-12">
+            <h2>The Real Problem</h2>
+            <p>Resellers avoided carrying Xerox printers due to low margins and no guarantee of future supplies revenue. The true challenge: <strong>making it effortless for customers to reorder from the original vendor</strong>.</p>
         </div>
-    </div> <!-- // row -->
+    </div>
 
-    <div class="row pt-4">
-        <div class="col-md-12">
-            <h2>Visual Design</h2>
-        </div>
-        <div class="col-md-12 col-lg-6">
-            <img class="img-fluid border" src="images/bubble3b.gif.webp">
-            <p>A notification will appear when the printer is low on a supply. Selecting "Order Supplies" will
-                direct the user to the third party vendor's website.</p>
-            <p>The original reseller's website opens with a list of Xerox part numbers for their printer above. The
-                vendor can choose to parse the URL and display a product specific page.</p>
-        </div> <!-- // col -->
-        <div class="col-md-12 col-lg-6">
-            <img class="img-fluid border" src="images/vendor.jpg">
-        </div> <!-- // col -->
-    </div> <!-- // row -->
-
-    <div class="row pt-4">
-        <div class="col-md-12">
-            <h2>Patent</h2>
-        </div>
-        <div class="col-md-2 col-sm-4">
-            <a target="_blank" class="hilite" href="https://patents.google.com/patent/US8046264/">
-                <img src="/images/8046264.gif" class="img-fluid float-start me-3 border">
-            </a>
-        </div>
-        <div class="col-md-10 col-sm-8">
-            <h5>
-                <a title="New window will open" target="_blank" href="https://patents.google.com/patent/US8046264/">
-                    Directing post-sale supplies revenue to original dealer </a>
-            </h5>
-            <ul class="small text-muted">
-                <li><span class="fn org">United States</span> Patent 8,046,264</li>
-                <li>Issued <span class="dtstart">October 25, 2011</span></li>
-                <li class="attribution"> Inventors: Gary Davis, Campbell David </li>
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h2>Innovation</h2>
+            <p>I proposed an <strong>end-to-end system</strong> that:</p>
+            <ul>
+                <li>Alerts users when supplies are low</li>
+                <li>Identifies the exact printer and original reseller</li>
+                <li>Redirects to the correct vendor site — <em>with one click</em></li>
             </ul>
-            <div class="summary">
-                <p class="description" id="yui-gen11">This patent describes a system that alerts you when your
-                    printer is running low on ink or toner. The app recognizes which specific printer you have and
-                    identifies the store it was purchased from. It then guides you straight to that seller, creating
-                    a seamless connection between your printer's needs and the original vendor, without any hassle
-                    or guesswork.
-                </p>
+            <p><strong>No configuration. No guesswork. Just results.</strong></p>
+            <p class="mt-3">Announced in Europe, it sparked <strong>enthusiastic vendor interest</strong> and helped drive third-party distribution.</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="images/clientflow.jpg" alt="System flow: from low supply alert to reseller redirect" class="img-fluid border shadow-sm">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>User Experience</h2>
+            <p>A subtle notification appears when toner is low. One click on “Order Supplies” opens the <strong>original reseller’s site</strong>—pre-loaded with the correct part numbers.</p>
+            <p><strong>Invisible to the user:</strong> A background app encodes the printer’s serial number into a URL, Xerox servers look up the reseller, and the browser redirects seamlessly.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="images/bubble3b.gif.webp" alt="Low toner alert with 'Order Supplies' button" class="img-fluid border mb-3">
+            <img src="images/vendor.jpg" alt="Reseller site auto-loaded with correct Xerox parts" class="img-fluid border">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Patented Innovation</h2>
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <a href="https://patents.google.com/patent/US8046264/" target="_blank">
+                        <img src="/images/8046264.gif" alt="US Patent 8,046,264" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col">
+                    <p class="mb-1"><strong><a href="https://patents.google.com/patent/US8046264/" target="_blank">Directing Post-Sale Supplies Revenue to Original Dealer</a></strong></p>
+                    <p class="small text-muted mb-0">
+                        U.S. Patent 8,046,264 • Issued Oct 25, 2011 • Inventors: Gary Davis, Campbell David
+                    </p>
+                    <p class="mt-2"><em>“A seamless bridge from device need to trusted vendor—zero friction.”</em></p>
+                </div>
             </div>
         </div>
     </div>
+</div>

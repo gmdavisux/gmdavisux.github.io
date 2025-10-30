@@ -49,9 +49,10 @@ h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
 
-/* Add 2rem top margin to h2 when it's the first element in a column */
-.row > [class*="col-"] > h2:first-child, .row > [class*="col-"] > h3:first-child {
-  margin-top: 2rem;
+/* Add 2rem top margin to any .row whose first column starts with h2 */
+.row:has(> [class*="col-"]:first-child > h2:first-child),
+.row:has(> [class*="col-"]:first-child > h3:first-child) {
+  margin-top: 3rem;
 }
 
 /* special card border radius override */
