@@ -13,7 +13,8 @@
         "name": "Filtering profiles",
         "url": "?page=filtering",
         "src": "images/filtering.png",
-        "description": "Automating the process of finding devices that need attention"
+        "alt": "Profile Filtering UI with nested rule builder",
+        "description": "Automated targeting at scale, slashing filtering time by 70%"
     },
     {
         "name": "Replenishing Suppliers",
@@ -52,7 +53,7 @@
     },
     {
         "name": "Simplified Install",
-        "url": "simplify",
+        "url": "?page=simplify",
         "src": "images/ka-install.png",
         "alt": "Installation workflow sketch",
         "description": "From 57 screens to 8 steps or less"

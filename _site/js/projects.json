@@ -40,31 +40,10 @@
     },
     {
         "name": "Simplified Install",
-        "url": "simplify",
+        "url": "?page=simplify",
         "src": "images/ka-install.png",
         "alt": "Installation workflow sketch",
         "description": "From 57 screens to 8 steps or less"
-    },
-    {
-        "name": "Enhanced Focus",
-        "url": "?page=focus",
-        "src": "images/kiosk-hero.png",
-        "alt": "A photo kiosk emphasizing the users images",
-        "description": "Elevating perceived quality by over 20%"
-    },
-    {
-        "name": "Pocket-sizing a Flagship",
-        "url": "?page=flagship",
-        "src": "images/k1gob.png",
-        "alt": "K1Go Mobile Interface",
-        "description": "Creating a mobile interface to this powerful tool"
-    },
-    {
-        "name": "Visualizing Sunlight",
-        "url": "?page=sunlight",
-        "src": "images/sunlight.png",
-        "alt": "Arial view of sunlight visualization on buildings",
-        "description": "Refined solar visuals for faster insights"
     },
     {
         "name": "About me",
