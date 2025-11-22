@@ -425,10 +425,18 @@ function updateLocalLinks() {
     for (let link of links) {
         const href = link.getAttribute('href');
 
+        // --- NEW EXCLUSION LOGIC ---
+        // 1. Skip if the link has the special class (e.g., for 'set=more' links)
+        if (link.classList.contains('no-set-propagation')) {
+            continue;
+        }
+        // --- END NEW EXCLUSION LOGIC ---
+
         // Skip if href is null or empty
         if (!href) continue;
 
         // Skip if the link is not local or is a bookmark
+        // (This original logic is still good to keep)
         if (href.startsWith('http') || href.includes('#')) continue;
 
         // Parse the href as a URL
@@ -449,7 +457,6 @@ function updateLocalLinks() {
         link.setAttribute('href', linkUrl.pathname + linkUrl.search);
     }
 }
-
 
 // Main initialization function
 function initializeApp() {
