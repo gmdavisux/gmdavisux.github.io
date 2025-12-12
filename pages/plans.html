@@ -13,13 +13,13 @@
       <p>I led the design to provide a concise summary of settings on each screen, reducing navigation needs and ensuring usability. My workflow definition, refined with team input, drove this approach.</p>
     </div> <!-- // col -->
     <div class="col-sm-8">
-      <img src="images/cc-billingplans.png?w=2045" alt="Billing plans overview" class="img-fluid border">
+      <img src="images/cc-billingplans.png?w=2044" alt="Billing plans overview" class="img-fluid border">
       <p>The new design lists sets of charges (plans) rather than individual items, ensuring clarity at the top level.</p>
     </div> <!-- // col -->
     <div class="col-sm-4">
-      <img src="images/cc-billingplans-edit.png?w=2048" alt="Editing billing plans" class="img-fluid border">
+      <img src="images/cc-billingplans-edit.png?w=2044" alt="Editing billing plans" class="img-fluid border">
       <p>Within each plan, users can edit or rearrange rules, with details clearly visible.</p>
-      <img loading="lazy" src="images/cc-billingplans-rules.webp?w=2048" alt="Billing plan rules" class="img-fluid border">
+      <img loading="lazy" src="images/cc-billingplans-rules.png?w=2044" alt="Billing plan rules" class="img-fluid border">
       <p>Users can assign accounts, exceptions, objectives, and conditions to each rule.</p>
     </div> <!-- // col -->
   </div> <!-- // row -->
@@ -53,6 +53,17 @@
   </div> <!-- // row -->
 
   <div class="row">
+    <div class="col-lg-6">
+      <img loading="lazy" src="images/BillingPlansOOUX.png" alt="OOUX matrix snippet" class="img-fluid">
+    </div>
+    <div class="col-lg-6">
+      <h2>OOUX Breakdown</h2>
+      <p>The legacy design had no concept of multiple “plans” or the ability to tailor rules and exceptions to specific account families; everything was hard-coded at a global level.</p>
+      <p>To untangle this and chart a clearer path forward, I retroactively built an Object-Oriented UX matrix that reimagined the domain around real objects (Billing Plans, Rules, Exceptions, Account Families, Accounts, and Payers). Mapping the relationships and metadata this way immediately exposed why the old system felt so brittle: there was no object for a “plan” in the first place, so every customization required hacks and one-off exceptions.</p>
+      <p>Creating the matrix after the fact was challenging, yet it crystallised the core innovation the product desperately needed: introduce distinct Billing Plans that a Payer can assign to different Account Families, with inheritable Rules and per-account Exceptions. Once that object model existed on paper, the path to a flexible, scalable, and far less overwhelming experience became obvious. The matrix didn’t just document complexity; it revealed the exact where we could simplify it for users and future-proof it for developers.</p>
+    </div>
+  </div> <!-- // row -->
+  <div class="row">
     <div class="col-lg-12">
       <h2>Progressive Disclosure</h2>
       <p>To meet user needs, I designed a system allowing:</p>
@@ -70,7 +81,7 @@
     <div class="col-lg-6">
       <h2>Exceptions</h2>
       <p>Each rule supports exceptions by account family and number, offering fine-tuned control.</p>
-      <img loading="lazy" src="images/image-8.png" alt="Exceptions interface" class="img-fluid border">
+      <img loading="lazy" src="images/image-8.png" alt="Exceptions interface" class="img-fluid">
     </div>
     <div class="col-lg-6">
       <img loading="lazy" src="images/image-6.png" alt="Account families list" class="img-fluid border">
