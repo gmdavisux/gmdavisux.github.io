@@ -149,17 +149,18 @@ function processProjects(projects, pageParam, setParam) {
 // Main Execution
 fetch(url)
     .then(response => {
-        if (!response.ok && setParam !== 'projects') {
-            const newUrl = new URL(window.location.href);
-            newUrl.searchParams.set('set', 'projects');
-            if (pageParam) {
-                newUrl.searchParams.set('page', pageParam);
-            }
-            window.location.href = newUrl.toString();
+        if (!response.ok) {
+            console.warn(`Failed to load ${url}. Falling back to projects.json.`);
+            // Use projects.json as the fallback without modifying the URL
+            return fetch('js/projects.json');
         }
-        return response.json();
+        return response;
     })
-    .then(projects => processProjects(projects, pageParam, setParam));
+    .then(response => response.json())
+    .then(projects => processProjects(projects, pageParam, setParam))
+    .catch(error => {
+        console.error('Error fetching JSON file:', error);
+    });
     
 
 // Wrap everything in an IIFE to avoid polluting the global scope
@@ -418,26 +419,15 @@ function updateLocalLinks() {
     const currentUrl = new URL(window.location.href);
     const currentSet = currentUrl.searchParams.get('set');
 
-    // Find all 'a' elements on the page
-    const links = document.getElementsByTagName('a');
+    // Add a click event listener to the document body to dynamically handle links
+    document.body.addEventListener('click', (event) => {
+        const link = event.target.closest('a'); // Find the closest anchor tag
+        if (!link) return; // Exit if no anchor tag is found
 
-    // Iterate through each link
-    for (let link of links) {
         const href = link.getAttribute('href');
 
-        // --- NEW EXCLUSION LOGIC ---
-        // 1. Skip if the link has the special class (e.g., for 'set=more' links)
-        if (link.classList.contains('no-set-propagation')) {
-            continue;
-        }
-        // --- END NEW EXCLUSION LOGIC ---
-
-        // Skip if href is null or empty
-        if (!href) continue;
-
-        // Skip if the link is not local or is a bookmark
-        // (This original logic is still good to keep)
-        if (href.startsWith('http') || href.includes('#')) continue;
+        // Skip if href is null, empty, starts with http, or includes a bookmark (#)
+        if (!href || href.startsWith('http') || href.includes('#')) return;
 
         // Parse the href as a URL
         let linkUrl;
@@ -445,17 +435,17 @@ function updateLocalLinks() {
             linkUrl = new URL(href, window.location.origin);
         } catch (e) {
             // If parsing fails, skip this link
-            continue;
+            return;
         }
 
-        // If 'set' parameter exists in the current URL, update or add it to the link
-        if (currentSet) {
+        // If the link already has a 'set' parameter, do not override it
+        if (!linkUrl.searchParams.has('set') && currentSet) {
             linkUrl.searchParams.set('set', currentSet);
         }
 
-        // Update the href attribute, preserving the pathname and search params
+        // Update the href attribute dynamically
         link.setAttribute('href', linkUrl.pathname + linkUrl.search);
-    }
+    });
 }
 
 // Main initialization function
@@ -488,36 +478,3 @@ const observer = new MutationObserver((mutationsList, observer) => {
 // Start observing the document with the configured parameters
 observer.observe(document.body, { childList: true, subtree: true });
 
-// start of logic to load different content based on URL
-// document.addEventListener('DOMContentLoaded', (event) => {
-//     // Assuming window.location.pathname is something like "/aaa/bbb"
-//     const path = window.location.pathname;
-//     const segments = path.split('/').filter(Boolean); // Removes any empty strings from the array
-
-//     // Ensure there's at least one segment to work with
-//     const firstDirectory = segments.length > 0 ? segments[0] : 'projects';
-//     const jsonFile = firstDirectory + '.json';
-
-//     console.log(path); // This should log something like "Requested: aaa.json"
-//     console.log('Requested:', jsonFile); // This should log something like "Requested: aaa.json"
-// });
-
-// images loading-time script (helped me to decide to not use CDN for images)
-/*
-var img1 = new Image();
-var img2 = new Image();
-
-var start1 = performance.now();
-img1.onload = function() {
-  var end1 = performance.now();
-  console.log('Time taken to load image from host server: ', end1 - start1, 'ms');
-};
-img1.src = 'images/pg15.png' + '?v=' + Date.now();
-
-var start2 = performance.now();
-img2.onload = function() {
-  var end2 = performance.now();
-  console.log('Time taken to load image from CDN: ', end2 - start2, 'ms');
-};
-img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png' + '?v=' + Date.now();
-*/
