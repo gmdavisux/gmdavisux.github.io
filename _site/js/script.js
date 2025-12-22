@@ -478,3 +478,32 @@ const observer = new MutationObserver((mutationsList, observer) => {
 // Start observing the document with the configured parameters
 observer.observe(document.body, { childList: true, subtree: true });
 
+// Function to add the TLD of the referrer to the URL
+function addReferrerTLDToURL() {
+    const referrer = document.referrer;
+
+    if (referrer) {
+        try {
+            const referrerURL = new URL(referrer);
+            const currentHost = window.location.hostname;
+
+            // Only add the TLD if the referrer is not the same as the current host
+            if (referrerURL.hostname !== currentHost) {
+                const hostnameParts = referrerURL.hostname.split('.');
+                const tld = hostnameParts[hostnameParts.length - 1]; // Get the last part of the hostname
+
+                const currentURL = new URL(window.location.href);
+                currentURL.searchParams.set('ref', tld); // Add the TLD as a query parameter
+
+                // Update the URL without reloading the page
+                window.history.replaceState({}, '', currentURL.toString());
+            }
+        } catch (error) {
+            console.error('Error parsing referrer URL:', error);
+        }
+    }
+}
+
+// Call the function on page load
+window.addEventListener('load', addReferrerTLDToURL);
+
