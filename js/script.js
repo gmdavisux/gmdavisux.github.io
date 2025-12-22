@@ -478,8 +478,8 @@ const observer = new MutationObserver((mutationsList, observer) => {
 // Start observing the document with the configured parameters
 observer.observe(document.body, { childList: true, subtree: true });
 
-// Function to add the TLD of the referrer to the URL
-(function addReferrerTLDToURL() {
+// Function to add the domain name of the referrer to the URL
+(function addReferrerDomainToURL() {
     const referrer = document.referrer;
 
     if (referrer) {
@@ -487,16 +487,18 @@ observer.observe(document.body, { childList: true, subtree: true });
             const referrerURL = new URL(referrer);
             const currentHost = window.location.hostname;
 
-            // Only add the TLD if the referrer is not the same as the current host
+            // Only add the domain name if the referrer is not the same as the current host
             if (referrerURL.hostname !== currentHost) {
                 const hostnameParts = referrerURL.hostname.split('.');
-                const tld = hostnameParts[hostnameParts.length - 1]; // Get the last part of the hostname
+                const domain = hostnameParts.length > 2 
+                    ? hostnameParts[hostnameParts.length - 2] // Extract the domain name (e.g., 'example' from 'example.com')
+                    : hostnameParts[0];
 
                 const currentURL = new URL(window.location.href);
 
                 // Ensure the URL always has a query string, even for the home page
-                if (!currentURL.searchParams.has('ref_tld')) {
-                    currentURL.searchParams.set('ref_tld', tld); // Add the TLD as a query parameter
+                if (!currentURL.searchParams.has('ref_domain')) {
+                    currentURL.searchParams.set('ref_domain', domain); // Add the domain name as a query parameter
 
                     // Update the URL without reloading the page
                     window.history.replaceState({}, '', currentURL.toString());
@@ -506,7 +508,7 @@ observer.observe(document.body, { childList: true, subtree: true });
             console.error('Error parsing referrer URL:', error);
         }
     } else {
-        console.warn('No referrer detected. Referrer information may be blocked by browser settings.');
+        console.warn('No referrer detected. Referrer information may be blocked by browser settings or policies.');
     }
 })();
 
