@@ -479,7 +479,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 observer.observe(document.body, { childList: true, subtree: true });
 
 // Function to add the TLD of the referrer to the URL
-function addReferrerTLDToURL() {
+(function addReferrerTLDToURL() {
     const referrer = document.referrer;
 
     if (referrer) {
@@ -505,9 +505,8 @@ function addReferrerTLDToURL() {
         } catch (error) {
             console.error('Error parsing referrer URL:', error);
         }
+    } else {
+        console.warn('No referrer detected. Referrer information may be blocked by browser settings.');
     }
-}
-
-// Call the function on page load
-window.addEventListener('load', addReferrerTLDToURL);
+})();
 
