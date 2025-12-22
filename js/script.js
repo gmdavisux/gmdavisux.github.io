@@ -490,9 +490,15 @@ observer.observe(document.body, { childList: true, subtree: true });
             // Only add the domain name if the referrer is not the same as the current host
             if (referrerURL.hostname !== currentHost) {
                 const hostnameParts = referrerURL.hostname.split('.');
-                const domain = hostnameParts.length > 2 
-                    ? hostnameParts[hostnameParts.length - 2] // Extract the domain name (e.g., 'example' from 'example.com')
-                    : hostnameParts[0];
+                let domain;
+
+                if (hostnameParts.length === 2) {
+                    // For short domains like t.co, use the first part
+                    domain = hostnameParts[0];
+                } else {
+                    // For longer domains, use the second-to-last part
+                    domain = hostnameParts[hostnameParts.length - 2];
+                }
 
                 const currentURL = new URL(window.location.href);
 
