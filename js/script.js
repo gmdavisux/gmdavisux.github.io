@@ -146,186 +146,21 @@ function processProjects(projects, pageParam, setParam) {
     document.getElementById('workmenu').innerHTML = columnHtml;
 }
 
-// Function to validate the "set" parameter and load the appropriate JSON file
-function validateAndLoadSetParam(setParam) {
-    const validSets = ['projects', 'more', 'testimonials']; // Add other valid sets here
-    if (!validSets.includes(setParam)) {
-        // If the setParam is invalid, default to 'projects.json' but keep the query as is
-        return 'projects';
-    }
-    return setParam;
-}
-
-// Updated Main Execution
-(async function () {
-    const params = new URLSearchParams(window.location.search);
-    const pageParam = params.get('page') || '';
-    let setParam = params.get('set') || 'projects';
-
-    // Validate the "set" parameter
-    setParam = validateAndLoadSetParam(setParam);
-
-    const url = `js/${setParam}.json`;
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            console.error(`Failed to load ${url}`);
-            return;
-        }
-        const projects = await response.json();
-        processProjects(projects, pageParam, setParam);
-    } catch (error) {
-        console.error('Error fetching JSON file:', error);
-    }
-})();
-
-// Updated function to propagate queries dynamically
-function updateLocalLinks() {
-    const currentUrl = new URL(window.location.href);
-    const currentSet = currentUrl.searchParams.get('set');
-
-    document.body.addEventListener('click', (event) => {
-        const link = event.target.closest('a');
-        if (!link) return;
-
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('http') || href.includes('#')) return;
-
-        const linkUrl = new URL(href, window.location.origin);
-        if (currentSet) {
-            linkUrl.searchParams.set('set', currentSet);
-        }
-
-        link.setAttribute('href', linkUrl.pathname + linkUrl.search);
-    });
-}
-
-// Navigation Functions
-function updateNavigationButtons(currentIndex, projects, pageParam, setParam) {
-    const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
-    const nextIndex = (currentIndex + 1) % projects.length;
-
-    updateButton('prev-btn', projects[prevIndex], pageParam, setParam);
-    updateButton('next-btn', projects[nextIndex], pageParam, setParam);
-    
-    // Update the current page HTML title
-    const currentProject = projects[currentIndex];
-    if (currentProject && currentProject.name) {
-        document.title = currentProject.name;
-    }
-}
-
-function updateButton(buttonId, item, pageParam, setParam) {
-    const button = document.getElementById(buttonId);
-    const pageValue = normalizeUrlValue(item.url);
-    button.setAttribute('href', '?' + createPageUrl(pageValue, pageParam, setParam));
-    button.setAttribute('data-bs-original-title', item.name);
-}
-
-// HTML Generation Functions
-function generateGridItemHtml0(item, indexLink) {
-    return `
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4 pb-4">
-        <div class="d-flex flex-column shadow-sm rounded py-3 bg-light-subtle border border-light-subtle" style="padding: 1rem; margin: 0.5rem; height: 100%;">
-            <div class="mb-3 ps-0" style="padding-left: 0;">
-                <a href="?${indexLink}">
-                    <img src="${item.src}" class="img-fluid border">
-                </a>
-            </div>
-            <div class="flex-grow-1">
-                <p>${item.name}</p>
-                <p class="fs-4">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
-            </div>
-        </div>
-    </div>
-    `;
-}
-function generateGridItemHtml(item, indexLink) {
-    return `
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4 p-1">
-        <div class="card border-light h-100" data-bs-theme="light" style="background-color:rgba(240, 239, 234, 1);">
-            <a href="?${indexLink}">
-                <div class="ratio ratio-1x1">
-                    <img src="${item.src}" 
-                         alt="${item.alt || ''}" 
-                         class="object-fit-contain img-fluid">
-                </div>
-            </a>
-            <div class="card-body">
-                <p class="card-title fs-6">${item.name}</p>
-                <p class="card-text fs-3">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
-            </div>
-        </div>
-    </div>
-    `;
-}
-function generateColumnItemHtml(item, indexLink) {
-    return `
-    <div class="col-12 pb-3">
-        <div class="card shadow-sm rounded bg-light-subtle border border-light-subtle h-100">
-            <a href="?${indexLink}">
-                <img src="${item.src}" alt="${item.alt || ''}" class="card-img-top">
-            </a>
-            <div class="card-body">
-                <p class="card-title fs-6">${item.name}</p>
-                <p class="card-text fs-4">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
-            </div>
-        </div>
-    </div>
-    `;
-}
-
-// Main Function
-function processProjects(projects, pageParam, setParam) {
-    let gridHtml = '<div class="container py-4"><div class="row">';
-    let columnHtml = '';
-
-    projects.forEach((item, index) => {
-        const pageValue = normalizeUrlValue(item.url);
-        const indexLink = createPageUrl(pageValue, pageParam, setParam);
-
-        if (pageValue === pageParam) {
-            updateNavigationButtons(index, projects, pageParam, setParam);
-        }
-
-        if (item.src !== undefined && item.src !== null) {
-            if (!pageParam) { // This checks if pageParam is undefined, null, or an empty string
-                gridHtml += generateGridItemHtml(item, indexLink);
+// Main Execution
+fetch(url)
+    .then(response => {
+        if (!response.ok && setParam !== 'projects') {
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('set', 'projects');
+            if (pageParam) {
+                newUrl.searchParams.set('page', pageParam);
             }
-            columnHtml += generateColumnItemHtml(item, indexLink);
+            window.location.href = newUrl.toString();
         }
-    });
-
-    gridHtml += '</div></div>';
-
-    document.getElementById('features').innerHTML = gridHtml;
-    document.getElementById('workmenu').innerHTML = columnHtml;
-}
-
-// Updated function to propagate queries dynamically
-function updateLocalLinks() {
-    const currentUrl = new URL(window.location.href);
-    const currentSet = currentUrl.searchParams.get('set');
-
-    document.body.addEventListener('click', (event) => {
-        const link = event.target.closest('a');
-        if (!link) return;
-
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('http') || href.includes('#')) return;
-
-        const linkUrl = new URL(href, window.location.origin);
-        if (currentSet) {
-            linkUrl.searchParams.set('set', currentSet);
-        }
-
-        link.setAttribute('href', linkUrl.pathname + linkUrl.search);
-    });
-}
+        return response.json();
+    })
+    .then(projects => processProjects(projects, pageParam, setParam));
+    
 
 // Wrap everything in an IIFE to avoid polluting the global scope
 (function () {
@@ -652,3 +487,37 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 // Start observing the document with the configured parameters
 observer.observe(document.body, { childList: true, subtree: true });
+
+// start of logic to load different content based on URL
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     // Assuming window.location.pathname is something like "/aaa/bbb"
+//     const path = window.location.pathname;
+//     const segments = path.split('/').filter(Boolean); // Removes any empty strings from the array
+
+//     // Ensure there's at least one segment to work with
+//     const firstDirectory = segments.length > 0 ? segments[0] : 'projects';
+//     const jsonFile = firstDirectory + '.json';
+
+//     console.log(path); // This should log something like "Requested: aaa.json"
+//     console.log('Requested:', jsonFile); // This should log something like "Requested: aaa.json"
+// });
+
+// images loading-time script (helped me to decide to not use CDN for images)
+/*
+var img1 = new Image();
+var img2 = new Image();
+
+var start1 = performance.now();
+img1.onload = function() {
+  var end1 = performance.now();
+  console.log('Time taken to load image from host server: ', end1 - start1, 'ms');
+};
+img1.src = 'images/pg15.png' + '?v=' + Date.now();
+
+var start2 = performance.now();
+img2.onload = function() {
+  var end2 = performance.now();
+  console.log('Time taken to load image from CDN: ', end2 - start2, 'ms');
+};
+img2.src = 'https://usersimple.files.wordpress.com/2021/08/pg15.png' + '?v=' + Date.now();
+*/
