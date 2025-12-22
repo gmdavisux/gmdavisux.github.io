@@ -26,6 +26,21 @@
 
   gtag('config', 'G-X6Q4HXSVGD');
 </script>
+<script>
+  // Parse query parameters
+  const params = new URLSearchParams(window.location.search);
+
+  const setParam = params.get('set');
+  const pageParam = params.get('page');
+
+  // Send them to GA4 if present
+  if (setParam || pageParam) {
+    gtag('event', 'page_view', {
+      set: setParam || undefined,
+      page: pageParam || undefined
+    });
+  }
+</script>
 <style>
   #logos2 img {
     width: auto;
