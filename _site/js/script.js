@@ -478,7 +478,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 // Start observing the document with the configured parameters
 observer.observe(document.body, { childList: true, subtree: true });
 
-// Function to add the domain name of the referrer to the URL
+// Function to add the full referrer domain to the URL
 (function addReferrerDomainToURL() {
     const referrer = document.referrer;
 
@@ -487,24 +487,15 @@ observer.observe(document.body, { childList: true, subtree: true });
             const referrerURL = new URL(referrer);
             const currentHost = window.location.hostname;
 
-            // Only add the domain name if the referrer is not the same as the current host
+            // Only add the referrer domain if it is not the same as the current host
             if (referrerURL.hostname !== currentHost) {
-                const hostnameParts = referrerURL.hostname.split('.');
-                let domain;
-
-                if (hostnameParts.length === 2) {
-                    // For short domains like t.co, use the first part
-                    domain = hostnameParts[0];
-                } else {
-                    // For longer domains, use the second-to-last part
-                    domain = hostnameParts[hostnameParts.length - 2];
-                }
+                const referrerDomain = referrerURL.hostname; // Use the full hostname
 
                 const currentURL = new URL(window.location.href);
 
                 // Ensure the URL always has a query string, even for the home page
                 if (!currentURL.searchParams.has('ref_domain')) {
-                    currentURL.searchParams.set('ref_domain', domain); // Add the domain name as a query parameter
+                    currentURL.searchParams.set('ref_domain', referrerDomain); // Add the full referrer domain as a query parameter
 
                     // Update the URL without reloading the page
                     window.history.replaceState({}, '', currentURL.toString());
