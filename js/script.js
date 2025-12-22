@@ -493,10 +493,14 @@ function addReferrerTLDToURL() {
                 const tld = hostnameParts[hostnameParts.length - 1]; // Get the last part of the hostname
 
                 const currentURL = new URL(window.location.href);
-                currentURL.searchParams.set('ref', tld); // Add the TLD as a query parameter
 
-                // Update the URL without reloading the page
-                window.history.replaceState({}, '', currentURL.toString());
+                // Ensure the URL always has a query string, even for the home page
+                if (!currentURL.searchParams.has('ref_tld')) {
+                    currentURL.searchParams.set('ref_tld', tld); // Add the TLD as a query parameter
+
+                    // Update the URL without reloading the page
+                    window.history.replaceState({}, '', currentURL.toString());
+                }
             }
         } catch (error) {
             console.error('Error parsing referrer URL:', error);
