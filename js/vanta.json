@@ -4,6 +4,13 @@
         "url": "./"
     },
     {
+        "name": "Story Telling",
+        "url": "?page=story",
+        "src": "images/cc-bpc-hero.png",
+        "alt": "Data Visualization of Complaince Trends",
+        "description": "Increasing compliance adoption 18-24% at scale"
+    },
+    {
         "name": "Replenishing Suppliers",
         "url": "?page=suppliers",
         "src": "images/coupa_landing_hero.png",
@@ -23,13 +30,6 @@
         "src": "images/BillingPlansOOUX.png",
         "alt": "UI Showing Billing Plans screen",
         "description": "Pivoting from accounting tools to driving 8-14% increased revenue"
-    },
-    {
-        "name": "Story Telling",
-        "url": "?page=story",
-        "src": "images/cc-bpc-hero.png",
-        "alt": "Data Visualization of Complaince Trends",
-        "description": "Increasing compliance adoption 18-24% at scale"
     },
     {
         "name": "Peak Productivity",
