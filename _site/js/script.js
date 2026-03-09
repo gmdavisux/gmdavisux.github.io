@@ -85,20 +85,17 @@ function generateGridItemHtml0(item, indexLink) {
 function generateGridItemHtml(item, indexLink) {
     return `
     <div class="col-12 col-md-6 col-lg-4 col-xl-4 p-1">
-        <div class="card border-light h-100" data-bs-theme="light" style="background-color:rgba(240, 239, 234, 1);">
-            <a href="?${indexLink}">
-                <div class="ratio ratio-1x1">
-                    <img src="${item.src}" 
-                         alt="${item.alt || ''}" 
-                         class="object-fit-contain img-fluid">
-                </div>
-            </a>
+        <a href="?${indexLink}" class="card border-light h-100 text-decoration-none text-reset" data-bs-theme="light" style="background-color:rgba(240, 239, 234, 1); display:block;">
+            <div class="ratio ratio-1x1">
+                <img src="${item.src}" 
+                     alt="${item.alt || ''}" 
+                     class="object-fit-contain img-fluid">
+            </div>
             <div class="card-body">
                 <p class="card-title fs-6">${item.name}</p>
                 <p class="card-text fs-3">${item.description}</p>
-                <a href="?${indexLink}" class="btn btn-outline-primary btn-sm card-link">Learn more</a>
             </div>
-        </div>
+        </a>
     </div>
     `;
 }
