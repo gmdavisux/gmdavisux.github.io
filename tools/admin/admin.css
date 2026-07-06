@@ -89,6 +89,22 @@ main {
   margin-bottom: 1rem;
 }
 
+.toolbar-link {
+  margin-left: auto;
+  color: var(--brand);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.toolbar-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.toolbar-link[hidden] {
+  display: none;
+}
+
 select,
 input,
 textarea,

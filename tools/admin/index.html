@@ -33,7 +33,9 @@
           <button type="button" class="btn" id="save-collection">Save collection</button>
           <button type="button" class="btn secondary" id="duplicate-collection">Duplicate set</button>
           <button type="button" class="btn secondary" id="add-collection-item">Add item</button>
+          <button type="button" class="btn secondary" id="delete-collection">Delete set</button>
           <span id="collection-status" class="status"></span>
+          <a id="collection-home-link" class="toolbar-link" href="#" target="_blank" rel="noopener" hidden>View collection home</a>
         </div>
         <p class="status">Drag rows to reorder. Order controls home grid, offcanvas menu, and prev/next navigation.</p>
         <div class="table-wrap">
@@ -71,6 +73,7 @@
       <section id="panel-validation" class="panel">
         <div class="toolbar">
           <button type="button" class="btn" id="run-validation">Run validation</button>
+          <span class="status">Scans all collections and pages for broken links, missing fields, and image issues.</span>
           <span id="validation-summary" class="status"></span>
         </div>
         <div id="validation-results"></div>

@@ -7,7 +7,8 @@
         "name": "Managing Complexity",
         "url": "?page=complexity",
         "src": "images/complexity.webp",
-        "description": "Organizing IT tasks for endpoint management"
+        "description": "Organizing IT tasks for endpoint management",
+        "alt": "Searching list of devices with filters for people, devices, and labels"
     },
     {
         "name": "Filtering profiles",
@@ -88,6 +89,3 @@
         "url": "?page=reco"
     }
 ]
-
-
-

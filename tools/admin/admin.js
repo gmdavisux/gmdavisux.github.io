@@ -125,13 +125,36 @@ async function loadCollections() {
   if (state.collections.length) {
     select.value = state.collections[0];
     await loadCollection(select.value);
+  } else {
+    state.currentCollection = null;
+    state.collectionItems = [];
+    renderCollectionTable();
+    updateCollectionHomeLink(null);
+    updateCollectionActions(false);
   }
+}
+
+function updateCollectionActions(enabled) {
+  document.getElementById('delete-collection').disabled = !enabled;
+}
+
+function updateCollectionHomeLink(name) {
+  const link = document.getElementById('collection-home-link');
+  if (!name) {
+    link.hidden = true;
+    return;
+  }
+
+  link.hidden = false;
+  link.href = `http://localhost:${state.sitePort}/?set=${encodeURIComponent(name)}`;
 }
 
 async function loadCollection(name) {
   state.currentCollection = name;
   state.collectionItems = await api(`/api/collections/${name}`);
   renderCollectionTable();
+  updateCollectionHomeLink(name);
+  updateCollectionActions(true);
   setStatus('collection-status', `Loaded ${name}.json`);
 }
 
@@ -158,6 +181,17 @@ async function duplicateCollection() {
   document.getElementById('collection-select').value = result.name;
   await loadCollection(result.name);
   setStatus('collection-status', `Created ${result.name}.json`, 'success');
+}
+
+async function deleteCollection() {
+  if (!state.currentCollection) return;
+
+  const name = state.currentCollection;
+  if (!confirm(`Delete "${name}.json"? This cannot be undone.`)) return;
+
+  await api(`/api/collections/${name}`, { method: 'DELETE' });
+  await loadCollections();
+  setStatus('collection-status', `Deleted ${name}.json`, 'success');
 }
 
 function addCollectionItem() {
@@ -283,6 +317,10 @@ function bindEvents() {
   });
 
   document.getElementById('add-collection-item').addEventListener('click', addCollectionItem);
+
+  document.getElementById('delete-collection').addEventListener('click', () => {
+    deleteCollection().catch((error) => setStatus('collection-status', error.message, 'error'));
+  });
 
   document.getElementById('page-select').addEventListener('change', (event) => {
     loadPage(event.target.value);

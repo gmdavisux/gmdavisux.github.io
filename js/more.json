@@ -63,42 +63,49 @@
         "name": "Design Rescue",
         "url": "?page=rescue",
         "src": "images/iix-current-crop.png",
+        "alt": "Redesigned indexing dashboard with document activity cards",
         "description": "Turning an engineering prototype into a product by diving into code"
     },
     {
         "name": "Managing Complexity",
         "url": "?page=complexity",
         "src": "images/complexity.webp",
+        "alt": "Device inventory list with operating system filters",
         "description": "Organizing IT tasks for endpoint management"
     },
     {
         "name": "Design Documentation",
         "url": "?page=style",
         "src": "images/style.png",
+        "alt": "Style guide showing typography, colors, and button components",
         "description": "Style guides ensure visual coherence across a product line"
     },
     {
         "name": "Adaptive Design",
         "url": "?page=adaptive",
         "src": "images/adaptive.png",
+        "alt": "Overlapping copier touchscreen panels showing copy settings",
         "description": "Adapting a strategic design to different display sizes and technologies"
     },
     {
         "name": "Visual Retro",
         "url": "?page=visual",
         "src": "images/visual.png",
+        "alt": "3D render of a Xerox multifunction printer",
         "description": "My early work of creating icons, graphics, and animations for user interfaces"
     },
     {
         "name": "Login Convergence",
         "url": "?page=auth",
         "src": "images/auth.png",
+        "alt": "Flowchart mapping four login types to device services",
         "description": "Our design unified authorization, access, and accounting, is highly coherent and simple to use"
     },
     {
         "name": "Visualizing Sunlight",
         "url": "?page=sunlight",
         "src": "images/sunlight.png",
+        "alt": "Aerial roof map with lettered sections and sunlight grid overlay",
         "description": "Choosing the right color is critical to success"
     },
     {
@@ -112,18 +119,21 @@
         "name": "Beyond Expectations",
         "url": "?page=beyond",
         "src": "images/clientflow-clip.jpeg",
+        "alt": "Flowchart of low-supply alert through vendor selection",
         "description": "I started asking questions to discover the actual problem this was solving"
     },
     {
         "name": "As Little Design as Possible",
         "url": "?page=scan",
         "src": "images/scan.png",
+        "alt": "Xerox Network Scanners desktop app with empty document list",
         "description": "minimizing user configuration between networked scanners and computers"
     },
     {
         "name": "Handling Constraints",
         "url": "?page=driver",
         "src": "images/driver.png",
+        "alt": "Printer driver dialog warning that duplex printing is disabled",
         "description": "patented and designed to be unobtrusive"
     },
     {

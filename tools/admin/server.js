@@ -185,6 +185,19 @@ app.post('/api/collections/:name/duplicate', async (req, res) => {
   }
 });
 
+app.delete('/api/collections/:name', async (req, res) => {
+  try {
+    const filePath = collectionPath(req.params.name);
+    await fs.unlink(filePath);
+    res.json({ ok: true });
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return res.status(404).json({ error: 'Collection not found' });
+    }
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.get('/api/pages', async (_req, res) => {
   try {
     res.json(await listPageNames());
