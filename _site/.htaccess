@@ -1,3 +1,0 @@
-<Directory "/path/to/your/directory">
-    Header set Access-Control-Allow-Origin "http://127.0.0.1:4000"
-</Directory>

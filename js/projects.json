@@ -4,13 +4,6 @@
         "url": "./"
     },
     {
-        "name": "Designing the tool I wished existed",
-        "url": "?page=wished",
-        "src": "images/aiux-hero.png",
-        "alt": "UI Showing Behavior Studio",
-        "description": "The best AI experiences are designed, not just engineered."
-    },
-    {
         "name": "Replenishing Suppliers",
         "url": "?page=suppliers",
         "src": "images/coupa_landing_hero.png",

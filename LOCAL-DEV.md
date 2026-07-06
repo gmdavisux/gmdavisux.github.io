@@ -1,30 +1,35 @@
 # Local Development Setup
 
-## Starting the Jekyll Server
+## Site preview
 
-### Option A — Run the start script
-```bash
-bash start_services.sh
-```
-
-### Option B — Run manually
 ```bash
 cd /Users/garydavis/Sites/gmdavisux.github.io
-bundle exec jekyll serve --config _config.yml,_config_dev.yml
+bash serve.sh
 ```
 
-Then open **http://localhost:4000** in your browser.
+Open **http://localhost:4000**
+
+Uses Python's built-in HTTP server. No Ruby, no Jekyll, no bundle.
 
 ---
 
-## Why two config files?
+## Admin dashboard (local only)
 
-`_config.yml` sets `url: "https://usersimple.com"` for production.  
-`_config_dev.yml` overrides it to `url: "http://localhost:4000"` for local use.
+Edit collections (`js/*.json`) and pages (`pages/*.html`) in a browser UI.
 
-> **Note:** The `<base href>` in `index.html` now uses `{{site.baseurl}}/` only
-> (renders as `/`), so CORS errors no longer occur regardless of which config is used.
-> The dev config is still useful if you need `site.url` to resolve correctly in templates.
+```bash
+# Terminal 1 — site preview
+bash serve.sh
+
+# Terminal 2 — admin
+cd tools/admin
+npm install   # first time only
+npm run admin
+```
+
+Open **http://localhost:4001**
+
+The admin writes directly to repo files. Commit when you are ready to publish.
 
 ---
 
@@ -32,7 +37,6 @@ Then open **http://localhost:4000** in your browser.
 
 | Problem | Fix |
 |---|---|
-| `command not found: jekyll` | Check `.ruby-version` matches an installed Ruby (`ruby --version`). Currently set to `3.3.1`. |
-| CORS errors in browser console | Make sure you used `--config _config.yml,_config_dev.yml` |
-| Port already in use | Run `lsof -i :4000` to find the process, then `kill <PID>` |
-| Stale build artifacts | Run `bundle exec jekyll clean` then start again |
+| Port already in use | `lsof -i :4000` then `kill <PID>`, or `bash serve.sh 4001` |
+| Admin preview blank | Make sure the site server is running on port 4000 |
+| `npm: command not found` | Install Node.js from https://nodejs.org |

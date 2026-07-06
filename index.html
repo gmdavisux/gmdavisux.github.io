@@ -1,11 +1,9 @@
----
----
 <!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <base href="{{site.baseurl}}/">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>usersimple.com &mdash; Gary M Davis Portfolio</title>
   <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png?=v2">
@@ -15,10 +13,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="style.css?=v20241029" rel="stylesheet">
+  <link href="style.css?=v20260710" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <script>
+    if (new URLSearchParams(location.search).get('page')) {
+      document.documentElement.classList.add('is-page-view');
+    }
+  </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6Q4HXSVGD"></script>
 <script>
@@ -98,27 +101,18 @@
       <div class="row py-4">
         <div class="col">
           <!-- <h1>Gary M Davis</h1> -->
-          <p class="fs-3"><span style="color:yellow">Over 20 years</span> of Creating Better Outcomes for B2B/SaaS
+          <p class="fs-3"><span class="hero-accent">Over 20 years</span> of Creating Better Outcomes for B2B/SaaS
           </p>
         </div>
       </div>
     </div>
   </header>
-  <!-- // add a container with a row and two columns -->
-  <main id="defaultContent">
-    <!-- code within default content should only appear on the home page -->
+  <div id="defaultContent">
     <div id="features" class="container-fluid pt-3">
-    </div> <!-- // container-fluid -->
-    <!-- work will appear here -->
-  </main> <!-- end defaultContent -->
-  <div id="specialContent" style="display: none;">
-    <h1>Special Content</h1>
-    <p>I'm a Rochester, NY based designer who loves to use design to make people's work lives easier and more
-      fulfilling.</p>
-    <p>Principal UX designer formerly at Coupa, CloudCheckr/NetApp, Eagleview, Kodak, Dell, Xerox</p>
+    </div>
   </div>
-
-  <div role="main" id="contentContainer"></div>
+  <div id="specialContent" style="display: none;"></div>
+  <main id="contentContainer"></main>
 
   <!-- load carousel -->
   <div class="pb-5" id="work"></div>
@@ -142,8 +136,8 @@
     <a href="/?set=more" class="no-set-propagation d-block text-center btn btn-outline-primary btn-sm">Older Projects</a>
   </div>
 </div>
-<footer class="footer fixed-bottom bg-primary d-flex justify-content-between p-2 print-hide">
-    <a id="prev-btn" class="btn btn-sm btn-outline-light" href="reco" data-bs-toggle="tooltip" data-bs-placement="right"
+<footer class="footer site-footer fixed-bottom d-flex justify-content-between p-2 print-hide">
+    <a id="prev-btn" class="btn btn-sm btn-outline-light" href="?page=reco" data-bs-toggle="tooltip" data-bs-placement="right"
         data-bs-original-title="Recommendations">
         <i class="bi bi-chevron-left"></i><span class="d-none d-md-inline">Back</span>
     </a>
@@ -162,6 +156,6 @@
   integrity="sha512-5vzl35V/cPSXliPbZtxHY0Q6cfYFd2Qld79+d7wLPbOxnKeCHH/LmlMD8aYl0ZN5VZPFM2FnKiAjoNJ2k3vrEg=="
   crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
 <!-- local script -->
-<script src="js/script.js?v=2" type="module"></script>
+<script src="js/app.js?v=5" type="module"></script>
 
 </html>

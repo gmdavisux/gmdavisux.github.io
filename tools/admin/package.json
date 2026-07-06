@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-admin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local admin dashboard for usersimple.com portfolio",
+  "scripts": {
+    "admin": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Portfolio Admin</h1>
+      <p>Local editor for collections and pages</p>
+    </div>
+    <a id="open-site" class="btn secondary" href="#" target="_blank" rel="noopener">Open site preview</a>
+  </header>
+
+  <div class="layout">
+    <nav>
+      <button type="button" class="active" data-panel="collections">Collections</button>
+      <button type="button" data-panel="pages">Pages</button>
+      <button type="button" data-panel="validation">Validation</button>
+      <button type="button" data-panel="preview">Preview</button>
+    </nav>
+
+    <main>
+      <section id="panel-collections" class="panel active">
+        <div class="toolbar">
+          <label>
+            Set
+            <select id="collection-select"></select>
+          </label>
+          <button type="button" class="btn" id="save-collection">Save collection</button>
+          <button type="button" class="btn secondary" id="duplicate-collection">Duplicate set</button>
+          <button type="button" class="btn secondary" id="add-collection-item">Add item</button>
+          <span id="collection-status" class="status"></span>
+        </div>
+        <p class="status">Drag rows to reorder. Order controls home grid, offcanvas menu, and prev/next navigation.</p>
+        <div class="table-wrap">
+          <table id="collection-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Image</th>
+                <th>Alt</th>
+                <th>Description</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="panel-pages" class="panel">
+        <div class="toolbar">
+          <label>
+            Page
+            <select id="page-select"></select>
+          </label>
+          <button type="button" class="btn" id="save-page">Save page</button>
+          <button type="button" class="btn secondary" id="new-page">New page</button>
+          <button type="button" class="btn secondary" id="add-page-to-collection">Add to current set</button>
+          <span id="page-status" class="status"></span>
+        </div>
+        <textarea id="page-editor" spellcheck="false"></textarea>
+      </section>
+
+      <section id="panel-validation" class="panel">
+        <div class="toolbar">
+          <button type="button" class="btn" id="run-validation">Run validation</button>
+          <span id="validation-summary" class="status"></span>
+        </div>
+        <div id="validation-results"></div>
+      </section>
+
+      <section id="panel-preview" class="panel">
+        <div class="toolbar">
+          <label>
+            Path
+            <input type="text" id="preview-path" value="/" size="40">
+          </label>
+          <button type="button" class="btn" id="load-preview">Load preview</button>
+        </div>
+        <iframe id="preview-frame" class="preview-frame" title="Site preview"></iframe>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

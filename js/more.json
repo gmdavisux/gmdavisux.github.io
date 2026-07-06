@@ -1,7 +1,7 @@
 [
     {
         "name": "Home",
-        "url": ""
+        "url": "./"
     },
     {
         "name": "Replenishing Suppliers",
@@ -110,19 +110,19 @@
     },
     {
         "name": "Beyond Expectations",
-        "url": "beyond",
+        "url": "?page=beyond",
         "src": "images/clientflow-clip.jpeg",
         "description": "I started asking questions to discover the actual problem this was solving"
     },
     {
         "name": "As Little Design as Possible",
-        "url": "scan",
+        "url": "?page=scan",
         "src": "images/scan.png",
         "description": "minimizing user configuration between networked scanners and computers"
     },
     {
         "name": "Handling Constraints",
-        "url": "driver",
+        "url": "?page=driver",
         "src": "images/driver.png",
         "description": "patented and designed to be unobtrusive"
     },
